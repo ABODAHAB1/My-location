@@ -1,0 +1,115 @@
+body {
+  font-family: "Cairo", sans-serif;
+  margin: 20px;
+  background: linear-gradient(to bottom right, #772053, #2c5364);
+  color: #fff;
+  direction: rtl;
+  text-align: center;
+}
+
+/* الهيدر */
+header {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: 2px solid #797873;
+  color: #080808;
+  margin-bottom: 20px;
+}
+
+/* القسم الرئيسي */
+.section {
+  margin: 30px 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00000033;
+}
+
+/* الفوتر */
+footer {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* الساعة */
+#clock {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2c3e50;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+/* العنوان */
+h1 {
+  color: #27ae60;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+/* الفقرة */
+p {
+  color: #eee;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* رسالة الترحيب */
+#welcome {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #000000;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(142, 68, 173, 0.2);
+}
+
+/* عداد الزيارات */
+#visits {
+  font-size: 22px;
+  color: #34495e;
+  background-color: #000000;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(52, 73, 94, 0.2);
+}
+
+/* زرار */
+button {
+  background-color: #ffeeee;
+  color: #ff0000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #ffffff;
+  color: #2c5364;
+  transform: scale(1.05);
+}
+
+/* عناصر إضافية */
+.label {
+  color: #f6f6f6;
+  font-weight: bold;
+}
+
+.value {
+  color: #ffffff;
+  font-weight: bold;
+}
