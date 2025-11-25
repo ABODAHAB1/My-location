@@ -1,5 +1,4 @@
-// الساعة الرقمية بتنسيق عربي وبتوقيت مصر
-function updateClock() {
+  function updateClock() {
   const now = new Date();
   const time = now.toLocaleTimeString("ar-EG", {
     timeZone: "Africa/Cairo",
@@ -13,7 +12,6 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
-// رسالة ترحيب حسب توقيت مصر
 function welcomeMessage() {
   const nowInCairo = new Date(
     new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
@@ -31,7 +29,6 @@ function welcomeMessage() {
 }
 welcomeMessage();
 
-// عداد الزيارات باستخدام localStorage
 function visitCounter() {
   const key = "visits";
   const prev = parseInt(localStorage.getItem(key) || "0", 10);
@@ -41,3 +38,56 @@ function visitCounter() {
     `<span class="label">عدد الزيارات:</span> <span class="value">${visits}</span>`;
 }
 visitCounter();
+
+function loadPrayerTimes() {
+  fetch("https://api.aladhan.com/v1/timingsByCity?city=Sohag&country=Egypt&method=5")
+    .then(res => res.json())
+    .then(data => {
+      const timings = data.data.timings;
+      const list = document.getElementById("prayer-list");
+      const names = {
+        "Fajr": "الفجر 🌅",
+        "Dhuhr": "الظهر ☀️",
+        "Asr": "العصر 🌤️",
+        "Maghrib": "المغرب 🌇",
+        "Isha": "العشاء 🌙"
+      };
+      list.innerHTML = "";
+      for (let [name, time] of Object.entries(timings)) {
+        if (names[name]) {
+          const li = document.createElement("li");
+          li.textContent = `${names[name]} : ${time}`;
+          list.appendChild(li);
+        }
+      }
+    });
+}
+loadPrayerTimes();
+
+document.getElementById("toggle-prayer").addEventListener("click", () => {
+  const widget = document.getElementById("prayer-widget");
+  widget.style.display = widget.style.display === "none" ? "block" : "none";
+});
+// رسالة مؤقتة حسب الوقت
+function showTimeMessage() {
+  const nowInCairo = new Date(
+    new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
+  );
+  const hour = nowInCairo.getHours();
+  let message = "";
+
+  if (hour >= 0 && hour < 6) {
+    message = "مساء الخير يا غالي، دخلت في موعد نومي 😂";
+  } else if (hour >= 6 && hour < 12) {
+    message = "صباح الخير يا غالي، لسه صاحي ومش فقيلك 🤣";
+  }
+
+  if (message) {
+    const popup = document.getElementById("time-popup");
+    popup.textContent = message;
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 3000);
+  }
+}
+showTimeMessage();
