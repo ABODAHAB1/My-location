@@ -7,7 +7,6 @@ body {
   text-align: center;
 }
 
-/* الهيدر */
 header {
   background-color: rgba(255, 255, 255, 0.1);
   padding: 15px;
@@ -18,73 +17,73 @@ header {
   margin-bottom: 20px;
 }
 
-/* القسم الرئيسي */
 .section {
-  margin: 30px 0;
+  margin: 30px auto;
   padding: 20px;
+  max-width: 600px;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   box-shadow: 0 0 10px #00000033;
 }
 
-/* الفوتر */
 footer {
   margin-top: 40px;
   font-size: 14px;
   color: #ccc;
 }
 
-/* الساعة */
+/* أيقونة الساعة بشكل دائري مع أنيميشن */
 #clock {
   font-size: 28px;
   font-weight: bold;
-  color: #2c3e50;
-  background-color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 12px;
-  display: inline-block;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
+  background: #00000080;
+  color: #fff;
+  padding: 20px;
+  border-radius: 50%; /* يخليها دائرة */
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  animation: pulseGlow 2s infinite;
 }
 
-/* العنوان */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px rgba(255,255,255,0.3); }
+  50% { box-shadow: 0 0 20px rgba(255,255,255,0.7); }
+  100% { box-shadow: 0 0 10px rgba(255,255,255,0.3); }
+}
+
 h1 {
-  color: #27ae60;
-  font-size: 32px;
+  color: #ffd700;
+  font-size: 30px;
   margin-bottom: 10px;
 }
 
-/* الفقرة */
+.highlight {
+  color: #ffefef;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 p {
-  color: #eee;
   font-size: 20px;
   margin-bottom: 15px;
 }
 
-/* رسالة الترحيب */
-#welcome {
-  font-size: 24px;
-  font-weight: bold;
-  color: #ffffff;
-  background-color: #000000;
-  padding: 10px;
-  border-radius: 10px;
-  display: inline-block;
-  box-shadow: 0 0 8px rgba(142, 68, 173, 0.2);
-}
-
-/* عداد الزيارات */
-#visits {
+#welcome, #visits {
   font-size: 22px;
-  color: #34495e;
-  background-color: #000000;
+  background-color: #00000080;
   padding: 10px;
   border-radius: 10px;
   display: inline-block;
-  box-shadow: 0 0 8px rgba(52, 73, 94, 0.2);
+  margin: 5px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
-/* زرار */
 button {
   background-color: #ffeeee;
   color: #ff0000;
@@ -94,7 +93,7 @@ button {
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
-  margin-top: 10px;
+  margin: 10px 5px;
 }
 
 button:hover {
@@ -103,13 +102,100 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* عناصر إضافية */
-.label {
-  color: #f6f6f6;
-  font-weight: bold;
+#toggle-prayer {
+  background-color: #ffd700;
+  color: #000;
 }
 
-.value {
-  color: #ffffff;
+.prayer-widget {
+  position: fixed;
+  bottom: 80px;
+  left: 20px;
+  width: 220px;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  font-size: 16px;
+  text-align: right;
+  z-index: 999;
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.prayer-widget h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ffd700;
+  padding-bottom: 5px;
+  color: #ffd700;
+}
+
+.prayer-widget ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.prayer-widget li {
+  margin: 5px 0;
+  background: rgba(255,255,255,0.1);
+  padding: 6px;
+  border-radius: 6px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== أيقونات واتساب للتواصل ===== */
+.whatsapp-icons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.whatsapp-btn {
+  background-color: #25D366;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 16px;
   font-weight: bold;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+.whatsapp-btn:hover {
+  background-color: #128C7E;
+  transform: scale(1.1);
+}
+/* ===== رسالة مؤقتة حسب الوقت ===== */
+.night-popup {
+  position: fixed;
+  top: 20px;
+  right: 50%;
+  transform: translateX(50%);
+  background-color: #000000cc;
+  color: #ffd700;
+  padding: 15px 25px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  z-index: 9999;
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; display: none; }
 }
