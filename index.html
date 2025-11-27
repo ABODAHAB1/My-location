@@ -23,9 +23,9 @@
     <h1>اهلاً يا غالي - ده موقع محمود أبو الدهب</h1>
     <p class="highlight">قول مشاء الله</p>
     <p id="welcome"></p>
-    
+
     <!-- مكان عرض العداد -->
-    <div id="visitCounter" style="font-weight:bold; margin-top:10px;">جاري التحميل...</div>
+    <p id="visits" style="font-weight:bold; color:#2c3e50;">جاري تحميل العداد...</p>
 
     <button id="toggle-prayer">🕋 موعد الصلاة</button>
     <button onclick="alert('نورت الموقع يا غالي!')">اضغط هنا يا غالي</button>
@@ -58,7 +58,7 @@
       apiKey: "AIzaSyDg3HhwgnQQn_JOjXCGyCQP8YHF5FN8bE0",
       authDomain: "abodahab-4d14e.firebaseapp.com",
       projectId: "abodahab-4d14e",
-      storageBucket: "abodahab-4d14e.firebasestorage.app",
+      storageBucket: "abodahab-4d14e.appspot.com", // ✅ التصحيح هنا
       messagingSenderId: "442622031382",
       appId: "1:442622031382:web:38c1f156f43a683eb56737"
     };
@@ -81,9 +81,9 @@
         // اقرأ القيمة الحالية بعد التحديث
         const snap = await counterRef.get();
         const data = snap.data() || { count: 1 };
-        document.getElementById("visitCounter").innerText = "عدد الزيارات: " + data.count;
+        document.getElementById("visits").innerText = "عدد زيارات الموقع حتى الآن: " + data.count;
       } catch (e) {
-        document.getElementById("visitCounter").innerText = "حدث خطأ في العداد";
+        document.getElementById("visits").innerText = "حدث خطأ في العداد";
         console.error("Counter error:", e);
       }
     }
