@@ -31,22 +31,6 @@ function welcomeMessage() {
 }
 welcomeMessage();
 
-/* ===== عداد الزيارات ===== */
-function visitCounter() {
-  const key = "visits";
-  const prev = parseInt(localStorage.getItem(key) || "0", 10);
-  const visits = prev + 1;
-  localStorage.setItem(key, String(visits));
-
-  // العداد يظهر تحت فقط
-  document.getElementById("visits").textContent =
-    "عدد زيارات الموقع حتى الآن: " + visits;
-
-  // الرسالة المؤقتة بدون عدد
-  showTimeMessage();
-}
-visitCounter();
-
 /* ===== مواقيت الصلاة ===== */
 function loadPrayerTimes() {
   fetch("https://api.aladhan.com/v1/timingsByCity?city=Sohag&country=Egypt&method=5")
@@ -78,7 +62,7 @@ document.getElementById("toggle-prayer").addEventListener("click", () => {
   widget.style.display = widget.style.display === "none" ? "block" : "none";
 });
 
-/* ===== رسالة مؤقتة بدون العداد ===== */
+/* ===== رسالة مؤقتة حسب الوقت (من غير العداد) ===== */
 function showTimeMessage() {
   const nowInCairo = new Date(
     new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
@@ -100,3 +84,4 @@ function showTimeMessage() {
     popup.style.display = "none";
   }, 3000);
 }
+showTimeMessage();
