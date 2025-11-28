@@ -1,11 +1,12 @@
-/* الساعة الرقمية */
+/* ===== الساعة الرقمية ===== */
 function updateClock() {
   const now = new Date();
   const time = now.toLocaleTimeString("ar-EG", {
     timeZone: "Africa/Cairo",
     hour: "numeric",
     minute: "numeric",
-    second
+    second: "numeric",
+    hour12: true
   });
   document.getElementById("clock").textContent = time;
 }
@@ -87,4 +88,5 @@ function showTimeMessage() {
   }, 3000);
 }
 showTimeMessage();
+
 
