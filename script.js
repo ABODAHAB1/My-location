@@ -88,5 +88,19 @@ function showTimeMessage() {
   }, 3000);
 }
 showTimeMessage();
+/* ===== زر اضغط هنا يا غالي (إظهار/إخفاء النبذة) ===== */
+function toggleAbout() {
+  const about = document.getElementById("about-mahmoud");
+  if (about.style.display === "none" || about.style.display === "") {
+    about.style.display = "block";
+    window.scrollTo({ top: about.offsetTop, behavior: "smooth" });
+  } else {
+    about.style.display = "none";
+  }
+}
+
+// ربط الدالة بالزر
+document.querySelector("button[onclick='showAbout()']").onclick = toggleAbout;
+
 
 
