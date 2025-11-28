@@ -91,7 +91,7 @@ function showTimeMessage(visits) {
   } else if (hour >= 6 && hour < 12) {
     message = `صباح الخير يا غالي، لسه صاحي ومش فقيلك 🤣 - عدد زيارات الموقع: ${visits}`;
   } else {
-    message = `أهلاً بيك يا غالي ✨ - عدد زيارات الموقع: ${visits}`;
+    message = `أهلاً بيك يا غالي ✨ - : ${visits}`;
   }
 
   const popup = document.getElementById("time-popup");
@@ -100,3 +100,4 @@ function showTimeMessage(visits) {
     popup.style.display = "none";
   }, 3000);
 }
+
