@@ -38,12 +38,12 @@ function visitCounter() {
   const visits = prev + 1;
   localStorage.setItem(key, String(visits));
 
-  // تحديث العداد الأساسي
+  // تحديث العداد الأساسي فقط
   document.getElementById("visits").textContent =
     "عدد زيارات الموقع حتى الآن: " + visits;
 
-  // تحديث الرسالة المؤقتة بنفس القيمة
-  showTimeMessage(visits);
+  // عرض الرسالة المؤقتة من غير العداد
+  showTimeMessage();
 }
 visitCounter();
 
@@ -78,8 +78,8 @@ document.getElementById("toggle-prayer").addEventListener("click", () => {
   widget.style.display = widget.style.display === "none" ? "block" : "none";
 });
 
-/* ===== رسالة مؤقتة حسب الوقت + دمج العداد ===== */
-function showTimeMessage(visits) {
+/* ===== رسالة مؤقتة حسب الوقت (من غير العداد) ===== */
+function showTimeMessage() {
   const nowInCairo = new Date(
     new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
   );
@@ -87,11 +87,11 @@ function showTimeMessage(visits) {
   let message = "";
 
   if (hour >= 0 && hour < 6) {
-    message = `مساء الخير يا غالي، دخلت في موعد نومي 😂 - عدد زيارات الموقع: ${visits}`;
+    message = "مساء الخير يا غالي، دخلت في موعد نومي 😂";
   } else if (hour >= 6 && hour < 12) {
-    message = `صباح الخير يا غالي، لسه صاحي ومش فقيلك 🤣 - عدد زيارات الموقع: ${visits}`;
+    message = "صباح الخير يا غالي، لسه صاحي ومش فقيلك 🤣";
   } else {
-    message = أهلاً بيك يا غالي ✨ - : ${visits}`;
+    message = "أهلاً بيك يا غالي ✨";
   }
 
   const popup = document.getElementById("time-popup");
@@ -100,5 +100,3 @@ function showTimeMessage(visits) {
     popup.style.display = "none";
   }, 3000);
 }
-
-
