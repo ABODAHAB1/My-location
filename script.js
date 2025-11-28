@@ -1,4 +1,4 @@
-  function updateClock() {
+function updateClock() {
   const now = new Date();
   const time = now.toLocaleTimeString("ar-EG", {
     timeZone: "Africa/Cairo",
@@ -29,13 +29,16 @@ function welcomeMessage() {
 }
 welcomeMessage();
 
+/* ===== عداد الزيارات ===== */
 function visitCounter() {
   const key = "visits";
   const prev = parseInt(localStorage.getItem(key) || "0", 10);
   const visits = prev + 1;
   localStorage.setItem(key, String(visits));
-  document.getElementById("visits").innerHTML =
-    `<span class="label">عدد الزيارات:</span> <span class="value">${visits}</span>`;
+
+  // عرض العداد بشكل منسق مع CSS الجديد
+  document.getElementById("visits").textContent =
+    "عدد زيارات الموقع حتى الآن: " + visits;
 }
 visitCounter();
 
@@ -68,6 +71,7 @@ document.getElementById("toggle-prayer").addEventListener("click", () => {
   const widget = document.getElementById("prayer-widget");
   widget.style.display = widget.style.display === "none" ? "block" : "none";
 });
+
 // رسالة مؤقتة حسب الوقت
 function showTimeMessage() {
   const nowInCairo = new Date(
