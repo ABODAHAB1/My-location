@@ -25,7 +25,7 @@
     <p id="welcome"></p>
 
     <!-- مكان عرض العداد -->
-    <p id="visits">جاري تحميل العداد...</p> <!-- ✅ شيلت الـ inline style -->
+    <p id="visits">جاري تحميل العداد...</p>
 
     <button id="toggle-prayer">🕋 موعد الصلاة</button>
     <button onclick="alert('نورت الموقع يا غالي!')">اضغط هنا يا غالي</button>
@@ -58,7 +58,7 @@
       apiKey: "AIzaSyDg3HhwgnQQn_JOjXCGyCQP8YHF5FN8bE0",
       authDomain: "abodahab-4d14e.firebaseapp.com",
       projectId: "abodahab-4d14e",
-      storageBucket: "abodahab-4d14e.appspot.com", // ✅ التصحيح هنا
+      storageBucket: "abodahab-4d14e.appspot.com",
       messagingSenderId: "442622031382",
       appId: "1:442622031382:web:38c1f156f43a683eb56737"
     };
@@ -81,7 +81,14 @@
         // اقرأ القيمة الحالية بعد التحديث
         const snap = await counterRef.get();
         const data = snap.data() || { count: 1 };
-        document.getElementById("visits").innerText = "عدد زيارات الموقع حتى الآن: " + data.count;
+
+        // تحديث العداد الأساسي
+        document.getElementById("visits").innerText =
+          "عدد زيارات الموقع حتى الآن: " + data.count;
+
+        // تحديث الرسالة الترحيبية بنفس القيمة
+        document.getElementById("time-popup").innerText =
+          "صباح الخير يا غالي 🤩 - عدد زيارات الموقع: " + data.count;
       } catch (e) {
         document.getElementById("visits").innerText = "حدث خطأ في العداد";
         console.error("Counter error:", e);
