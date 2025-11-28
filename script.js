@@ -1,3 +1,4 @@
+/* ===== الساعة ===== */
 function updateClock() {
   const now = new Date();
   const time = now.toLocaleTimeString("ar-EG", {
@@ -12,6 +13,7 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
+/* ===== رسالة ترحيب حسب الوقت ===== */
 function welcomeMessage() {
   const nowInCairo = new Date(
     new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
@@ -29,19 +31,23 @@ function welcomeMessage() {
 }
 welcomeMessage();
 
-/* ===== عداد الزيارات ===== */
+/* ===== عداد الزيارات (موحد) ===== */
 function visitCounter() {
   const key = "visits";
   const prev = parseInt(localStorage.getItem(key) || "0", 10);
   const visits = prev + 1;
   localStorage.setItem(key, String(visits));
 
-  // عرض العداد بشكل منسق مع CSS الجديد
+  // تحديث العداد الأساسي
   document.getElementById("visits").textContent =
     "عدد زيارات الموقع حتى الآن: " + visits;
+
+  // تحديث الرسالة المؤقتة بنفس القيمة
+  showTimeMessage(visits);
 }
 visitCounter();
 
+/* ===== مواقيت الصلاة ===== */
 function loadPrayerTimes() {
   fetch("https://api.aladhan.com/v1/timingsByCity?city=Sohag&country=Egypt&method=5")
     .then(res => res.json())
@@ -72,8 +78,8 @@ document.getElementById("toggle-prayer").addEventListener("click", () => {
   widget.style.display = widget.style.display === "none" ? "block" : "none";
 });
 
-// رسالة مؤقتة حسب الوقت
-function showTimeMessage() {
+/* ===== رسالة مؤقتة حسب الوقت + دمج العداد ===== */
+function showTimeMessage(visits) {
   const nowInCairo = new Date(
     new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
   );
@@ -81,17 +87,16 @@ function showTimeMessage() {
   let message = "";
 
   if (hour >= 0 && hour < 6) {
-    message = "مساء الخير يا غالي، دخلت في موعد نومي 😂";
+    message = `مساء الخير يا غالي، دخلت في موعد نومي 😂 - عدد زيارات الموقع: ${visits}`;
   } else if (hour >= 6 && hour < 12) {
-    message = "صباح الخير يا غالي، لسه صاحي ومش فقيلك 🤣";
+    message = `صباح الخير يا غالي، لسه صاحي ومش فقيلك 🤣 - عدد زيارات الموقع: ${visits}`;
+  } else {
+    message = `أهلاً بيك يا غالي ✨ - عدد زيارات الموقع: ${visits}`;
   }
 
-  if (message) {
-    const popup = document.getElementById("time-popup");
-    popup.textContent = message;
-    setTimeout(() => {
-      popup.style.display = "none";
-    }, 3000);
-  }
+  const popup = document.getElementById("time-popup");
+  popup.textContent = message;
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 3000);
 }
-showTimeMessage();
