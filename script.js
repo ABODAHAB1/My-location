@@ -1,4 +1,4 @@
-/* ===== الساعة ===== */
+/* ===== الساعة الرقمية ===== */
 function updateClock() {
   const now = new Date();
   const time = now.toLocaleTimeString("ar-EG", {
@@ -21,11 +21,11 @@ function welcomeMessage() {
   const hour = nowInCairo.getHours();
   let message = "";
   if (hour < 12) {
-    message = "🌞 صباح الخير";
+    message = "🌞 صباح الخير يا زعيم";
   } else if (hour < 18) {
-    message = "🌇 مساء الخير";
+    message = "🌇 مساء الخير يا غالي";
   } else {
-    message = "🌙 مساء النور";
+    message = "🌙 مساء النور ✨";
   }
   document.getElementById("welcome").textContent = message;
 }
@@ -57,12 +57,13 @@ function loadPrayerTimes() {
 }
 loadPrayerTimes();
 
+/* زر إظهار/إخفاء مواقيت الصلاة */
 document.getElementById("toggle-prayer").addEventListener("click", () => {
   const widget = document.getElementById("prayer-widget");
   widget.style.display = widget.style.display === "none" ? "block" : "none";
 });
 
-/* ===== رسالة مؤقتة حسب الوقت (من غير العداد) ===== */
+/* ===== رسالة مؤقتة حسب الوقت ===== */
 function showTimeMessage() {
   const nowInCairo = new Date(
     new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
@@ -71,11 +72,13 @@ function showTimeMessage() {
   let message = "";
 
   if (hour >= 0 && hour < 6) {
-    message = "مساء الخير يا غالي، دخلت في موعد نومي 😂";
+    message = "🌙 وقت النوم يا غالي 😂";
   } else if (hour >= 6 && hour < 12) {
-    message = "صباح الخير يا غالي، لسه صاحي ومش فقيلك 🤣";
+    message = "🌞 صباح النشاط يا زعيم 🤩";
+  } else if (hour >= 12 && hour < 18) {
+    message = "🌇 مساء الخير – أهلاً بيك في عالم محمود ✨";
   } else {
-    message = "أهلاً بيك يا غالي ✨";
+    message = "🌌 سهرة سعيدة يا غالي 🌟";
   }
 
   const popup = document.getElementById("time-popup");
