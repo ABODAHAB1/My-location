@@ -31,18 +31,18 @@ function welcomeMessage() {
 }
 welcomeMessage();
 
-/* ===== عداد الزيارات (موحد) ===== */
+/* ===== عداد الزيارات ===== */
 function visitCounter() {
   const key = "visits";
   const prev = parseInt(localStorage.getItem(key) || "0", 10);
   const visits = prev + 1;
   localStorage.setItem(key, String(visits));
 
-  // تحديث العداد الأساسي فقط
+  // العداد يظهر تحت فقط
   document.getElementById("visits").textContent =
     "عدد زيارات الموقع حتى الآن: " + visits;
 
-  // عرض الرسالة المؤقتة من غير العداد
+  // الرسالة المؤقتة بدون عدد
   showTimeMessage();
 }
 visitCounter();
@@ -78,7 +78,7 @@ document.getElementById("toggle-prayer").addEventListener("click", () => {
   widget.style.display = widget.style.display === "none" ? "block" : "none";
 });
 
-/* ===== رسالة مؤقتة حسب الوقت (من غير العداد) ===== */
+/* ===== رسالة مؤقتة بدون العداد ===== */
 function showTimeMessage() {
   const nowInCairo = new Date(
     new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
