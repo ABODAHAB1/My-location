@@ -76,18 +76,18 @@ p {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
-/* ===== العداد بشكل دائري ===== */
-#visits {
-  font-size: 18px;              
-  background-color: #ffd700; 
-  color: #000;               
-  padding: 15px 25px;           
-  border-radius: 50%;          
-  display: inline-block;        
-  margin: 20px auto;            
-  box-shadow: 0 0 15px rgba(255,215,0,0.6); 
-  font-weight: bold;            
-  width: 160px;           
+/* ===== زر العداد الجديد (صغير وأنيق) ===== */
+#visit-counter {
+  font-size: 14px;
+  background-color: #f9e27d; /* أصفر فاتح */
+  color: #333;
+  padding: 6px 15px;
+  border-radius: 20px;
+  display: block;
+  margin: 10px auto;
+  box-shadow: 0 0 10px rgba(255,215,0,0.5);
+  font-weight: bold;
+  width: fit-content;
   text-align: center;
 }
 
@@ -115,6 +115,22 @@ button:hover {
   background-color: #ffd700;
   color: #000;
   font-weight: bold;
+}
+
+/* ===== زر الترحيب ===== */
+#greeting-btn {
+  margin: 15px auto;
+  padding: 10px 20px;
+  background-color: #4a4a8a; /* بنفسجي غامق */
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  display: none; /* مخفي افتراضي */
+  font-family: "Cairo", sans-serif;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 /* ===== نافذة مواقيت الصلاة ===== */
@@ -211,6 +227,7 @@ button:hover {
   80% { opacity: 1; }
   100% { opacity: 0; display: none; }
 }
+
 /* ===== النبذة التعريفية عن محمود ===== */
 #about-mahmoud {
   display: none; /* مخفي في البداية */
@@ -245,4 +262,3 @@ button:hover {
   font-style: normal;
   font-weight: bold;
 }
-
