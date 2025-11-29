@@ -306,9 +306,6 @@ header { position: relative; }
   z-index: 1000;
   font-family: "Cairo", sans-serif;
 }
-
-/* دائرة الساعة */
-.time-circle {
   width: 90px;
   height: 90px;
   border: 2px solid #ffd700;
@@ -374,6 +371,7 @@ header {
   direction: rtl;
   unicode-bidi: plaintext;
 }
+
 
 
 
