@@ -80,9 +80,3 @@ document.addEventListener("DOMContentLoaded", () => {
 function toggleAbout() {
   const about = document.getElementById("about-mahmoud");
   if (about.style.display === "none" || about.style.display === "") {
-    about.style.display = "block";
-    window.scrollTo({ top: about.offsetTop, behavior: "smooth" });
-  } else {
-    about.style.display = "none";
-  }
-}
