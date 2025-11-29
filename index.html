@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
-  <title>Mahmoud Abodahab</title>
+  <title> Mahmoud Abodahab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
@@ -14,17 +14,18 @@
   <header>💻 mahmoud abodahab</header>
 
   <!-- رسالة ترحيب مؤقتة فوق الساعة -->
-  <div id="time-popup"></div>
+  <div id="greeting-message"></div>
 
   <!-- القسم الرئيسي -->
   <div class="section">
     <p id="clock"></p>
     <h1>أهلاً بيك في موقع محمود – قول ما شاء الله وخش شوف الإبداع ✨</h1>
     <p class="highlight">🌟 نورت الموقع يا غالي</p>
+    <p id="welcome"></p>
 
     <!-- الأزرار -->
     <button id="toggle-prayer">🕋 موعد الصلاة</button>
-    <button onclick="toggleAbout()">📌 نبذة عني</button>
+    <button onclick="showAbout()">📌 نبذة عني</button>
 
     <!-- زر العداد الجديد تحت الأزرار -->
     <div id="visit-counter">جاري تحميل العداد...</div>
@@ -106,6 +107,13 @@
     }
 
     updateCounterAndShow();
+
+    // دالة عرض النبذة
+    function showAbout() {
+      const about = document.getElementById("about-mahmoud");
+      about.style.display = "block";
+      window.scrollTo({ top: about.offsetTop, behavior: 'smooth' });
+    }
   </script>
 </body>
 </html>
