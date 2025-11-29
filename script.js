@@ -1,8 +1,8 @@
 /* ===== الساعة والتاريخ ===== */
-function updateClock() {
+function updateClockArabic() {
   const now = new Date();
 
-  // الوقت بالأرقام العربية + AM/PM بالعربي
+  // الوقت بالأرقام العربية مع ص/م
   const time = now.toLocaleTimeString("ar-EG", {
     timeZone: "Africa/Cairo",
     hour: "numeric",
@@ -11,11 +11,7 @@ function updateClock() {
     hour12: true
   });
 
-  // التاريخ بصيغة "السبت، ٢٠٢٥/١١/٢٩"
-  const weekday = now.toLocaleDateString("ar-EG", {
-    timeZone: "Africa/Cairo",
-    weekday: "long"
-  });
+  // التاريخ: يوم/شهر/سنة
   const date = now.toLocaleDateString("ar-EG", {
     timeZone: "Africa/Cairo",
     year: "numeric",
@@ -23,12 +19,20 @@ function updateClock() {
     day: "2-digit"
   });
 
+  // اليوم بالعربي
+  const weekday = now.toLocaleDateString("ar-EG", {
+    timeZone: "Africa/Cairo",
+    weekday: "long"
+  });
+
+  // عرض القيم في العناصر
   document.getElementById("clock").textContent = time;
-  document.getElementById("date").textContent = `${weekday}، ${date}`;
+  document.getElementById("date").textContent = date;
+  document.getElementById("weekday").textContent = weekday;
 }
 
-updateClock();
-setInterval(updateClock, 1000);
+updateClockArabic();
+setInterval(updateClockArabic, 1000);
 
 
 /* ===== رسالة ترحيب حسب الوقت ===== */
@@ -131,4 +135,3 @@ window.onload = function() {
     }, 5000);
   }
 };
-
