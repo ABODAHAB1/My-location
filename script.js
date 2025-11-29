@@ -88,6 +88,7 @@ function showTimeMessage() {
   }, 3000);
 }
 showTimeMessage();
+
 /* ===== زر اضغط هنا يا غالي (إظهار/إخفاء النبذة) ===== */
 function toggleAbout() {
   const about = document.getElementById("about-mahmoud");
@@ -102,5 +103,13 @@ function toggleAbout() {
 // ربط الدالة بالزر
 document.querySelector("button[onclick='showAbout()']").onclick = toggleAbout;
 
-
-
+/* ===== زر الترحيب (يظهر 5 ثواني ويختفي) ===== */
+window.onload = function() {
+  const greetingBtn = document.getElementById("greeting-btn");
+  if (greetingBtn) {
+    greetingBtn.style.display = "block"; // يظهر أول ما يدخل الزائر
+    setTimeout(() => {
+      greetingBtn.style.display = "none"; // يختفي بعد 5 ثواني
+    }, 5000);
+  }
+};
