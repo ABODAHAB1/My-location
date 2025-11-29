@@ -1,115 +1,264 @@
+body {
+  font-family: "Cairo", sans-serif;
+  margin: 20px;
+  background: linear-gradient(to bottom right, #772053, #2c5364);
+  color: #fff;
+  direction: rtl;
+  text-align: center;
+}
+
+header {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: 2px solid #ffd700;
+  color: #ffd700;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px rgba(255,215,0,0.6);
+}
+
+.section {
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 0 15px #00000055;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #ccc;
+}
+
 /* ===== الساعة الرقمية ===== */
-function updateClock() {
-  const now = new Date();
-  const time = now.toLocaleTimeString("ar-EG", {
-    timeZone: "Africa/Cairo",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    hour12: true
-  });
-  document.getElementById("clock").textContent = time;
+#clock {
+  font-size: 28px;
+  font-weight: bold;
+  background: transparent;
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 0 auto 20px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.7);
 }
-updateClock();
-setInterval(updateClock, 1000);
 
-/* ===== رسالة ترحيب حسب الوقت ===== */
-function welcomeMessage() {
-  const nowInCairo = new Date(
-    new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
-  );
-  const hour = nowInCairo.getHours();
-  let message = "";
-  if (hour < 12) {
-    message = "🌞 صباح الخير يا زعيم";
-  } else if (hour < 18) {
-    message = "🌇 مساء الخير يا غالي";
-  } else {
-    message = "🌙 مساء النور ✨";
-  }
-  document.getElementById("welcome").textContent = message;
+/* ===== العنوان الترحيبي ===== */
+h1 {
+  color: #ffd700;
+  font-size: 32px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 12px rgba(255,215,0,0.6);
 }
-welcomeMessage();
 
-/* ===== مواقيت الصلاة ===== */
-function loadPrayerTimes() {
-  fetch("https://api.aladhan.com/v1/timingsByCity?city=Sohag&country=Egypt&method=5")
-    .then(res => res.json())
-    .then(data => {
-      const timings = data.data.timings;
-      const list = document.getElementById("prayer-list");
-      const names = {
-        "Fajr": "الفجر 🌅",
-        "Dhuhr": "الظهر ☀️",
-        "Asr": "العصر 🌤️",
-        "Maghrib": "المغرب 🌇",
-        "Isha": "العشاء 🌙"
-      };
-      list.innerHTML = "";
-      for (let [name, time] of Object.entries(timings)) {
-        if (names[name]) {
-          const li = document.createElement("li");
-          li.textContent = `${names[name]} : ${time}`;
-          list.appendChild(li);
-        }
-      }
-    });
+.highlight {
+  color: #ffefef;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
-loadPrayerTimes();
 
-/* زر إظهار/إخفاء مواقيت الصلاة */
-document.getElementById("toggle-prayer").addEventListener("click", () => {
-  const widget = document.getElementById("prayer-widget");
-  widget.style.display = widget.style.display === "none" ? "block" : "none";
-});
+p {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+#welcome {
+  font-size: 22px;
+  background-color: #00000080;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 5px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+/* ===== زر العداد الجديد (صغير وأنيق) ===== */
+#visit-counter {
+  font-size: 14px;
+  background-color: #f9e27d; /* أصفر فاتح */
+  color: #333;
+  padding: 6px 15px;
+  border-radius: 20px;
+  display: block;
+  margin: 10px auto;
+  box-shadow: 0 0 10px rgba(255,215,0,0.5);
+  font-weight: bold;
+  width: fit-content;
+  text-align: center;
+}
+
+/* ===== الأزرار ===== */
+button {
+  background-color: #6a1b9a;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 10px 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+button:hover {
+  background-color: #8e24aa;
+  transform: scale(1.08);
+}
+
+/* زر الصلاة */
+#toggle-prayer {
+  background-color: #ffd700;
+  color: #000;
+  font-weight: bold;
+}
+
+/* ===== زر الترحيب ===== */
+#greeting-btn {
+  margin: 15px auto;
+  padding: 10px 20px;
+  background-color: #4a4a8a; /* بنفسجي غامق */
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  display: none; /* مخفي افتراضي */
+  font-family: "Cairo", sans-serif;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* ===== نافذة مواقيت الصلاة ===== */
+.prayer-widget {
+  position: fixed;
+  bottom: 80px;
+  left: 20px;
+  width: 220px;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  font-size: 16px;
+  text-align: right;
+  z-index: 999;
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.prayer-widget h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ffd700;
+  padding-bottom: 5px;
+  color: #ffd700;
+}
+
+.prayer-widget ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.prayer-widget li {
+  margin: 5px 0;
+  background: rgba(255,255,255,0.1);
+  padding: 6px;
+  border-radius: 6px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== أيقونات واتساب ===== */
+.whatsapp-icons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.whatsapp-btn {
+  background-color: #25D366;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+.whatsapp-btn:hover {
+  background-color: #128C7E;
+  transform: scale(1.1);
+}
 
 /* ===== رسالة مؤقتة حسب الوقت ===== */
-function showTimeMessage() {
-  const nowInCairo = new Date(
-    new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
-  );
-  const hour = nowInCairo.getHours();
-  let message = "";
-
-  if (hour >= 0 && hour < 6) {
-    message = "🌙 وقت النوم يا غالي 😂";
-  } else if (hour >= 6 && hour < 12) {
-    message = "🌞 صباح النشاط يا زعيم 🤩";
-  } else if (hour >= 12 && hour < 18) {
-    message = "🌇 مساء الخير – أهلاً بيك في عالم محمود ✨";
-  } else {
-    message = "🌌 سهرة سعيدة يا غالي 🌟";
-  }
-
-  const popup = document.getElementById("time-popup");
-  popup.textContent = message;
-  setTimeout(() => {
-    popup.style.display = "none";
-  }, 3000);
-}
-showTimeMessage();
-
-/* ===== زر اضغط هنا يا غالي (إظهار/إخفاء النبذة) ===== */
-function toggleAbout() {
-  const about = document.getElementById("about-mahmoud");
-  if (about.style.display === "none" || about.style.display === "") {
-    about.style.display = "block";
-    window.scrollTo({ top: about.offsetTop, behavior: "smooth" });
-  } else {
-    about.style.display = "none";
-  }
+.night-popup {
+  position: fixed;
+  top: 20px;
+  right: 50%;
+  transform: translateX(50%);
+  background-color: #000000cc;
+  color: #ffd700;
+  padding: 15px 25px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  z-index: 9999;
+  animation: fadeOut 3s forwards;
 }
 
-// ربط الدالة بالزر
-document.querySelector("button[onclick='showAbout()']").onclick = toggleAbout;
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
 
-/* ===== زر الترحيب (يظهر 5 ثواني ويختفي) ===== */
-window.onload = function() {
-  const greetingBtn = document.getElementById("greeting-btn");
-  if (greetingBtn) {
-    greetingBtn.style.display = "block"; // يظهر أول ما يدخل الزائر
-    setTimeout(() => {
-      greetingBtn.style.display = "none"; // يختفي بعد 5 ثواني
-    }, 5000);
-  }
-};
+/* ===== النبذة التعريفية عن محمود ===== */
+#about-mahmoud {
+  display: none; /* مخفي في البداية */
+  background: linear-gradient(to right, #4b0082, #8a2be2);
+  color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  font-family: "Cairo", sans-serif;
+  margin: 30px auto;
+  max-width: 700px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  text-align: right;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+#about-mahmoud h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #ffd700;
+  margin-bottom: 20px;
+  text-shadow: 0 0 12px rgba(255,215,0,0.6);
+}
+
+#about-mahmoud p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+#about-mahmoud em {
+  color: #ffd700;
+  font-style: normal;
+  font-weight: bold;
+}
