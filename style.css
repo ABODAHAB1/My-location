@@ -120,3 +120,19 @@ button:hover {
   box-shadow: 0 0 10px rgba(255,255,255,0.3);
   font-size: 16px;
   text-align: right
+#time-popup {
+  position: fixed;
+  top: 20px;
+  right: 50%;
+  transform: translateX(50%);
+  background-color: #000000cc;
+  color: #ffd700;
+  padding: 15px 25px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  z-index: 9999;
+  animation: fadeOut 4s forwards;
+}
+
