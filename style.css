@@ -66,20 +66,10 @@ p {
   margin-bottom: 15px;
 }
 
-#welcome {
-  font-size: 22px;
-  background-color: #00000080;
-  padding: 10px;
-  border-radius: 10px;
-  display: inline-block;
-  margin: 5px;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-}
-
 /* ===== زر العداد الجديد (صغير وأنيق) ===== */
 #visit-counter {
   font-size: 14px;
-  background-color: #f9e27d; /* أصفر فاتح */
+  background-color: #f9e27d;
   color: #333;
   padding: 6px 15px;
   border-radius: 20px;
@@ -117,22 +107,6 @@ button:hover {
   font-weight: bold;
 }
 
-/* ===== زر الترحيب ===== */
-#greeting-btn {
-  margin: 15px auto;
-  padding: 10px 20px;
-  background-color: #4a4a8a; /* بنفسجي غامق */
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
-  display: none; /* مخفي افتراضي */
-  font-family: "Cairo", sans-serif;
-  box-shadow: 0 0 12px rgba(0,0,0,0.4);
-  animation: fadeIn 0.5s ease-in-out;
-}
-
 /* ===== نافذة مواقيت الصلاة ===== */
 .prayer-widget {
   position: fixed;
@@ -145,120 +119,4 @@ button:hover {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255,255,255,0.3);
   font-size: 16px;
-  text-align: right;
-  z-index: 999;
-  display: none;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.prayer-widget h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #ffd700;
-  padding-bottom: 5px;
-  color: #ffd700;
-}
-
-.prayer-widget ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.prayer-widget li {
-  margin: 5px 0;
-  background: rgba(255,255,255,0.1);
-  padding: 6px;
-  border-radius: 6px;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== أيقونات واتساب ===== */
-.whatsapp-icons {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 1000;
-}
-
-.whatsapp-btn {
-  background-color: #25D366;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: 0 0 8px rgba(0,0,0,0.3);
-  transition: 0.3s;
-}
-
-.whatsapp-btn:hover {
-  background-color: #128C7E;
-  transform: scale(1.1);
-}
-
-/* ===== رسالة مؤقتة حسب الوقت ===== */
-.night-popup {
-  position: fixed;
-  top: 20px;
-  right: 50%;
-  transform: translateX(50%);
-  background-color: #000000cc;
-  color: #ffd700;
-  padding: 15px 25px;
-  border-radius: 12px;
-  font-size: 20px;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(255,255,255,0.3);
-  z-index: 9999;
-  animation: fadeOut 3s forwards;
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; display: none; }
-}
-
-/* ===== النبذة التعريفية عن محمود ===== */
-#about-mahmoud {
-  display: none; /* مخفي في البداية */
-  background: linear-gradient(to right, #4b0082, #8a2be2);
-  color: #fff;
-  padding: 30px;
-  border-radius: 15px;
-  font-family: "Cairo", sans-serif;
-  margin: 30px auto;
-  max-width: 700px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  text-align: right;
-  animation: fadeIn 0.8s ease-in-out;
-}
-
-#about-mahmoud h2 {
-  text-align: center;
-  font-size: 28px;
-  color: #ffd700;
-  margin-bottom: 20px;
-  text-shadow: 0 0 12px rgba(255,215,0,0.6);
-}
-
-#about-mahmoud p {
-  font-size: 18px;
-  line-height: 1.8;
-  margin-bottom: 15px;
-}
-
-#about-mahmoud em {
-  color: #ffd700;
-  font-style: normal;
-  font-weight: bold;
-}
+  text-align: right
