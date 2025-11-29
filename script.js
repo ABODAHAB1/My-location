@@ -2,7 +2,7 @@
 function updateClock() {
   const now = new Date();
 
-  // الوقت بتنسيق مصري (12 ساعة مع AM/PM)
+  // الوقت بالأرقام العربية + AM/PM بالعربي
   const time = now.toLocaleTimeString("ar-EG", {
     timeZone: "Africa/Cairo",
     hour: "numeric",
@@ -10,16 +10,26 @@ function updateClock() {
     second: "numeric",
     hour12: true
   });
-  document.getElementById("clock").textContent = time;
 
-  // التاريخ (يوم/شهر/سنة)
-  const day = now.getDate().toString().padStart(2, '0');
-  const month = (now.getMonth() + 1).toString().padStart(2, '0');
-  const year = now.getFullYear();
-  document.getElementById("date").textContent = `${day}/${month}/${year}`;
+  // التاريخ بصيغة "السبت، ٢٠٢٥/١١/٢٩"
+  const weekday = now.toLocaleDateString("ar-EG", {
+    timeZone: "Africa/Cairo",
+    weekday: "long"
+  });
+  const date = now.toLocaleDateString("ar-EG", {
+    timeZone: "Africa/Cairo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  });
+
+  document.getElementById("clock").textContent = time;
+  document.getElementById("date").textContent = `${weekday}، ${date}`;
 }
+
 updateClock();
 setInterval(updateClock, 1000);
+
 
 /* ===== رسالة ترحيب حسب الوقت ===== */
 function welcomeMessage() {
@@ -121,3 +131,4 @@ window.onload = function() {
     }, 5000);
   }
 };
+
