@@ -20,15 +20,18 @@
   <div class="section">
     <p id="clock"></p>
     <h1>أهلاً بيك في موقع محمود – قول ما شاء الله وخش شوف الإبداع ✨</h1>
-    <p class="highlight">🌟 نورت الموقع يا يغالي</p>
+    <p class="highlight">🌟 نورت الموقع يا غالي</p>
     <p id="welcome"></p>
-
-    <!-- مكان عرض العداد -->
-    <p id="visits">جاري تحميل العداد...</p>
 
     <!-- الأزرار -->
     <button id="toggle-prayer">🕋 موعد الصلاة</button>
-    <button onclick="showAbout()">🚀  نبزه عني </button>
+    <button onclick="showAbout()">📌 نبذة عني</button>
+
+    <!-- زر العداد الجديد تحت الأزرار -->
+    <div id="visit-counter">جاري تحميل العداد...</div>
+
+    <!-- زر الترحيب (يظهر 5 ثواني ويختفي) -->
+    <button id="greeting-btn">🌆 مساء الخير يا غالي</button>
   </div>
 
   <!-- نافذة مواقيت الصلاة -->
@@ -97,13 +100,11 @@
         const snap = await counterRef.get();
         const data = snap.data() || { count: 1 };
 
-        document.getElementById("visits").innerText =
+        document.getElementById("visit-counter").innerText =
           "عدد زيارات الموقع حتى الآن: " + data.count;
 
-        document.getElementById("time-popup").innerText =
-          "🌞  عدد زيارات الموقع  : " + data.count;
       } catch (e) {
-        document.getElementById("visits").innerText = "حدث خطأ في العداد";
+        document.getElementById("visit-counter").innerText = "حدث خطأ في العداد";
         console.error("Counter error:", e);
       }
     }
@@ -119,9 +120,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
