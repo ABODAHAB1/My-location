@@ -354,6 +354,27 @@ header { position: relative; }
   direction: rtl;
   unicode-bidi: plaintext;
 }
+header {
+  position: relative;
+}
+
+.flat-clock {
+  position: absolute;
+  bottom: -55px;
+  left: 20px;
+  background-color: rgba(0,0,0,0.5);
+  color: #ffd700;
+  font-family: "Cairo", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255,215,0,0.3);
+  line-height: 1.6;
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
+
 
 
 
