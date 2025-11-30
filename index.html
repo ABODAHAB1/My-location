@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
-  <title> Mahmoud Abodahab</title>
+  <title>Mahmoud Abodahab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
@@ -27,9 +27,8 @@
 
   <!-- القسم الرئيسي -->
   <div class="section">
-    <h1>"كل زيارة ليك بتزيد الموقع نور، خش شوف الحلاوة بنفسك!"   ✨</h1>
+    <h1>"كل زيارة ليك بتزيد الموقع نور، خش شوف الحلاوة بنفسك!" ✨</h1>
     <p class="highlight">🌟 نورت الموقع يا غالي</p>
-    <p id="welcome"></p>
 
     <!-- الأزرار -->
     <button id="toggle-prayer">🕋 موعد الصلاة</button>
@@ -68,6 +67,9 @@
     <a href="https://wa.me/201014482794?text=ماشاء%20الله%20عليك%20يحوده%20الموقع%20جميل" target="_blank" class="whatsapp-btn">💬 استفسار سريع؟ اضغط هنا</a>
   </div>
 
+  <!-- التعليقات الجانبية -->
+  <div id="comments-sidebar"></div>
+
   <!-- الفوتر -->
   <footer>صُنع وإبداع من محمود أبو الدهب ✨</footer>
 
@@ -92,29 +94,48 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    // مرجع الوثيقة (collection: visits, doc: counter)
+    /* ===== العداد ===== */
     const counterRef = db.collection("visits").doc("counter");
-
     async function updateCounterAndShow() {
       try {
         await counterRef.set(
           { count: firebase.firestore.FieldValue.increment(1) },
           { merge: true }
         );
-
         const snap = await counterRef.get();
         const data = snap.data() || { count: 1 };
-
         document.getElementById("visit-counter").innerText =
           "عدد زيارات الموقع حتى الآن: " + data.count;
-
       } catch (e) {
         document.getElementById("visit-counter").innerText = "حدث خطأ في العداد";
         console.error("Counter error:", e);
       }
     }
-
     updateCounterAndShow();
+
+    /* ===== التعليقات الجانبية ===== */
+    let comments = [];
+    let currentIndex = 0;
+
+    db.collection("comments").onSnapshot(snapshot => {
+      comments = snapshot.docs.map(doc => doc.data().text);
+    });
+
+    function showComments() {
+      const sidebar = document.getElementById("comments-sidebar");
+      sidebar.innerHTML = "";
+      const slice = comments.slice(currentIndex, currentIndex + 5);
+      slice.forEach(c => {
+        const div = document.createElement("div");
+        div.className = "comment";
+        div.textContent = c;
+        sidebar.appendChild(div);
+      });
+      currentIndex += 5;
+      if (currentIndex >= comments.length) currentIndex = 0;
+    }
+
+    setInterval(showComments, 10000);
 
     // دالة عرض النبذة
     function showAbout() {
