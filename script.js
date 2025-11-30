@@ -35,7 +35,7 @@ updateClockArabic();
 setInterval(updateClockArabic, 1000);
 
 
-/* ===== رسالة ترحيب حسب الوقت ===== */
+/* ===== رسالة ترحيب ثابتة في القسم الرئيسي ===== */
 function welcomeMessage() {
   const nowInCairo = new Date(
     new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
@@ -85,31 +85,30 @@ document.getElementById("toggle-prayer").addEventListener("click", () => {
   widget.style.display = widget.style.display === "none" ? "block" : "none";
 });
 
-/* ===== رسالة مؤقتة حسب الوقت ===== */
-function showTimeMessage() {
+/* ===== رسالة مؤقتة فوق الساعة ===== */
+function showGreetingMessage() {
   const nowInCairo = new Date(
     new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
   );
   const hour = nowInCairo.getHours();
   let message = "";
 
-  if (hour >= 0 && hour < 6) {
-    message = "🌙 وقت النوم يا غالي 😂";
-  } else if (hour >= 6 && hour < 12) {
-    message = "🌞 صباح النشاط يا زعيم 🤩";
+  if (hour >= 5 && hour < 12) {
+    message = "🌞 صباح الخير يا زعيم";
   } else if (hour >= 12 && hour < 18) {
-    message = "🌇 مساء الخير – أهلاً بيك في عالم محمود ✨";
+    message = "🌇 مساء الخير يا غالي";
   } else {
-    message = "🌌 سهرة سعيدة يا غالي 🌟";
+    message = "🌙 سهرة سعيدة يا زعيم";
   }
 
-  const popup = document.getElementById("time-popup");
+  const popup = document.getElementById("greeting-message");
   popup.textContent = message;
+  popup.style.display = "block";
+
   setTimeout(() => {
     popup.style.display = "none";
-  }, 3000);
+  }, 5000);
 }
-showTimeMessage();
 
 /* ===== زر اضغط هنا يا غالي (إظهار/إخفاء النبذة) ===== */
 function toggleAbout() {
@@ -125,13 +124,7 @@ function toggleAbout() {
 // ربط الدالة بالزر
 document.querySelector("button[onclick='showAbout()']").onclick = toggleAbout;
 
-/* ===== زر الترحيب (يظهر 5 ثواني ويختفي) ===== */
+/* ===== تشغيل الرسالة المؤقتة عند تحميل الصفحة ===== */
 window.onload = function() {
-  const greetingBtn = document.getElementById("greeting-btn");
-  if (greetingBtn) {
-    greetingBtn.style.display = "block"; // يظهر أول ما يدخل الزائر
-    setTimeout(() => {
-      greetingBtn.style.display = "none"; // يختفي بعد 5 ثواني
-    }, 5000);
-  }
+  showGreetingMessage();
 };
