@@ -35,24 +35,6 @@ updateClockArabic();
 setInterval(updateClockArabic, 1000);
 
 
-/* ===== رسالة ترحيب ثابتة في القسم الرئيسي ===== */
-function welcomeMessage() {
-  const nowInCairo = new Date(
-    new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" })
-  );
-  const hour = nowInCairo.getHours();
-  let message = "";
-  if (hour < 12) {
-    message = "🌞 صباح الخير يا زعيم";
-  } else if (hour < 18) {
-    message = "🌇 مساء الخير يا غالي";
-  } else {
-    message = "🌙 مساء النور ✨";
-  }
-  document.getElementById("welcome").textContent = message;
-}
-welcomeMessage();
-
 /* ===== مواقيت الصلاة ===== */
 function loadPrayerTimes() {
   fetch("https://api.aladhan.com/v1/timingsByCity?city=Sohag&country=Egypt&method=5")
@@ -109,20 +91,6 @@ function showGreetingMessage() {
     popup.style.display = "none";
   }, 5000);
 }
-
-/* ===== زر اضغط هنا يا غالي (إظهار/إخفاء النبذة) ===== */
-function toggleAbout() {
-  const about = document.getElementById("about-mahmoud");
-  if (about.style.display === "none" || about.style.display === "") {
-    about.style.display = "block";
-    window.scrollTo({ top: about.offsetTop, behavior: "smooth" });
-  } else {
-    about.style.display = "none";
-  }
-}
-
-// ربط الدالة بالزر
-document.querySelector("button[onclick='showAbout()']").onclick = toggleAbout;
 
 /* ===== تشغيل الرسالة المؤقتة عند تحميل الصفحة ===== */
 window.onload = function() {
