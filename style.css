@@ -256,4 +256,27 @@ button:hover {
   font-style: normal;
   font-weight: bold;
 }
+#feedbackBtn {
+  background-color: #f1c40f; /* أصفر فاتح */
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#feedbackBtn:hover {
+  background-color: #d4ac0d;
+}
+
+#feedbackForm {
+  margin-top: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+}
+
 
