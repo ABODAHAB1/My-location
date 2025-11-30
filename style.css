@@ -126,23 +126,6 @@ button:hover {
   color: #000;
   font-weight: bold;
 }
-
-/* ===== زر الترحيب ===== */
-#greeting-btn {
-  margin: 15px auto;
-  padding: 10px 20px;
-  background-color: #4a4a8a;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
-  display: none;
-  font-family: "Cairo", sans-serif;
-  box-shadow: 0 0 12px rgba(0,0,0,0.4);
-  animation: fadeIn 0.5s ease-in-out;
-}
-
 /* ===== نافذة مواقيت الصلاة ===== */
 .prayer-widget {
   position: fixed;
@@ -272,4 +255,5 @@ button:hover {
   font-style: normal;
   font-weight: bold;
 }
+
 
