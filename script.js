@@ -96,31 +96,3 @@ function showGreetingMessage() {
 window.onload = function() {
   showGreetingMessage();
 };
-/* ===== التعليقات الجانبية ===== */
-let comments = [];
-let currentIndex = 0;
-
-// جلب التعليقات من Firebase (collection اسمها comments)
-db.collection("comments").onSnapshot(snapshot => {
-  comments = snapshot.docs.map(doc => doc.data().text);
-});
-
-// عرض أول 5 تعليقات وتدويرها كل 10 ثواني
-function showComments() {
-  const sidebar = document.getElementById("comments-sidebar");
-  sidebar.innerHTML = "";
-
-  const slice = comments.slice(currentIndex, currentIndex + 5);
-  slice.forEach(c => {
-    const div = document.createElement("div");
-    div.className = "comment";
-    div.textContent = c;
-    sidebar.appendChild(div);
-  });
-
-  currentIndex += 5;
-  if (currentIndex >= comments.length) currentIndex = 0;
-}
-
-setInterval(showComments, 10000);
-
