@@ -1,263 +1,6 @@
-body {
-  font-family: "Cairo", sans-serif;
-  margin: 20px;
-  background-image: url('https://iili.io/fn4honR.md.png'); /* رابط الصورة */
-  background-size: cover;       /* تغطي الشاشة كلها */
-  background-position: center;  /* الصورة في النص */
-  background-attachment: fixed; /* الخلفية ثابتة مع التمرير */
-  color: #fff;
-  direction: rtl;
-  text-align: center;
-}
-
-/* ===== الهيدر ===== */
-header {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  font-size: 24px;
-  font-weight: bold;
-  border-bottom: 2px solid #ffd700;
-  color: #ffd700;
-  margin-bottom: 20px;
-  text-shadow: 0 0 8px rgba(255,215,0,0.6);
-  position: relative; /* علشان نثبت الساعة */
-}
-
-/* ===== الساعة والتاريخ (مسطحة) ===== */
-.flat-clock {
-  position: absolute;
-  bottom: -55px; /* تحت الخط مباشرة */
-  left: 20px;    /* شمال */
-  background-color: rgba(0,0,0,0.5);
-  color: #ffd700;
-  font-family: "Cairo", sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 10px 16px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255,215,0,0.3);
-  line-height: 1.6;
-  direction: rtl;
-  unicode-bidi: plaintext;
-}
-
-.section {
-  margin: 30px auto;
-  padding: 20px;
-  max-width: 600px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  box-shadow: 0 0 15px #00000055;
-}
-
-footer {
-  margin-top: 40px;
-  font-size: 14px;
-  color: #ccc;
-}
-
-/* ===== العنوان الترحيبي ===== */
-h1 {
-  color: #ffd700;
-  font-size: 32px;
-  margin-bottom: 15px;
-  text-shadow: 0 0 12px rgba(255,215,0,0.6);
-}
-
-.highlight {
-  color: #ffefef;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-p {
-  font-size: 20px;
-  margin-bottom: 15px;
-}
-
-#welcome {
-  font-size: 22px;
-  background-color: #00000080;
-  padding: 10px;
-  border-radius: 10px;
-  display: inline-block;
-  margin: 5px;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-}
-
-/* ===== زر العداد الجديد ===== */
-#visit-counter {
-  font-size: 14px;
-  background-color: #f9e27d;
-  color: #333;
-  padding: 6px 15px;
-  border-radius: 20px;
-  display: block;
-  margin: 10px auto;
-  box-shadow: 0 0 10px rgba(255,215,0,0.5);
-  font-weight: bold;
-  width: fit-content;
-  text-align: center;
-}
-
-/* ===== الأزرار ===== */
-button {
-  background-color: #6a1b9a;
-  color: #fff;
-  border: none;
-  padding: 12px 25px;
-  font-size: 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-  margin: 10px 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
-}
-
-button:hover {
-  background-color: #8e24aa;
-  transform: scale(1.08);
-}
-
-/* زر الصلاة */
-#toggle-prayer {
-  background-color: #ffd700;
-  color: #000;
-  font-weight: bold;
-}
-
-/* ===== نافذة مواقيت الصلاة ===== */
-.prayer-widget {
-  position: fixed;
-  bottom: 80px;
-  left: 20px;
-  width: 220px;
-  background: rgba(0,0,0,0.8);
-  color: #fff;
-  padding: 12px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255,255,255,0.3);
-  font-size: 16px;
-  text-align: right;
-  z-index: 999;
-  display: none;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.prayer-widget h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #ffd700;
-  padding-bottom: 5px;
-  color: #ffd700;
-}
-
-.prayer-widget ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.prayer-widget li {
-  margin: 5px 0;
-  background: rgba(255,255,255,0.1);
-  padding: 6px;
-  border-radius: 6px;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== أيقونات واتساب ===== */
-.whatsapp-icons {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 1000;
-}
-
-.whatsapp-btn {
-  background-color: #25D366;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: 0 0 8px rgba(0,0,0,0.3);
-  transition: 0.3s;
-}
-
-.whatsapp-btn:hover {
-  background-color: #128C7E;
-  transform: scale(1.1);
-}
-
-/* ===== رسالة مؤقتة حسب الوقت ===== */
-.night-popup {
-  position: fixed;
-  top: 20px;
-  right: 50%;
-  transform: translateX(50%);
-  background-color: #000000cc;
-  color: #ffd700;
-  padding: 15px 25px;
-  border-radius: 12px;
-  font-size: 20px;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(255,255,255,0.3);
-  z-index: 9999;
-  animation: fadeOut 3s forwards;
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; display: none; }
-}
-
-/* ===== النبذة التعريفية عن محمود ===== */
-#about-mahmoud {
-  display: none;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  padding: 30px;
-  border-radius: 15px;
-  font-family: "Cairo", sans-serif;
-  margin: 30px auto;
-  max-width: 700px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  text-align: right;
-  animation: fadeIn 0.8s ease-in-out;
-}
-
-#about-mahmoud h2 {
-  text-align: center;
-  font-size: 28px;
-  color: #ffd700;
-  margin-bottom: 20px;
-  text-shadow: 0 0 12px rgba(255,215,0,0.6);
-}
-
-#about-mahmoud p {
-  font-size: 18px;
-  line-height: 1.8;
-  margin-bottom: 15px;
-}
-
-#about-mahmoud em {
-  color: #ffd700;
-  font-style: normal;
-  font-weight: bold;
-}
+/* زر التقييم */
 #feedbackBtn {
-  background-color: #f1c40f; /* أصفر فاتح */
+  background-color: #f1c40f;
   color: #000;
   border: none;
   padding: 10px 20px;
@@ -266,11 +9,11 @@ button:hover {
   cursor: pointer;
   transition: 0.3s;
 }
-
 #feedbackBtn:hover {
   background-color: #d4ac0d;
 }
 
+/* نموذج التعليق */
 #feedbackForm {
   margin-top: 15px;
   padding: 10px;
@@ -279,4 +22,25 @@ button:hover {
   background: #fff;
 }
 
+/* إشعار مؤقت */
+.toast-message {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #f1c40f;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+  animation: fadeInOut 5s ease-in-out forwards;
+}
 
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+س
