@@ -96,3 +96,20 @@ function showGreetingMessage() {
 window.onload = function() {
   showGreetingMessage();
 };
+// إظهار النموذج عند الضغط على الزر
+document.getElementById("feedbackBtn").onclick = function() {
+  document.getElementById("feedbackForm").style.display = "block";
+};
+
+// إرسال التعليق (مبدئياً يظهر في الـ console)
+function submitComment() {
+  let comment = document.getElementById("userComment").value;
+  if(comment.trim() !== "") {
+    alert("شكراً على رأيك: " + comment);
+    document.getElementById("userComment").value = "";
+    document.getElementById("feedbackForm").style.display = "none";
+  } else {
+    alert("من فضلك اكتب تعليق قبل الإرسال");
+  }
+}
+
