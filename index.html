@@ -1,148 +1,124 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8">
-  <title>Mahmoud Abodahab</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!DOCTYPE html> 
+<html lang="ar" dir="rtl"> 
+<head> 
+  <meta charset="utf-8"> 
+  <title> Mahmoud Abodahab</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+  <!-- الهيدر --> 
+  <header> 💻 mahmoud abodahab 
+    <!-- الساعة والتاريخ تحت الخط مباشرة --> 
+    <div class="flat-clock"> 
+      <span id="date">--/--/----</span>، 
+      <span id="weekday">اليوم</span> 
+      <br> 
+      <span id="clock">--:--:-- ص</span> 
+    </div> 
+  </header> 
 
-  <!-- الهيدر -->
-  <header>
-    💻 mahmoud abodahab
-    <!-- الساعة والتاريخ تحت الخط مباشرة -->
-    <div class="flat-clock">
-      <span id="date">--/--/----</span>،
-      <span id="weekday">اليوم</span>
-      <br>
-      <span id="clock">--:--:-- ص</span>
-    </div>
-  </header>
+  <!-- رسالة ترحيب مؤقتة فوق الساعة --> 
+  <div id="greeting-message"></div> 
 
-  <!-- رسالة ترحيب مؤقتة فوق الساعة -->
-  <div id="greeting-message"></div>
+  <!-- القسم الرئيسي --> 
+  <div class="section"> 
+    <h1>"كل زيارة ليك بتزيد الموقع نور، خش شوف الحلاوة بنفسك!" ✨</h1> 
+    <p class="highlight">🌟 نورت الموقع يا غالي</p> 
+    <p id="welcome"></p> 
 
-  <!-- القسم الرئيسي -->
-  <div class="section">
-    <h1>"كل زيارة ليك بتزيد الموقع نور، خش شوف الحلاوة بنفسك!" ✨</h1>
-    <p class="highlight">🌟 نورت الموقع يا غالي</p>
+    <!-- الأزرار --> 
+    <button id="toggle-prayer">🕋 موعد الصلاة</button> 
+    <button onclick="showAbout()">📌 نبذة عني</button> 
 
-    <!-- الأزرار -->
-    <button id="toggle-prayer">🕋 موعد الصلاة</button>
-    <button onclick="showAbout()">📌 نبذة عني</button>
+    <!-- زر العداد الجديد تحت الأزرار --> 
+    <div id="visit-counter">جاري تحميل العداد...</div> 
+  </div> 
 
-    <!-- زر العداد الجديد تحت الأزرار -->
-    <div id="visit-counter">جاري تحميل العداد...</div>
-  </div>
+  <!-- نافذة مواقيت الصلاة --> 
+  <div class="prayer-widget" id="prayer-widget"> 
+    <h3>🕌 مواقيت الصلاة</h3> 
+    <ul id="prayer-list"></ul> 
+  </div> 
 
-  <!-- نافذة مواقيت الصلاة -->
-  <div class="prayer-widget" id="prayer-widget">
-    <h3>🕌 مواقيت الصلاة</h3>
-    <ul id="prayer-list"></ul>
-  </div>
+  <!-- نبذة عن محمود --> 
+  <div id="about-mahmoud" style="display: none;"> 
+    <h2>👋 من هو محمود أبو الدهب؟</h2> 
+    <p> 
+      أهلاً بيك يا غالي! أنا <strong>محمود أبو الدهب</strong>، عندي 19 سنة، وبدأت رحلتي في عالم البرمجة من الصفر، لحد ما وصلت إني أتقنت معظم لغات البرمجة زي: 
+      <span style="color: #ffd700;">HTML, CSS, JavaScript, Python, PHP, C++, Java</span> وغيرها كتير. 
+    </p> 
+    <p> 
+      حالياً بشتغل على إنشاء مواقع احترافية باستخدام دومينات وسيرفرات خاصة، وبطور نفسي كل يوم علشان أقدم أفضل تجربة للمستخدمين. 
+    </p> 
+    <p> 
+      بحب أشارك شغلي مع الناس، وأساعد أي حد بيبدأ طريقه في البرمجة. لو عندك سؤال أو محتاج مساعدة، تواصل معايا على واتساب من الزر اللي فوق 👆. 
+    </p> 
+    <p style="text-align: center;"> 
+      <em>قول ماشاء الله ✨</em> 
+    </p> 
+  </div> 
 
-  <!-- نبذة عن محمود -->
-  <div id="about-mahmoud" style="display: none;">
-    <h2>👋 من هو محمود أبو الدهب؟</h2>
-    <p>
-      أهلاً بيك يا غالي! أنا <strong>محمود أبو الدهب</strong>، عندي 19 سنة، وبدأت رحلتي في عالم البرمجة من الصفر، لحد ما وصلت إني أتقنت معظم لغات البرمجة زي:
-      <span style="color: #ffd700;">HTML, CSS, JavaScript, Python, PHP, C++, Java</span> وغيرها كتير.
-    </p>
-    <p>
-      حالياً بشتغل على إنشاء مواقع احترافية باستخدام دومينات وسيرفرات خاصة، وبطور نفسي كل يوم علشان أقدم أفضل تجربة للمستخدمين.
-    </p>
-    <p>
-      بحب أشارك شغلي مع الناس، وأساعد أي حد بيبدأ طريقه في البرمجة. لو عندك سؤال أو محتاج مساعدة، تواصل معايا على واتساب من الزر اللي فوق 👆.
-    </p>
-    <p style="text-align: center;">
-      <em>قول ماشاء الله ✨</em>
-    </p>
-  </div>
+  <!-- أيقونات واتساب للتواصل --> 
+  <div class="whatsapp-icons"> 
+    <a href="https://wa.me/201014482794?text=ماشاء%20الله%20عليك%20يحوده%20الموقع%20جميل" target="_blank" class="whatsapp-btn">💬 استفسار سريع؟ اضغط هنا</a> 
+  </div> 
 
-  <!-- أيقونات واتساب للتواصل -->
-  <div class="whatsapp-icons">
-    <a href="https://wa.me/201014482794?text=ماشاء%20الله%20عليك%20يحوده%20الموقع%20جميل" target="_blank" class="whatsapp-btn">💬 استفسار سريع؟ اضغط هنا</a>
-  </div>
+  <!-- الفوتر --> 
+  <footer>صُنع وإبداع من محمود أبو الدهب ✨</footer> 
 
-  <!-- التعليقات الجانبية -->
-  <div id="comments-sidebar"></div>
+  <script src="script.js"></script> 
 
-  <!-- الفوتر -->
-  <footer>صُنع وإبداع من محمود أبو الدهب ✨</footer>
+  <!-- مكتبات Firebase --> 
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script> 
 
-  <script src="script.js"></script>
+  <script> 
+    // إعدادات مشروعك من Firebase 
+    const firebaseConfig = { 
+      apiKey: "AIzaSyDg3HhwgnQQn_JOjXCGyCQP8YHF5FN8bE0", 
+      authDomain: "abodahab-4d14e.firebaseapp.com", 
+      projectId: "abodahab-4d14e", 
+      storageBucket: "abodahab-4d14e.appspot.com", 
+      messagingSenderId: "442622031382", 
+      appId: "1:442622031382:web:38c1f156f43a683eb56737" 
+    }; 
 
-  <!-- مكتبات Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    // تهيئة Firebase 
+    firebase.initializeApp(firebaseConfig); 
+    const db = firebase.firestore(); 
 
-  <script>
-    // إعدادات مشروعك من Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyDg3HhwgnQQn_JOjXCGyCQP8YHF5FN8bE0",
-      authDomain: "abodahab-4d14e.firebaseapp.com",
-      projectId: "abodahab-4d14e",
-      storageBucket: "abodahab-4d14e.appspot.com",
-      messagingSenderId: "442622031382",
-      appId: "1:442622031382:web:38c1f156f43a683eb56737"
-    };
+    // مرجع الوثيقة (collection: visits, doc: counter) 
+    const counterRef = db.collection("visits").doc("counter"); 
 
-    // تهيئة Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+    async function updateCounterAndShow() { 
+      try { 
+        await counterRef.set( 
+          { count: firebase.firestore.FieldValue.increment(1) }, 
+          { merge: true } 
+        ); 
 
-    /* ===== العداد ===== */
-    const counterRef = db.collection("visits").doc("counter");
-    async function updateCounterAndShow() {
-      try {
-        await counterRef.set(
-          { count: firebase.firestore.FieldValue.increment(1) },
-          { merge: true }
-        );
-        const snap = await counterRef.get();
-        const data = snap.data() || { count: 1 };
-        document.getElementById("visit-counter").innerText =
-          "عدد زيارات الموقع حتى الآن: " + data.count;
-      } catch (e) {
-        document.getElementById("visit-counter").innerText = "حدث خطأ في العداد";
-        console.error("Counter error:", e);
-      }
-    }
-    updateCounterAndShow();
+        const snap = await counterRef.get(); 
+        const data = snap.data() || { count: 1 }; 
 
-    /* ===== التعليقات الجانبية ===== */
-    let comments = [];
-    let currentIndex = 0;
+        document.getElementById("visit-counter").innerText = 
+          "عدد زيارات الموقع حتى الآن: " + data.count; 
 
-    db.collection("comments").onSnapshot(snapshot => {
-      comments = snapshot.docs.map(doc => doc.data().text);
-    });
+      } catch (e) { 
+        document.getElementById("visit-counter").innerText = "حدث خطأ في العداد"; 
+        console.error("Counter error:", e); 
+      } 
+    } 
 
-    function showComments() {
-      const sidebar = document.getElementById("comments-sidebar");
-      sidebar.innerHTML = "";
-      const slice = comments.slice(currentIndex, currentIndex + 5);
-      slice.forEach(c => {
-        const div = document.createElement("div");
-        div.className = "comment";
-        div.textContent = c;
-        sidebar.appendChild(div);
-      });
-      currentIndex += 5;
-      if (currentIndex >= comments.length) currentIndex = 0;
-    }
+    updateCounterAndShow(); 
 
-    setInterval(showComments, 10000);
-
-    // دالة عرض النبذة
-    function showAbout() {
-      const about = document.getElementById("about-mahmoud");
-      about.style.display = "block";
-      window.scrollTo({ top: about.offsetTop, behavior: 'smooth' });
-    }
-  </script>
-</body>
+    // دالة عرض النبذة 
+    function showAbout() { 
+      const about = document.getElementById("about-mahmoud"); 
+      about.style.display = "block"; 
+      window.scrollTo({ top: about.offsetTop, behavior: 'smooth' }); 
+    } 
+  </script> 
+</body> 
 </html>
