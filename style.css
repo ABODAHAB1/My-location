@@ -126,6 +126,7 @@ button:hover {
   color: #000;
   font-weight: bold;
 }
+
 /* ===== نافذة مواقيت الصلاة ===== */
 .prayer-widget {
   position: fixed;
@@ -255,5 +256,3 @@ button:hover {
   font-style: normal;
   font-weight: bold;
 }
-
-
