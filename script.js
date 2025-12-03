@@ -1,17 +1,3 @@
-// إعدادات Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyDg3HhWgnQQn_JOjXCGyCQP8YHF5FN8bE0",
-  authDomain: "abodahab-4d14e.firebaseapp.com",
-  projectId: "abodahab-4d14e",
-  storageBucket: "abodahab-4d14e.appspot.com",
-  messagingSenderId: "442622031382",
-  appId: "1:442622031382:web:d9cb041dd3bbdf19b56737"
-};
-
-// تهيئة Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
 /* ===== الساعة والتاريخ ===== */
 function updateClockArabic() {
   const now = new Date();
@@ -92,21 +78,52 @@ function showGreetingMessage() {
     popup.style.display = "none";
   }, 5000);
 }
-window.onload = function () {
+window.onload = function() {
   showGreetingMessage();
 };
 
 /* ===== زر التقييم ===== */
-document.getElementById("feedbackBtn").onclick = function () {
+document.getElementById("feedbackBtn").onclick = function() {
   document.getElementById("feedbackForm").style.display = "block";
 };
 
-/* ===== العداد ===== */
-const counterRef = db.collection("visits").doc("counter");
-async function updateCounterAndShow() {
-  try {
-    await counterRef.set({ count: firebase.firestore.FieldValue.increment(1) }, { merge: true });
-    const snap = await counterRef.get();
-    const data = snap.data() || { count: 1 };
-    document.getElementById("visit-counter").innerText =
-      "عدد زيارات الموقع حتى الآن: " + data
+/* ===== التعليقات مع Firebase ===== */
+// مرجع التعليقات
+const commentsRef = firebase.firestore().collection("comments");
+
+// إرسال التعليق وتخزينه
+async function submitComment() {
+  let comment = document.getElementById("userComment").value;
+  if(comment.trim() !== "") {
+    try {
+      await commentsRef.add({
+        text: comment,
+        time: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      alert("شكراً على رأيك!");
+      document.getElementById("userComment").value = "";
+      document.getElementById("feedbackForm").style.display = "none";
+      loadComments();
+    } catch (error) {
+      console.error("خطأ أثناء إرسال التعليق:", error);
+      alert("فيه مشكلة في الاتصال بقاعدة البيانات");
+    }
+  } else {
+    alert("من فضلك اكتب تعليق قبل الإرسال");
+  }
+}
+
+// تحميل التعليقات وعرضها
+async function loadComments() {
+  const snapshot = await commentsRef.orderBy("time", "desc").limit(10).get();
+  const list = document.getElementById("comments");
+  list.innerHTML = "";
+  snapshot.forEach(doc => {
+    const li = document.createElement("li");
+    li.textContent = doc.data().text;
+    list.appendChild(li);
+  });
+}
+
+// تشغيل التحميل عند البداية
+loadComments();
