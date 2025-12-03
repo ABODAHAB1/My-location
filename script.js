@@ -8,16 +8,13 @@ const firebaseConfig = {
   appId: "1:442622031382:web:d9cb041dd3bbdf19b56737"
 };
 
-// تهيئة Firebase مرة واحدة فقط
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+// تهيئة Firebase
+firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 /* ===== الساعة والتاريخ ===== */
 function updateClockArabic() {
   const now = new Date();
-
   const time = now.toLocaleTimeString("ar-EG", {
     timeZone: "Africa/Cairo",
     hour: "numeric",
@@ -25,24 +22,20 @@ function updateClockArabic() {
     second: "numeric",
     hour12: true
   });
-
   const date = now.toLocaleDateString("ar-EG", {
     timeZone: "Africa/Cairo",
     year: "numeric",
     month: "2-digit",
     day: "2-digit"
   });
-
   const weekday = now.toLocaleDateString("ar-EG", {
     timeZone: "Africa/Cairo",
     weekday: "long"
   });
-
   document.getElementById("clock").textContent = time;
   document.getElementById("date").textContent = date;
   document.getElementById("weekday").textContent = weekday;
 }
-
 updateClockArabic();
 setInterval(updateClockArabic, 1000);
 
@@ -85,7 +78,6 @@ function showGreetingMessage() {
   );
   const hour = nowInCairo.getHours();
   let message = "";
-
   if (hour >= 5 && hour < 12) {
     message = "🌞 صباح الخير يا زعيم";
   } else if (hour >= 12 && hour < 18) {
@@ -93,16 +85,13 @@ function showGreetingMessage() {
   } else {
     message = "🌙 سهرة سعيدة يا زعيم";
   }
-
   const popup = document.getElementById("greeting-message");
   popup.textContent = message;
   popup.style.display = "block";
-
   setTimeout(() => {
     popup.style.display = "none";
   }, 5000);
 }
-
 window.onload = function () {
   showGreetingMessage();
 };
@@ -112,42 +101,12 @@ document.getElementById("feedbackBtn").onclick = function () {
   document.getElementById("feedbackForm").style.display = "block";
 };
 
-/* ===== التعليقات مع Firebase ===== */
-const commentsRef = db.collection("comments");
-
-// إرسال التعليق وتخزينه
-async function submitComment() {
-  let comment = document.getElementById("userComment").value;
-  if (comment.trim() !== "") {
-    try {
-      await commentsRef.add({
-        text: comment,
-        time: firebase.firestore.FieldValue.serverTimestamp()
-      });
-      alert("شكراً على رأيك!");
-      document.getElementById("userComment").value = "";
-      document.getElementById("feedbackForm").style.display = "none";
-      loadComments();
-    } catch (error) {
-      console.error("خطأ أثناء إرسال التعليق:", error);
-      alert("فيه مشكلة في الاتصال بقاعدة البيانات");
-    }
-  } else {
-    alert("من فضلك اكتب تعليق قبل الإرسال");
-  }
-}
-
-// تحميل التعليقات وعرضها
-async function loadComments() {
-  const snapshot = await commentsRef.orderBy("time", "desc").limit(10).get();
-  const list = document.getElementById("comments");
-  list.innerHTML = "";
-  snapshot.forEach(doc => {
-    const li = document.createElement("li");
-    li.textContent = doc.data().text;
-    list.appendChild(li);
-  });
-}
-
-// تشغيل التحميل عند البداية
-loadComments();
+/* ===== العداد ===== */
+const counterRef = db.collection("visits").doc("counter");
+async function updateCounterAndShow() {
+  try {
+    await counterRef.set({ count: firebase.firestore.FieldValue.increment(1) }, { merge: true });
+    const snap = await counterRef.get();
+    const data = snap.data() || { count: 1 };
+    document.getElementById("visit-counter").innerText =
+      "عدد زيارات الموقع حتى الآن: " + data
