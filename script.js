@@ -2,7 +2,6 @@
 function updateClockArabic() { 
   const now = new Date(); 
 
-  // الوقت بالأرقام العربية مع ص/م
   const time = now.toLocaleTimeString("ar-EG", { 
     timeZone: "Africa/Cairo", 
     hour: "numeric", 
@@ -11,7 +10,6 @@ function updateClockArabic() {
     hour12: true 
   }); 
 
-  // التاريخ: يوم/شهر/سنة
   const date = now.toLocaleDateString("ar-EG", { 
     timeZone: "Africa/Cairo", 
     year: "numeric", 
@@ -19,13 +17,11 @@ function updateClockArabic() {
     day: "2-digit" 
   }); 
 
-  // اليوم بالعربي
   const weekday = now.toLocaleDateString("ar-EG", { 
     timeZone: "Africa/Cairo", 
     weekday: "long" 
   }); 
 
-  // عرض القيم في العناصر
   document.getElementById("clock").textContent = time; 
   document.getElementById("date").textContent = date; 
   document.getElementById("weekday").textContent = weekday; 
@@ -91,24 +87,52 @@ function showGreetingMessage() {
   }, 5000); 
 } 
 
-/* ===== تشغيل الرسالة المؤقتة عند تحميل الصفحة ===== */ 
 window.onload = function() { 
   showGreetingMessage(); 
 }; 
 
-// إظهار النموذج عند الضغط على الزر
+/* ===== زر التقييم ===== */
 document.getElementById("feedbackBtn").onclick = function() { 
   document.getElementById("feedbackForm").style.display = "block"; 
 }; 
 
-// إرسال التعليق (مبدئياً يظهر في الـ console)
-function submitComment() { 
+/* ===== التعليقات مع Firebase ===== */
+// مرجع التعليقات
+const commentsRef = firebase.firestore().collection("comments");
+
+// إرسال التعليق وتخزينه
+async function submitComment() { 
   let comment = document.getElementById("userComment").value; 
   if(comment.trim() !== "") { 
-    alert("شكراً على رأيك: " + comment); 
-    document.getElementById("userComment").value = ""; 
-    document.getElementById("feedbackForm").style.display = "none"; 
+    try {
+      await commentsRef.add({
+        text: comment,
+        time: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      alert("شكراً على رأيك!");
+      document.getElementById("userComment").value = ""; 
+      document.getElementById("feedbackForm").style.display = "none"; 
+      loadComments();
+    } catch (error) {
+      console.error("خطأ أثناء إرسال التعليق:", error);
+      alert("فيه مشكلة في الاتصال بقاعدة البيانات");
+    }
   } else { 
     alert("من فضلك اكتب تعليق قبل الإرسال"); 
   } 
-} 
+}
+
+// تحميل التعليقات وعرضها
+async function loadComments() {
+  const snapshot = await commentsRef.orderBy("time", "desc").limit(10).get();
+  const list = document.getElementById("comments");
+  list.innerHTML = "";
+  snapshot.forEach(doc => {
+    const li = document.createElement("li");
+    li.textContent = doc.data().text;
+    list.appendChild(li);
+  });
+}
+
+// تشغيل التحميل عند البداية
+loadComments();
