@@ -76,8 +76,6 @@
   <!-- الفوتر -->
   <footer>صُنع وإبداع من محمود أبو الدهب ✨</footer>
 
-  <script src="script.js"></script>
-
   <!-- مكتبات Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
@@ -92,10 +90,14 @@
       messagingSenderId: "442622031382",
       appId: "1:442622031382:web:38c1f156f43a683eb56737"
     };
-    firebase.initializeApp(firebaseConfig);
+
+    // تهيئة Firebase مرة واحدة فقط
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
     const db = firebase.firestore();
 
-    // العداد
+    // 🔢 العداد
     const counterRef = db.collection("visits").doc("counter");
     async function updateCounterAndShow() {
       try {
@@ -110,19 +112,19 @@
     }
     updateCounterAndShow();
 
-    // عرض النبذة
+    // 📌 عرض النبذة
     function showAbout() {
       const about = document.getElementById("about-mahmoud");
       about.style.display = "block";
       window.scrollTo({ top: about.offsetTop, behavior: 'smooth' });
     }
 
-    // زر التقييم
+    // ⭐ زر التقييم
     document.getElementById("feedbackBtn").onclick = function() {
       document.getElementById("feedbackForm").style.display = "block";
     };
 
-    // إرسال التعليق وتخزينه في Firebase
+    // 💬 إرسال التعليق وتخزينه في Firebase
     async function submitComment() {
       let comment = document.getElementById("userComment").value;
       if(comment.trim() !== "") {
@@ -136,7 +138,7 @@
       }
     }
 
-    // تحميل التعليقات وعرضها
+    // 💬 تحميل التعليقات وعرضها
     async function loadComments() {
       const snapshot = await db.collection("comments").orderBy("time", "desc").limit(10).get();
       const list = document.getElementById("comments");
