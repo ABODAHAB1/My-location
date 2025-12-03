@@ -256,6 +256,8 @@ button:hover {
   font-style: normal;
   font-weight: bold;
 }
+
+/* ===== زر التقييم ===== */
 #feedbackBtn {
   background-color: #f1c40f; /* أصفر فاتح */
   color: #000;
@@ -271,13 +273,9 @@ button:hover {
   background-color: #d4ac0d;
 }
 
+/* ===== نموذج التعليقات ===== */
 #feedbackForm {
   margin-top: 15px;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 8px;
-  background: #fff;
-}
-
-
-
+  background
