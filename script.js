@@ -1,3 +1,17 @@
+// إعدادات Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyDg3HhWgnQQn_JOjXCGyCQP8YHF5FN8bE0",
+  authDomain: "abodahab-4d14e.firebaseapp.com",
+  projectId: "abodahab-4d14e",
+  storageBucket: "abodahab-4d14e.appspot.com",
+  messagingSenderId: "442622031382",
+  appId: "1:442622031382:web:d9cb041dd3bbdf19b56737"
+};
+
+// تهيئة Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
 /* ===== الساعة والتاريخ ===== */ 
 function updateClockArabic() { 
   const now = new Date(); 
@@ -136,3 +150,4 @@ async function loadComments() {
 
 // تشغيل التحميل عند البداية
 loadComments();
+
