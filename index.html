@@ -35,7 +35,7 @@
     <!-- زر العداد -->
     <div id="visit-counter">جاري تحميل العداد...</div>
 
-    <!-- نموذج التعليق -->
+    <!-- نموذج التعليق (مخفي في البداية) -->
     <div id="feedbackForm" style="display:none; margin-top:15px;">
       <h3>اكتب تعليقك</h3>
       <textarea id="userComment" rows="4" cols="40" placeholder="رأيك يهمنا..."></textarea><br>
@@ -80,7 +80,77 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
-  <!-- ملف السكربت بتاعك -->
-  <script src="script.js"></script>
+  <script>
+    // إعدادات Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDg3HhwgnQQn_JOjXCGyCQP8YHF5FN8bE0",
+      authDomain: "abodahab-4d14e.firebaseapp.com",
+      projectId: "abodahab-4d14e",
+      storageBucket: "abodahab-4d14e.appspot.com",
+      messagingSenderId: "442622031382",
+      appId: "1:442622031382:web:38c1f156f43a683eb56737"
+    };
+
+    // تهيئة Firebase مرة واحدة فقط
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+    const db = firebase.firestore();
+
+    // 🔢 العداد
+    const counterRef = db.collection("visits").doc("counter");
+    async function updateCounterAndShow() {
+      try {
+        await counterRef.set({ count: firebase.firestore.FieldValue.increment(1) }, { merge: true });
+        const snap = await counterRef.get();
+        const data = snap.data() || { count: 1 };
+        document.getElementById("visit-counter").innerText = "عدد زيارات الموقع حتى الآن: " + data.count;
+      } catch (e) {
+        document.getElementById("visit-counter").innerText = "حدث خطأ في العداد";
+        console.error("Counter error:", e);
+      }
+    }
+    updateCounterAndShow();
+
+    // 📌 عرض النبذة
+    function showAbout() {
+      const about = document.getElementById("about-mahmoud");
+      about.style.display = "block";
+      window.scrollTo({ top: about.offsetTop, behavior: 'smooth' });
+    }
+
+    // ⭐ زر التقييم
+    document.getElementById("feedbackBtn").onclick = function() {
+      document.getElementById("feedbackForm").style.display = "block";
+    };
+
+    // 💬 إرسال التعليق وتخزينه في Firebase
+    async function submitComment() {
+      let comment = document.getElementById("userComment").value;
+      if(comment.trim() !== "") {
+        await db.collection("comments").add({ text: comment, time: new Date() });
+        alert("شكراً على رأيك!");
+        document.getElementById("userComment").value = "";
+        document.getElementById("feedbackForm").style.display = "none";
+        loadComments();
+      } else {
+        alert("من فضلك اكتب تعليق قبل الإرسال");
+      }
+    }
+
+    // 💬 تحميل التعليقات وعرضها
+    async function loadComments() {
+      const snapshot = await db.collection("comments").orderBy("time", "desc").limit(10).get();
+      const list = document.getElementById("comments");
+      list.innerHTML = "";
+      snapshot.forEach(doc => {
+        const li = document.createElement("li");
+        li.textContent = doc.data().text;
+        list.appendChild(li);
+      });
+    }
+    loadComments();
+  </script>
 </body>
 </html>
+س
