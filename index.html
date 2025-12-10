@@ -6,41 +6,76 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- مقدمة ترحيب -->
+  <!-- الجزء العلوي: ترحيب وسهم -->
   <header>
-    <h1>أهلاً بيك ✨</h1>
+    <h1>✨ أهلاً بيك ✨</h1>
     <p>بإذن الله أقدر أخدمك في المجالات اللي تحت دي</p>
     <div class="scroll-down">⬇️</div>
   </header>
 
   <!-- قسم الخدمات -->
   <section class="services">
-    <a href="telegram.html" class="telegram">تلجرام</a>
-    <a href="facebook.html" class="facebook">فيسبوك</a>
-    <a href="whatsapp.html" class="whatsapp">واتس آب</a>
-    <a href="youtube.html" class="youtube">يوتيوب</a>
-    <a href="instagram.html" class="instagram">إنستجرام</a>
-    <a href="tiktok.html" class="tiktok">تيك توك</a>
-    <a href="other.html" class="other">خدمات أخرى</a>
+    <a href="telegram.html" class="service telegram">
+      <img src="images/telegram.png" alt="تلجرام">
+      <span>تلجرام</span>
+    </a>
+    <a href="facebook.html" class="service facebook">
+      <img src="images/facebook.png" alt="فيسبوك">
+      <span>فيسبوك</span>
+    </a>
+    <a href="whatsapp.html" class="service whatsapp">
+      <img src="images/whatsapp.png" alt="واتس آب">
+      <span>واتس آب</span>
+    </a>
+    <a href="youtube.html" class="service youtube">
+      <img src="images/youtube.png" alt="يوتيوب">
+      <span>يوتيوب</span>
+    </a>
+    <a href="instagram.html" class="service instagram">
+      <img src="images/instagram.png" alt="إنستجرام">
+      <span>إنستجرام</span>
+    </a>
+    <a href="tiktok.html" class="service tiktok">
+      <img src="images/tiktok.png" alt="تيك توك">
+      <span>تيك توك</span>
+    </a>
+    <a href="other.html" class="service other">
+      <img src="images/tools.png" alt="خدمات أخرى">
+      <span>خدمات أخرى</span>
+    </a>
   </section>
 
-  <!-- قسم نبذة عني -->
+  <!-- زر نبذة عن صانع الموقع -->
   <section class="about">
-    <h2>نبذة عني</h2>
-    <p>
-      أنا <strong>محمود محمد أبو الدهب</strong>، صممت الموقع ده علشان أقدر أعرض شغلي براحة وبأسلوب منظم.  
-      عندي خبرة واسعة في جميع الخدمات اللي فوق، وكمان خبرة قوية في البرمجة وإنشاء مواقع الويب بشكل احترافي.  
-      شغفي هو إني أساعدك تحقق حضور قوي على الإنترنت، سواء في إدارة حساباتك أو تصميم موقعك الخاص بأفضل جودة.  
-    </p>
-    <p>
-      لو الخدمة عجبتك وحابب تستفسر عن أي حاجة، تقدر تتواصل معايا مباشرة عبر الواتساب 👇
-    </p>
+    <button onclick="showCreatorInfo()">نبذة عن صانع الموقع</button>
+    <div id="creator-info" style="display:none; margin-top:15px;">
+      <p>
+        أنا <strong>محمود محمد أبو الدهب</strong>، صممت الموقع ده علشان أقدر أعرض شغلي براحة وبأسلوب منظم.  
+        عندي خبرة واسعة في الخدمات الرقمية، وإدارة الحسابات، وتصميم المواقع بشكل احترافي.  
+        هدفي هو تقديم تجربة مميزة لكل عميل، سواء في التوثيق أو البرمجة أو التصميم.
+      </p>
+    </div>
+  </section>
+
+  <!-- زر تواصل واتساب -->
+  <section class="contact">
     <a href="https://wa.me/201155820103" target="_blank" class="whatsapp-contact">📱 تواصل واتساب</a>
   </section>
 
-  <!-- الفوتر -->
   <footer>
     <p>جميع الحقوق محفوظة © MAHMOUD ABODAHAB</p>
   </footer>
+
+  <script>
+    // حركة السهم
+    document.querySelector('.scroll-down').addEventListener('click', () => {
+      window.scrollBy({ top: 500, behavior: 'smooth' });
+    });
+
+    // عرض نبذة عن صانع الموقع
+    function showCreatorInfo() {
+      document.getElementById('creator-info').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
