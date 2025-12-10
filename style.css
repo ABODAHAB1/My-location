@@ -1,1 +1,68 @@
-هاي
+body {
+  font-family: 'Tahoma', sans-serif;
+  margin: 0;
+  background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+  color: white;
+  text-align: center;
+}
+
+header {
+  padding: 50px 20px;
+}
+
+.scroll-down {
+  font-size: 2rem;
+  animation: bounce 2s infinite;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 40px 0;
+}
+
+.services a {
+  padding: 15px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.services a:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.2);
+}
+
+.about {
+  background: rgba(255,255,255,0.1);
+  padding: 30px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.whatsapp-contact {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #25D366;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer {
+  margin-top: 30px;
+  padding: 15px;
+  background: rgba(0,0,0,0.3);
+}
