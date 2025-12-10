@@ -1,156 +1,46 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <title>Mahmoud Abodahab</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>MAHMOUD ABODAHAB</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- الهيدر -->
+  <!-- مقدمة ترحيب -->
   <header>
-    💻 mahmoud abodahab
-    <div class="flat-clock">
-      <span id="date">--/--/----</span>، <span id="weekday">اليوم</span>
-      <br>
-      <span id="clock">--:--:-- ص</span>
-    </div>
+    <h1>أهلاً بيك ✨</h1>
+    <p>بإذن الله أقدر أخدمك في المجالات اللي تحت دي</p>
+    <div class="scroll-down">⬇️</div>
   </header>
 
-  <!-- رسالة ترحيب مؤقتة -->
-  <div id="greeting-message"></div>
+  <!-- قسم الخدمات -->
+  <section class="services">
+    <a href="telegram.html" class="telegram">تلجرام</a>
+    <a href="facebook.html" class="facebook">فيسبوك</a>
+    <a href="whatsapp.html" class="whatsapp">واتس آب</a>
+    <a href="youtube.html" class="youtube">يوتيوب</a>
+    <a href="instagram.html" class="instagram">إنستجرام</a>
+    <a href="tiktok.html" class="tiktok">تيك توك</a>
+    <a href="other.html" class="other">خدمات أخرى</a>
+  </section>
 
-  <!-- القسم الرئيسي -->
-  <div class="section">
-    <h1>"كل زيارة ليك بتزيد الموقع نور، خش شوف الحلاوة بنفسك!" ✨</h1>
-    <p class="highlight">🌟 نورت الموقع يا غالي</p>
-    <p id="welcome"></p>
-
-    <!-- الأزرار -->
-    <button id="toggle-prayer">🕋 موعد الصلاة</button>
-    <button onclick="showAbout()">📌 نبذة عني</button>
-    <button id="feedbackBtn">⭐ قيّم الموقع</button>
-
-    <!-- زر العداد -->
-    <div id="visit-counter">جاري تحميل العداد...</div>
-
-    <!-- نموذج التعليق (مخفي في البداية) -->
-    <div id="feedbackForm" style="display:none; margin-top:15px;">
-      <h3>اكتب تعليقك</h3>
-      <textarea id="userComment" rows="4" cols="40" placeholder="رأيك يهمنا..."></textarea><br>
-      <button onclick="submitComment()">إرسال</button>
-    </div>
-
-    <!-- قائمة التعليقات -->
-    <div id="commentsList" style="margin-top:20px;">
-      <h3>💬 آراء الزوار</h3>
-      <ul id="comments"></ul>
-    </div>
-  </div>
-
-  <!-- نافذة مواقيت الصلاة -->
-  <div class="prayer-widget" id="prayer-widget">
-    <h3>🕌 مواقيت الصلاة</h3>
-    <ul id="prayer-list"></ul>
-  </div>
-
-  <!-- نبذة عن محمود -->
-  <div id="about-mahmoud" style="display: none;">
-    <h2>👋 من هو محمود أبو الدهب؟</h2>
-    <p>أهلاً بيك يا غالي! أنا <strong>محمود أبو الدهب</strong>، عندي 19 سنة، وأتقنت لغات برمجة زي:
-      <span style="color: #ffd700;">HTML, CSS, JavaScript, Python, PHP, C++, Java</span>.
+  <!-- قسم نبذة عني -->
+  <section class="about">
+    <h2>نبذة عني</h2>
+    <p>
+      أنا <strong>محمود محمد أبو الدهب</strong>، صممت الموقع ده علشان أقدر أعرض شغلي براحة وبأسلوب منظم.  
+      عندي خبرة واسعة في جميع الخدمات اللي فوق، وكمان خبرة قوية في البرمجة وإنشاء مواقع الويب بشكل احترافي.  
+      شغفي هو إني أساعدك تحقق حضور قوي على الإنترنت، سواء في إدارة حساباتك أو تصميم موقعك الخاص بأفضل جودة.  
     </p>
-    <p>حالياً بشتغل على مواقع احترافية وبطور نفسي كل يوم علشان أقدم أفضل تجربة للمستخدمين.</p>
-    <p>بحب أشارك شغلي مع الناس وأساعد أي حد بيبدأ طريقه في البرمجة. لو محتاج مساعدة، تواصل معايا على واتساب 👆.</p>
-    <p style="text-align: center;"><em>قول ماشاء الله ✨</em></p>
-  </div>
-
-  <!-- أيقونات واتساب -->
-  <div class="whatsapp-icons">
-    <a href="https://wa.me/201014482794?text=ماشاء%20الله%20عليك%20يحوده%20الموقع%20جميل" target="_blank" class="whatsapp-btn">
-      💬 استفسار سريع؟ اضغط هنا
-    </a>
-  </div>
+    <p>
+      لو الخدمة عجبتك وحابب تستفسر عن أي حاجة، تقدر تتواصل معايا مباشرة عبر الواتساب 👇
+    </p>
+    <a href="https://wa.me/201155820103" target="_blank" class="whatsapp-contact">📱 تواصل واتساب</a>
+  </section>
 
   <!-- الفوتر -->
-  <footer>صُنع وإبداع من محمود أبو الدهب ✨</footer>
-
-  <!-- مكتبات Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-
-  <script>
-    // إعدادات Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyDg3HhwgnQQn_JOjXCGyCQP8YHF5FN8bE0",
-      authDomain: "abodahab-4d14e.firebaseapp.com",
-      projectId: "abodahab-4d14e",
-      storageBucket: "abodahab-4d14e.appspot.com",
-      messagingSenderId: "442622031382",
-      appId: "1:442622031382:web:38c1f156f43a683eb56737"
-    };
-
-    // تهيئة Firebase مرة واحدة فقط
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-    }
-    const db = firebase.firestore();
-
-    // 🔢 العداد
-    const counterRef = db.collection("visits").doc("counter");
-    async function updateCounterAndShow() {
-      try {
-        await counterRef.set({ count: firebase.firestore.FieldValue.increment(1) }, { merge: true });
-        const snap = await counterRef.get();
-        const data = snap.data() || { count: 1 };
-        document.getElementById("visit-counter").innerText = "عدد زيارات الموقع حتى الآن: " + data.count;
-      } catch (e) {
-        document.getElementById("visit-counter").innerText = "حدث خطأ في العداد";
-        console.error("Counter error:", e);
-      }
-    }
-    updateCounterAndShow();
-
-    // 📌 عرض النبذة
-    function showAbout() {
-      const about = document.getElementById("about-mahmoud");
-      about.style.display = "block";
-      window.scrollTo({ top: about.offsetTop, behavior: 'smooth' });
-    }
-
-    // ⭐ زر التقييم
-    document.getElementById("feedbackBtn").onclick = function() {
-      document.getElementById("feedbackForm").style.display = "block";
-    };
-
-    // 💬 إرسال التعليق وتخزينه في Firebase
-    async function submitComment() {
-      let comment = document.getElementById("userComment").value;
-      if(comment.trim() !== "") {
-        await db.collection("comments").add({ text: comment, time: new Date() });
-        alert("شكراً على رأيك!");
-        document.getElementById("userComment").value = "";
-        document.getElementById("feedbackForm").style.display = "none";
-        loadComments();
-      } else {
-        alert("من فضلك اكتب تعليق قبل الإرسال");
-      }
-    }
-
-    // 💬 تحميل التعليقات وعرضها
-    async function loadComments() {
-      const snapshot = await db.collection("comments").orderBy("time", "desc").limit(10).get();
-      const list = document.getElementById("comments");
-      list.innerHTML = "";
-      snapshot.forEach(doc => {
-        const li = document.createElement("li");
-        li.textContent = doc.data().text;
-        list.appendChild(li);
-      });
-    }
-    loadComments();
-  </script>
+  <footer>
+    <p>جميع الحقوق محفوظة © MAHMOUD ABODAHAB</p>
+  </footer>
 </body>
 </html>
-س
