@@ -8,15 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // زر الخدمات الإضافية
-  const extraBtn = document.getElementById('extra-btn');
-  const extraInfo = document.getElementById('extra-info');
-  if (extraBtn) {
-    extraBtn.addEventListener('click', () => {
-      extraInfo.classList.toggle('show');
-    });
-  }
-
   // الصوت عند الضغط
   const sound = document.getElementById('clickSound');
   document.querySelectorAll('a, button').forEach(el => {
