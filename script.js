@@ -18,6 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const info = document.getElementById('creator-info');
 
   creatorBtn.addEventListener('click', () => {
-    info.hidden = !info.hidden; // يظهر/يخفي النبذة نفسها
+    info.classList.toggle('show'); // يظهر/يخفي النبذة باستخدام كلاس show
   });
 });
