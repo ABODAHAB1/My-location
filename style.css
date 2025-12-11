@@ -4,6 +4,30 @@ body {
   background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
   color: white;
   text-align: center;
+  overflow-x: hidden;
+}
+
+/* شاشة الترحيب */
+header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  text-align: center;
+}
+header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+header p { font-size: 1.2rem; margin-bottom: 20px; }
+.scroll-down {
+  font-size: 2rem;
+  animation: bounce 2s infinite;
+  cursor: pointer;
+  margin-top: 20px;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
 }
 
 /* الساعة */
@@ -41,7 +65,7 @@ body {
   50% { opacity: 1; transform: scale(1.2); }
 }
 
-/* الخدمات */
+/* الأقسام المخفية */
 .services, .about, .contact {
   display: none;
   opacity: 0;
@@ -55,6 +79,8 @@ body {
   margin: 50px 0;
   opacity: 1;
 }
+
+/* الخدمات */
 .service {
   display: flex;
   flex-direction: column;
@@ -74,4 +100,39 @@ body {
 .service:hover {
   transform: scale(1.1);
   background: rgba(255,255,255,0.2);
+}
+
+/* زر النبذة */
+.about button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background: #ff9800;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+#creator-info {
+  display: none;
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+  max-width: 600px;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+#creator-info.show {
+  display: block;
+}
+
+/* زر واتساب */
+.whatsapp-contact {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #25D366;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
 }
