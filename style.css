@@ -24,6 +24,7 @@ header p {
   font-size: 2rem;
   animation: bounce 2s infinite;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 @keyframes bounce {
@@ -31,12 +32,21 @@ header p {
   50% { transform: translateY(10px); }
 }
 
+/* الخدمات مخفية في البداية */
 .services {
-  display: flex;
+  display: none; /* مخفي */
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   margin: 50px 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+/* لما تظهر الخدمات */
+.services.show {
+  display: flex;
+  opacity: 1;
 }
 
 .service {
