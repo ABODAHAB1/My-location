@@ -6,11 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
     creatorBtn.addEventListener('click', () => {
       info.classList.toggle('show');
       // تغيير نص الزر حسب الحالة
-      if (info.classList.contains('show')) {
-        creatorBtn.textContent = "إخفاء النبذة";
-      } else {
-        creatorBtn.textContent = "💻 نبذة عن صانع الموقع";
-      }
+      creatorBtn.textContent = info.classList.contains('show')
+        ? "إخفاء النبذة"
+        : "💻 نبذة عن صانع الموقع";
     });
   }
 
@@ -28,29 +26,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // الساعة والتاريخ
   function updateClock() {
     const now = new Date();
-    const time = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    const date = now.toLocaleDateString('ar-EG', { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' });
+    const time = now.toLocaleTimeString('ar-EG', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+    const date = now.toLocaleDateString('ar-EG', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric'
+    });
     document.getElementById("time").textContent = time;
     document.getElementById("date").textContent = date;
   }
   setInterval(updateClock, 1000);
   updateClock();
 
-  // النجوم
+  // النجوم المتحركة
   for (let i = 0; i < 80; i++) {
     const star = document.createElement("div");
     star.className = "star";
-    if (Math.random() < 0.5) {
-      star.classList.add("red");
-    } else {
-      star.classList.add("blue");
-    }
+    star.classList.add(Math.random() < 0.5 ? "red" : "blue");
     star.style.top = Math.random() * window.innerHeight + "px";
     star.style.left = Math.random() * window.innerWidth + "px";
     document.body.appendChild(star);
   }
 
-  // 🔢 عداد الزوار باستخدام Firebase Firestore
+  // عداد الزوار باستخدام Firebase Firestore
   const firebaseConfig = {
     apiKey: "AIzaSyDg3HhwgnQQn_JOjXCGyCQP8YHF5FN8bE0",
     authDomain: "abodahab-4d14e.firebaseapp.com",
@@ -74,9 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       const snap = await counterRef.get();
       const data = snap.data() || { count: 1 };
-      document.getElementById("visit-counter").innerText = data.count;
+      document.getElementById("visit-counter").textContent = data.count;
     } catch (e) {
-      document.getElementById("visit-counter").innerText = "خطأ في العداد";
+      document.getElementById("visit-counter").textContent = "خطأ في العداد";
       console.error("Counter error:", e);
     }
   }
