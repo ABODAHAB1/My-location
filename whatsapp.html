@@ -1,4 +1,22 @@
-<body style="background:linear-gradient(to right,#25D366,#128C7E);color:#fff;text-align:center;font-family:Tahoma;">
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>خدمات واتساب - محمود أبو الدهب</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{margin:0;font-family:"Tahoma",sans-serif;background:linear-gradient(to right,#25D366,#128C7E);color:#fff;text-align:center;}
+    #clock{margin:15px;font-size:1rem;font-weight:bold;}
+    h1{margin-top:20px;font-size:1.6rem;text-shadow:2px 2px 6px rgba(0,0,0,0.4);}
+    p{font-size:1rem;margin-bottom:20px;}
+    .service-box{background:rgba(255,255,255,0.15);border-radius:12px;padding:20px;margin:20px auto;max-width:90%;box-shadow:0 0 15px rgba(0,0,0,0.3);}
+    .service-btn{display:inline-block;padding:10px 20px;background:#fff;color:#25D366;font-weight:bold;border-radius:8px;text-decoration:none;transition:0.3s;}
+    .service-btn:hover{background:#128C7E;color:#fff;}
+    .back-btn{display:inline-block;margin:20px;padding:10px 20px;background:rgba(255,255,255,0.2);color:#fff;border-radius:8px;text-decoration:none;}
+    .back-btn:hover{background:#fff;color:#000;}
+  </style>
+</head>
+<body>
   <div id="clock"><span id="time"></span> | <span id="date"></span></div>
   <h1>💬 مرحبًا بك في خدمات واتساب من محمود أبو الدهب</h1>
   <p>خدمات احترافية لإدارة وتطوير حسابك ومجموعاتك على واتساب.</p>
@@ -20,4 +38,10 @@
   </div>
 
   <a class="back-btn" href="index.html">⬅️ الرجوع للخلف</a>
+
+  <script>
+    function updateClock(){const now=new Date();document.getElementById('time').textContent=now.toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit',second:'2-digit'});document.getElementById('date').textContent=now.toLocaleDateString('ar-EG');}
+    setInterval(updateClock,1000);updateClock();
+  </script>
 </body>
+</html>
