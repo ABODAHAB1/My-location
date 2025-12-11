@@ -5,34 +5,109 @@
   <title>خدمات إنستجرام - محمود أبو الدهب</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Tahoma", sans-serif;
+      background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+      color: #fff;
+      text-align: center;
+    }
+    #clock {
+      margin: 15px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    h1 {
+      margin-top: 20px;
+      font-size: 1.8rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+    .service-box {
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 500px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    .service-box h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .service-box p {
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+    .service-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #fff;
+      color: #833ab4;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .service-btn:hover {
+      background: #fcb045;
+      color: #fff;
+    }
+  </style>
 </head>
-<body class="instagram">
+<body>
   <div id="clock"><span id="time"></span> | <span id="date"></span></div>
+
   <h1>📸 مرحبًا بك في خدمات إنستجرام من محمود أبو الدهب</h1>
   <p>كل ما تحتاجه لتطوير حسابك على إنستجرام بخدمات احترافية وسريعة.</p>
 
-  <div class="service-box insta">
+  <div class="service-box">
     <h3>✅ توثيق حساب</h3>
     <p>وثّق حسابك الرسمي بسرعة وسهولة.</p>
     <a class="service-btn" href="#">اذهب للخدمة</a>
   </div>
-  <div class="service-box insta">
+
+  <div class="service-box">
     <h3>📈 تزويد متابعين</h3>
     <p>زوّد عدد متابعين حسابك.</p>
     <a class="service-btn" href="#">اذهب للخدمة</a>
   </div>
-  <div class="service-box insta">
+
+  <div class="service-box">
     <h3>👀 مشاهدات</h3>
     <p>زوّد مشاهدات الريلز والستوري.</p>
     <a class="service-btn" href="#">اذهب للخدمة</a>
   </div>
-  <div class="service-box insta">
+
+  <div class="service-box">
     <h3>❤️ لايكات</h3>
     <p>احصل على لايكات حقيقية لمنشوراتك.</p>
     <a class="service-btn" href="#">اذهب للخدمة</a>
   </div>
 
   <audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
-  <script src="script.js"></script>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('time').textContent =
+        now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      document.getElementById('date').textContent =
+        now.toLocaleDateString('ar-EG');
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // تشغيل الصوت عند الضغط على أي زر
+    const clickSound = document.getElementById('clickSound');
+    document.querySelectorAll('.service-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        clickSound.play();
+      });
+    });
+  </script>
 </body>
 </html>
