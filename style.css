@@ -29,6 +29,20 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
   z-index: 999;
 }
 
+/* عداد الزوار */
+#visitor-count {
+  background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 15px auto;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: fit-content;
+}
+
 /* النجوم */
 .star {
   position: absolute;
@@ -97,18 +111,29 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
   font-weight: bold;
   cursor: pointer;
 }
+
+/* محتوى النبذة */
 #creator-info {
   display: none;
-  background: rgba(255,255,255,0.1);
+  background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
   padding: 20px;
   border-radius: 10px;
   margin-top: 15px;
   max-width: 600px;
-  line-height: 1.6;
+  line-height: 1.8;
   font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  color: #333;
+  text-align: center;
 }
 #creator-info.show {
   display: block;
+}
+#creator-info p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  text-align: center;
 }
 
 /* زر واتساب */
@@ -134,23 +159,3 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
   .service span { font-size: 12px; }
   #creator-info { font-size: 0.9rem; }
 }
-#creator-info {
-  background: linear-gradient(135deg, #f0f8ff, #e6f7ff); /* ألوان فاتحة وهادية */
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  display: none; /* مخفية لحد ما يضغط الزر */
-}
-
-#creator-info.show {
-  display: block;
-}
-
-#creator-info p {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #333;
-  text-align: center;
-}
-
