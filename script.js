@@ -8,13 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // زر الخدمات الإضافية
+  const extraBtn = document.getElementById('extra-btn');
+  const extraInfo = document.getElementById('extra-info');
+  if (extraBtn) {
+    extraBtn.addEventListener('click', () => {
+      extraInfo.classList.toggle('show');
+    });
+  }
+
   // الصوت عند الضغط
   const sound = document.getElementById('clickSound');
   document.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('click', () => {
       if (sound) {
         sound.currentTime = 0;
-        sound.play().catch(()=>{});
+        sound.play().catch(() => {});
       }
     });
   });
@@ -34,4 +43,13 @@ document.addEventListener("DOMContentLoaded", () => {
   for (let i = 0; i < 80; i++) {
     const star = document.createElement("div");
     star.className = "star";
-    if (Math.random() < 0.5) star.classList.add("red
+    if (Math.random() < 0.5) {
+      star.classList.add("red");
+    } else {
+      star.classList.add("blue");
+    }
+    star.style.top = Math.random() * window.innerHeight + "px";
+    star.style.left = Math.random() * window.innerWidth + "px";
+    document.body.appendChild(star);
+  }
+});
