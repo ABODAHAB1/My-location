@@ -23,6 +23,7 @@
       border:2px solid var(--accent-red); border-radius:10px; padding:12px 26px;
       font-size:20px; font-weight:bold; color:white; background-color:rgba(0,0,0,0.6);
       text-decoration:none; box-shadow:0 0 15px var(--accent-red); transition:.3s;
+      display:inline-block;
     }
     .button:hover { transform:scale(1.06); box-shadow:0 0 25px var(--accent-red); background-color:rgba(255,0,0,0.14); }
     #clock {
@@ -31,13 +32,29 @@
       font-family:'Courier New',monospace; color:#fff; box-shadow:0 0 15px rgba(255,0,0,0.12); z-index:999;
     }
     .floating-contact { position:fixed; bottom:20px; z-index:1000; cursor:pointer; }
-    .market { text-align:center; margin-top:40px; }
+    .market { text-align:center; margin-top:40px; max-width:1100px; }
     .market h2 { color:gold; font-size:28px; margin-bottom:20px; text-shadow:2px 2px 5px red; }
-    .market .button { background-color:darkred; border:2px solid gold; box-shadow:0 0 10px gold; }
-    .market .button:hover { box-shadow:0 0 20px red; }
+    .service-card {
+      background: rgba(0,0,0,0.6);
+      border: 2px solid gold;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 15px auto;
+      box-shadow: 0 0 12px red;
+      text-align:center;
+    }
+    .service-card h3 { color: gold; margin-bottom: 10px; }
+    .service-card p { font-size: 16px; margin-bottom: 12px; }
+    .service-card .button {
+      background-color: darkred;
+      border: 2px solid gold;
+      box-shadow: 0 0 10px gold;
+    }
+    .service-card .button:hover { box-shadow: 0 0 20px red; }
     @media(max-width:600px){
       h1{font-size:24px;} .button{font-size:18px; padding:12px 20px;}
       #clock{font-size:14px; padding:8px 10px;}
+      .service-card{padding:15px;}
     }
   </style>
 </head>
@@ -59,12 +76,42 @@
   <!-- قسم الماركت -->
   <div class="market">
     <h2>🛒 ماركت تيليجرام</h2>
-    <a class="button" href="https://t.me/UD_6_M/2243" target="_blank">📌 سعر توثيق حسابات تلجرام</a>
-    <a class="button" href="https://t.me/UD_6_M/2248" target="_blank">🌟 أسعار نجوم تلجرام</a>
-    <a class="button" href="https://t.me/UD_6_M/2180" target="_blank">✅ أسعار الحسابات الموثقة</a>
-    <a class="button" href="https://t.me/UD_6_M/2183" target="_blank">📈 خدمات تزويد متابعين ومشاهدات</a>
-    <a class="button" href="https://t.me/UD_6_M/2179" target="_blank">💰 عملات رقمية للبيع والاستقبال</a>
-    <a class="button" href="https://t.me/UD_6_M/2179" target="_blank">💳 طرق الدفع المتاحة</a>
+
+    <div class="service-card">
+      <h3>📌 توثيق حسابات تيليجرام</h3>
+      <p>نوثق حسابك الرسمي بسرعة وسهولة.</p>
+      <a class="button" href="https://t.me/UD_6_M/2243" target="_blank">اذهب للخدمة</a>
+    </div>
+
+    <div class="service-card">
+      <h3>🌟 نجوم تيليجرام</h3>
+      <p>احصل على نجوم مميزة لحسابك.</p>
+      <a class="button" href="https://t.me/UD_6_M/2248" target="_blank">اذهب للخدمة</a>
+    </div>
+
+    <div class="service-card">
+      <h3>✅ الحسابات الموثقة</h3>
+      <p>تعرف على أسعار الحسابات الموثقة.</p>
+      <a class="button" href="https://t.me/UD_6_M/2180" target="_blank">اذهب للخدمة</a>
+    </div>
+
+    <div class="service-card">
+      <h3>📈 تزويد متابعين ومشاهدات</h3>
+      <p>زوّد التفاعل على قناتك أو مجموعتك.</p>
+      <a class="button" href="https://t.me/UD_6_M/2183" target="_blank">اذهب للخدمة</a>
+    </div>
+
+    <div class="service-card">
+      <h3>💰 عملات رقمية</h3>
+      <p>بيع واستقبال العملات الرقمية بسهولة.</p>
+      <a class="button" href="https://t.me/UD_6_M/2179" target="_blank">اذهب للخدمة</a>
+    </div>
+
+    <div class="service-card">
+      <h3>💳 طرق الدفع</h3>
+      <p>تعرف على طرق الدفع المتاحة.</p>
+      <a class="button" href="https://t.me/UD_6_M/2179" target="_blank">اذهب للخدمة</a>
+    </div>
   </div>
 
   <!-- أزرار التواصل -->
@@ -88,10 +135,4 @@
     });
     function updateClock(){
       const now=new Date();
-      document.getElementById("time").textContent=now.toLocaleTimeString('ar-EG');
-      document.getElementById("date").textContent=now.toLocaleDateString('ar-EG',{weekday:'short',year:'numeric',month:'numeric',day:'numeric'});
-    }
-    setInterval(updateClock,1000); updateClock();
-  </script>
-</body>
-</html>
+      document.getElementById
