@@ -134,3 +134,23 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
   .service span { font-size: 12px; }
   #creator-info { font-size: 0.9rem; }
 }
+#creator-info {
+  background: linear-gradient(135deg, #f0f8ff, #e6f7ff); /* ألوان فاتحة وهادية */
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: none; /* مخفية لحد ما يضغط الزر */
+}
+
+#creator-info.show {
+  display: block;
+}
+
+#creator-info p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  text-align: center;
+}
+
