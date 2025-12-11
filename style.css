@@ -45,14 +45,14 @@ header p {
   50% { transform: translateY(10px); }
 }
 
-/* الخدمات مخفية */
+/* مخفيين في البداية */
 .services, .about, .contact {
   display: none;
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
 }
 
-/* لما تظهر */
+/* لما يظهروا */
 .services.show, .about.show, .contact.show {
   display: flex;
   flex-wrap: wrap;
@@ -98,18 +98,19 @@ header p {
 }
 
 .about button {
-  padding: 10px 20px;
+  padding: 12px 25px;
   border: none;
   border-radius: 8px;
   background: #ff9800;
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.3s;
 }
 
 .about button:hover {
   background: #e68900;
+  transform: scale(1.05);
 }
 
 #creator-info {
@@ -119,6 +120,7 @@ header p {
   margin-top: 15px;
   max-width: 600px;
   line-height: 1.6;
+  font-size: 1rem;
 }
 
 .contact {
@@ -134,11 +136,12 @@ header p {
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.3s;
 }
 
 .whatsapp-contact:hover {
   background: #1ebe5d;
+  transform: scale(1.05);
 }
 
 footer {
