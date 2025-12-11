@@ -5,26 +5,121 @@
   <title>خدمات تيليجرام - محمود أبو الدهب</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    :root { --accent-red: #ff3333; --glass-bg: rgba(255,255,255,0.08); }
-    html, body { height: 100%; margin:0; padding:0; font-family:'Tahoma',sans-serif; direction:rtl; }
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Tahoma", sans-serif;
+      direction: rtl;
       background: linear-gradient(to right, #0088cc, #005f99);
-      min-height: 100vh; display:flex; flex-direction:column; align-items:center;
-      color:white; overflow-x:hidden;
+      color: white;
+      text-align: center;
     }
-    h1 { color:gold; font-size:32px; text-shadow:2px 2px 5px red; margin:20px 0; text-align:center; }
-    p { font-size:18px; text-align:center; max-width:900px; margin:0 auto 20px; }
-    .buttons-row { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:30px; }
-    .button {
-      border:2px solid var(--accent-red); border-radius:10px; padding:12px 26px;
-      font-size:20px; font-weight:bold; color:white; background-color:rgba(0,0,0,0.6);
-      text-decoration:none; box-shadow:0 0 15px var(--accent-red); transition:.3s;
-      display:inline-block;
-    }
-    .button:hover { transform:scale(1.06); box-shadow:0 0 25px var(--accent-red); background-color:rgba(255,0,0,0.14); }
     #clock {
-      position:fixed; top:20px; left:20px; background:var(--glass-bg); backdrop-filter:blur(8px);
-      border:1px solid rgba(255,255,255,0.12); border-radius:15px; padding:12px 18px; font-size:16px;
-      font-family:'Courier New',monospace; color:#fff; box-shadow:0 0 15px rgba(255,0,0,0.12); z-index:999;
+      margin: 15px;
+      font-size: 1rem;
+      font-weight: bold;
     }
-    .market { text-align:center
+    h1 {
+      margin-top: 20px;
+      font-size: 1.6rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    .service-box {
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 90%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    .service-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #fff;
+      color: #0088cc;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .service-btn:hover {
+      background: #005f99;
+      color: #fff;
+    }
+    .back-btn {
+      display: inline-block;
+      margin: 20px;
+      padding: 10px 20px;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .back-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock"><span id="time"></span> | <span id="date"></span></div>
+
+  <h1>📲 مرحبًا بك في خدمات تيليجرام من محمود أبو الدهب</h1>
+  <p>كل ما تحتاجه لتطوير حسابك على تيليجرام بخدمات احترافية وسريعة.</p>
+
+  <div class="service-box">
+    <h3>📌 توثيق حسابات تيليجرام</h3>
+    <p>نوثق حسابك الرسمي بسرعة وسهولة.</p>
+    <a class="service-btn" href="https://t.me/uuruuc?text=مرحبا، أريد توثيق حساب تلجرام">اذهب للخدمة</a>
+  </div>
+
+  <div class="service-box">
+    <h3>🌟 نجوم تيليجرام</h3>
+    <p>احصل على نجوم مميزة لحسابك.</p>
+    <a class="service-btn" href="https://t.me/uuruuc?text=مرحبا، أريد نجوم تلجرام">اذهب للخدمة</a>
+  </div>
+
+  <div class="service-box">
+    <h3>✅ الحسابات الموثقة</h3>
+    <p>تعرف على أسعار الحسابات الموثقة.</p>
+    <a class="service-btn" href="https://t.me/uuruuc?text=مرحبا، أريد حساب موثق على تلجرام">اذهب للخدمة</a>
+  </div>
+
+  <div class="service-box">
+    <h3>📈 تزويد متابعين ومشاهدات</h3>
+    <p>زوّد التفاعل على قناتك أو مجموعتك.</p>
+    <a class="service-btn" href="https://t.me/uuruuc?text=مرحبا، أريد تزويد متابعين ومشاهدات على تلجرام">اذهب للخدمة</a>
+  </div>
+
+  <div class="service-box">
+    <h3>💰 عملات رقمية</h3>
+    <p>بيع واستقبال العملات الرقمية بسهولة.</p>
+    <a class="service-btn" href="https://t.me/uuruuc?text=مرحبا، أريد خدمات العملات الرقمية">اذهب للخدمة</a>
+  </div>
+
+  <div class="service-box">
+    <h3>💳 طرق الدفع</h3>
+    <p>تعرف على طرق الدفع المتاحة.</p>
+    <a class="service-btn" href="https://t.me/uuruuc?text=مرحبا، أريد معرفة طرق الدفع">اذهب للخدمة</a>
+  </div>
+
+  <a class="back-btn" href="index.html">⬅️ الرجوع للخلف</a>
+
+  <script>
+    function updateClock(){
+      const now = new Date();
+      document.getElementById('time').textContent =
+        now.toLocaleTimeString('ar-EG', {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+      document.getElementById('date').textContent =
+        now.toLocaleDateString('ar-EG');
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
