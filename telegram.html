@@ -34,14 +34,20 @@
     .floating-contact { position:fixed; bottom:20px; z-index:1000; cursor:pointer; }
     .market { text-align:center; margin-top:40px; max-width:1100px; }
     .market h2 { color:gold; font-size:28px; margin-bottom:20px; text-shadow:2px 2px 5px red; }
+    .service-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
     .service-card {
       background: rgba(0,0,0,0.6);
       border: 2px solid gold;
       border-radius: 12px;
       padding: 20px;
-      margin: 15px auto;
+      width: 300px;
       box-shadow: 0 0 12px red;
-      text-align:center;
+      text-align: center;
     }
     .service-card h3 { color: gold; margin-bottom: 10px; }
     .service-card p { font-size: 16px; margin-bottom: 12px; }
@@ -51,88 +57,80 @@
       box-shadow: 0 0 10px gold;
     }
     .service-card .button:hover { box-shadow: 0 0 20px red; }
+    .star {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: white;
+      animation: twinkle 1.5s infinite ease-in-out;
+      border-radius: 50%;
+      box-shadow: 0 0 8px white;
+      pointer-events: none;
+    }
+    .star.red {
+      background: red;
+      box-shadow: 0 0 8px red;
+    }
+    @keyframes twinkle {
+      0%,100% { opacity: 0.2; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
     @media(max-width:600px){
       h1{font-size:24px;} .button{font-size:18px; padding:12px 20px;}
       #clock{font-size:14px; padding:8px 10px;}
-      .service-card{padding:15px;}
+      .service-card{width:100%; max-width:320px;}
     }
   </style>
 </head>
 <body>
-  <!-- الساعة والتاريخ -->
   <div id="clock"><span id="time"></span> | <span id="date"></span></div>
 
-  <!-- شاشة ترحيب -->
   <h1>✨ مرحبًا بك في عالم مودي الزعيم ✨</h1>
   <p>هنا هتلاقي كل خدمات <strong>مودي الزعيم</strong> الخاصة بتطبيق تيليجرام.</p>
 
-  <!-- روابط أساسية -->
   <div class="buttons-row">
     <a class="button" href="contest.html">🏆 تحدي اليوم</a>
     <a class="button" href="https://t.me/Tooon_Ch" target="_blank">🧞‍♂️ وسيط سوبر تون</a>
     <a class="button" href="index.html">🔙 الرجوع للخلف</a>
   </div>
 
-  <!-- قسم الماركت -->
   <div class="market">
     <h2>🛒 ماركت تيليجرام</h2>
-
-    <div class="service-card">
-      <h3>📌 توثيق حسابات تيليجرام</h3>
-      <p>نوثق حسابك الرسمي بسرعة وسهولة.</p>
-      <a class="button" href="https://t.me/UD_6_M/2243" target="_blank">اذهب للخدمة</a>
-    </div>
-
-    <div class="service-card">
-      <h3>🌟 نجوم تيليجرام</h3>
-      <p>احصل على نجوم مميزة لحسابك.</p>
-      <a class="button" href="https://t.me/UD_6_M/2248" target="_blank">اذهب للخدمة</a>
-    </div>
-
-    <div class="service-card">
-      <h3>✅ الحسابات الموثقة</h3>
-      <p>تعرف على أسعار الحسابات الموثقة.</p>
-      <a class="button" href="https://t.me/UD_6_M/2180" target="_blank">اذهب للخدمة</a>
-    </div>
-
-    <div class="service-card">
-      <h3>📈 تزويد متابعين ومشاهدات</h3>
-      <p>زوّد التفاعل على قناتك أو مجموعتك.</p>
-      <a class="button" href="https://t.me/UD_6_M/2183" target="_blank">اذهب للخدمة</a>
-    </div>
-
-    <div class="service-card">
-      <h3>💰 عملات رقمية</h3>
-      <p>بيع واستقبال العملات الرقمية بسهولة.</p>
-      <a class="button" href="https://t.me/UD_6_M/2179" target="_blank">اذهب للخدمة</a>
-    </div>
-
-    <div class="service-card">
-      <h3>💳 طرق الدفع</h3>
-      <p>تعرف على طرق الدفع المتاحة.</p>
-      <a class="button" href="https://t.me/UD_6_M/2179" target="_blank">اذهب للخدمة</a>
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>📌 توثيق حسابات تيليجرام</h3>
+        <p>نوثق حسابك الرسمي بسرعة وسهولة.</p>
+        <a class="button" href="https://t.me/UD_6_M/2243" target="_blank">اذهب للخدمة</a>
+      </div>
+      <div class="service-card">
+        <h3>🌟 نجوم تيليجرام</h3>
+        <p>احصل على نجوم مميزة لحسابك.</p>
+        <a class="button" href="https://t.me/UD_6_M/2248" target="_blank">اذهب للخدمة</a>
+      </div>
+      <div class="service-card">
+        <h3>✅ الحسابات الموثقة</h3>
+        <p>تعرف على أسعار الحسابات الموثقة.</p>
+        <a class="button" href="https://t.me/UD_6_M/2180" target="_blank">اذهب للخدمة</a>
+      </div>
+      <div class="service-card">
+        <h3>📈 تزويد متابعين ومشاهدات</h3>
+        <p>زوّد التفاعل على قناتك أو مجموعتك.</p>
+        <a class="button" href="https://t.me/UD_6_M/2183" target="_blank">اذهب للخدمة</a>
+      </div>
+      <div class="service-card">
+        <h3>💰 عملات رقمية</h3>
+        <p>بيع واستقبال العملات الرقمية بسهولة.</p>
+        <a class="button" href="https://t.me/UD_6_M/2179" target="_blank">اذهب للخدمة</a>
+      </div>
+      <div class="service-card">
+        <h3>💳 طرق الدفع</h3>
+        <p>تعرف على طرق الدفع المتاحة.</p>
+        <a class="button" href="https://t.me/UD_6_M/2179" target="_blank">اذهب للخدمة</a>
+      </div>
     </div>
   </div>
 
-  <!-- أزرار التواصل -->
   <a href="https://wa.me/201274821083" target="_blank" class="floating-contact" style="right:20px; width:60px; height:60px; background-color:#25D366; border-radius:50%; box-shadow:0 0 15px #000;">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:30px; height:30px; margin:15px;">
   </a>
-  <a href="https://t.me/uuruuc" target="_blank" class="floating-contact" style="left:20px; width:60px; height:60px; background-color:#0088cc; border-radius:50%; box-shadow:0 0 15px #000;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" style="width:30px; height:30px; margin:15px;">
-  </a>
-
-  <!-- صوت عند الضغط -->
-  <audio id="clickSound" src="mixkit-cartoon-toy-whistle-616 (1).wav" preload="auto"></audio>
-
-  <script>
-    const buttons = document.querySelectorAll('.button');
-    const sound = document.getElementById('clickSound');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        if(sound){ sound.currentTime=0; sound.play().catch(()=>{}); }
-      });
-    });
-    function updateClock(){
-      const now=new Date();
-      document.getElementById
+  <a href="https://t.me/uuruuc" target="_blank" class="floating-contact" style="left:20px; width:60px; height
