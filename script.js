@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     info.classList.toggle('show');
   });
 
-  // تشغيل الصوت عند الضغط
+  // الصوت عند الضغط
   const sound = document.getElementById('clickSound');
   document.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('click', () => {
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateClock();
 
   // النجوم
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 80; i++) {
     const star = document.createElement("div");
     star.className = "star";
     if (Math.random() < 0.5) star.classList.add("red");
