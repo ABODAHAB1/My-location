@@ -1,18 +1,19 @@
 // إظهار الخدمات عند الضغط على السهم
-document.querySelector('.scroll-down').addEventListener('click', () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const arrow = document.querySelector('.scroll-down');
   const services = document.getElementById('services');
-  if (services.hasAttribute('hidden')) {
-    services.removeAttribute('hidden');
-    services.scrollIntoView({ behavior: 'smooth' });
-  }
-});
 
-// زر نبذة عن صانع الموقع
-document.getElementById('creator-btn').addEventListener('click', () => {
+  arrow.addEventListener('click', () => {
+    services.classList.add('show'); // يضيف الكلاس show علشان يظهر الخدمات
+    arrow.style.display = 'none';   // يخفي السهم بعد الضغط
+    services.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // زر نبذة عن صانع الموقع
+  const creatorBtn = document.getElementById('creator-btn');
   const info = document.getElementById('creator-info');
-  if (info.hasAttribute('hidden')) {
-    info.removeAttribute('hidden');
-  } else {
-    info.setAttribute('hidden', '');
-  }
+
+  creatorBtn.addEventListener('click', () => {
+    info.hidden = !info.hidden; // toggle إظهار/إخفاء النبذة
+  });
 });
