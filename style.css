@@ -69,12 +69,18 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
   border-radius: 10px;
   text-decoration: none;
   color: white;
-  width: 120px;
+  width: 140px;
   transition: transform 0.3s, background 0.3s;
 }
 .service img {
-  width: 40px;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
   margin-bottom: 10px;
+}
+.service span {
+  font-size: 14px;
+  font-weight: bold;
 }
 .service:hover {
   transform: scale(1.1);
@@ -114,4 +120,17 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
+}
+.whatsapp-contact:hover {
+  background: #128C7E;
+}
+
+/* تجاوب مع الموبايل */
+@media(max-width:600px){
+  header h1 { font-size: 1.8rem; }
+  header p { font-size: 1rem; }
+  .service { width: 100px; }
+  .service img { width: 60px; height: 60px; }
+  .service span { font-size: 12px; }
+  #creator-info { font-size: 0.9rem; }
 }
