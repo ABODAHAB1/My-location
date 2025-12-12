@@ -32,15 +32,15 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
 
 /* عداد الزوار */
 #visitor-count {
-  background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+  background: rgba(255,255,255,0.1);
   padding: 12px 20px;
   border-radius: 8px;
   margin: 15px auto;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
-  color: #333;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   width: fit-content;
 }
 
