@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <title>مسابقة محمود أبو الدهب</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
       font-family: "Tahoma", sans-serif;
-      background: linear-gradient(135deg, #1e3c72, #2a5298); /* خلفية رايقة */
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
       color: #fff;
       text-align: center;
       min-height: 100vh;
@@ -16,11 +16,6 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
     }
     #quiz-box {
       background: rgba(255,255,255,0.1);
@@ -41,10 +36,7 @@
       cursor: pointer;
       transition: 0.3s;
     }
-    .answer:hover {
-      background: #2a5298;
-      color: #fff;
-    }
+    .answer:hover { background: #2a5298; color: #fff; }
     #next-btn {
       margin-top: 15px;
       padding: 12px 25px;
@@ -56,35 +48,149 @@
       font-weight: bold;
       display: none;
     }
-    #next-btn:hover {
-      background: #e67e22;
-    }
-    #progress {
-      margin-bottom: 15px;
-      font-size: 1rem;
+    #next-btn:hover { background: #e67e22; }
+    #progress { margin-bottom: 15px; font-weight: bold; }
+    #result { margin-top: 15px; font-size: 1.2rem; font-weight: bold; }
+    .services { display: none; margin-top: 20px; }
+    .service { display: inline-block; margin: 10px; }
+    .service button {
+      display: block;
+      margin: 5px auto;
+      padding: 10px 15px;
+      background: #fff;
+      color: #2a5298;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
       font-weight: bold;
     }
-    #result {
-      margin-top: 15px;
-      font-size: 1.2rem;
-      font-weight: bold;
+    .service button:hover { background: #2a5298; color: #fff; }
+    #celebration {
+      position: fixed;
+      top:0;left:0;width:100%;height:100%;
+      background: rgba(0,0,0,0.6);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      font-size:2rem;
+      font-weight:bold;
+      color:#fff;
     }
   </style>
 </head>
 <body>
   <h1>🎉 مرحبًا بك في المسابقة</h1>
   <div id="quiz-box">
-    <p id="progress">السؤال 1 من 7</p>
-    <p id="question">ما هي عاصمة مصر؟</p>
-    <button class="answer">القاهرة</button>
-    <button class="answer">الإسكندرية</button>
-    <button class="answer">سوهاج</button>
+    <p id="progress"></p>
+    <p id="question"></p>
+    <div id="answers"></div>
     <p id="result"></p>
     <button id="next-btn">➡️ السؤال التالي</button>
   </div>
 
+  <div id="celebration">🎉 مبروك! كسبت خصم 70%</div>
+
+  <div class="services" id="gift-services">
+    <h2>اختر هديتك</h2>
+    <div class="service">
+      <span>إنستجرام</span>
+      <button onclick="goWhatsApp()">تزويد متابعين</button>
+      <button onclick="goWhatsApp()">مشاهدات</button>
+    </div>
+    <div class="service">
+      <span>تيك توك</span>
+      <button onclick="goWhatsApp()">تزويد متابعين</button>
+      <button onclick="goWhatsApp()">مشاهدات</button>
+    </div>
+    <div class="service">
+      <span>فيسبوك</span>
+      <button onclick="goWhatsApp()">تزويد متابعين</button>
+      <button onclick="goWhatsApp()">مشاهدات</button>
+    </div>
+    <div class="service">
+      <span>تليجرام</span>
+      <button onclick="goWhatsApp()">تزويد متابعين</button>
+      <button onclick="goWhatsApp()">مشاهدات</button>
+    </div>
+  </div>
+
   <script>
-    // هنا هنضيف منطق الأسئلة لاحقًا
+    const questions = [
+      {q:"ما هو العنصر الكيميائي الذي رمزه O؟",a:["أكسجين","ذهب","حديد"],correct:"أكسجين"},
+      {q:"ما هي الدولة التي تُعرف بـ بلاد الشمس المشرقة؟",a:["اليابان","الصين","كوريا"],correct:"اليابان"},
+      {q:"أي منتخب فاز بكأس العالم 2018؟",a:["فرنسا","البرازيل","ألمانيا"],correct:"فرنسا"},
+      {q:"من هو اللاعب الذي يُلقب بـ البرغوث؟",a:["ميسي","رونالدو","نيمار"],correct:"ميسي"},
+      {q:"ما هو أكبر محيط في العالم؟",a:["المحيط الهادي","المحيط الأطلسي","المحيط الهندي"],correct:"المحيط الهادي"},
+      {q:"ما هي اللغة الرسمية في البرازيل؟",a:["البرتغالية","الإسبانية","الإنجليزية"],correct:"البرتغالية"},
+      {q:"من هو مؤسس شركة مايكروسوفت؟",a:["بيل جيتس","ستيف جوبز","إيلون ماسك"],correct:"بيل جيتس"},
+      {q:"من هو مخرج فيلم تيتانيك؟",a:["جيمس كاميرون","ستيفن سبيلبرغ","كريستوفر نولان"],correct:"جيمس كاميرون"},
+      {q:"أي دولة تُقام فيها مهرجانات كان السينمائية؟",a:["فرنسا","إيطاليا","أمريكا"],correct:"فرنسا"}
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    const progress = document.getElementById("progress");
+    const questionEl = document.getElementById("question");
+    const answersEl = document.getElementById("answers");
+    const resultEl = document.getElementById("result");
+    const nextBtn = document.getElementById("next-btn");
+    const celebration = document.getElementById("celebration");
+    const giftServices = document.getElementById("gift-services");
+
+    function showQuestion() {
+      progress.textContent = `السؤال ${current+1} من ${questions.length}`;
+      questionEl.textContent = questions[current].q;
+      answersEl.innerHTML = "";
+      questions[current].a.forEach(ans=>{
+        const btn=document.createElement("button");
+        btn.className="answer";
+        btn.textContent=ans;
+        btn.onclick=()=>checkAnswer(ans);
+        answersEl.appendChild(btn);
+      });
+      resultEl.textContent="";
+      nextBtn.style.display="none";
+    }
+
+    function checkAnswer(ans) {
+      if(ans===questions[current].correct){
+        score++;
+        resultEl.textContent="✅ إجابة صحيحة";
+        nextBtn.style.display="inline-block";
+      } else {
+        resultEl.textContent="❌ حاول مرة أخرى، لقد بذلت جهد ونشكرك على المشاركة.";
+        disableAnswers();
+      }
+    }
+
+    function disableAnswers(){
+      document.querySelectorAll(".answer").forEach(b=>b.disabled=true);
+    }
+
+    nextBtn.onclick=()=>{
+      current++;
+      if(current<questions.length){
+        showQuestion();
+      } else {
+        if(score===questions.length){
+          // فاز
+          celebration.style.display="flex";
+          setTimeout(()=>{
+            celebration.style.display="none";
+            giftServices.style.display="block";
+          },3000);
+        } else {
+          resultEl.textContent="❌ حاول مرة أخرى، لقد بذلت جهد ونشكرك على المشاركة.";
+        }
+      }
+    }
+
+    function goWhatsApp(){
+      window.location.href="https://wa.me/201274821083";
+    }
+
+    showQuestion();
   </script>
 </body>
 </html>
