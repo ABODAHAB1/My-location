@@ -17,14 +17,26 @@
       text-align: center;
       margin: 10px 0;
     }
+    .contest-entry a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
     .contest-entry img {
-      width: 180px;
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(255,255,255,0.6);
       transition: 0.3s ease;
     }
     .contest-entry img:hover {
       transform: scale(1.05);
+    }
+    .contest-icon {
+      width: 60px;
+      height: 60px;
+    }
+    .contest-button {
+      width: 160px;
     }
   </style>
 </head>
@@ -48,16 +60,16 @@
   <!-- عداد تنازلي للمسابقة -->
   <div id="contest-timer">⏳ تبقى <span id="countdown">48:00:00</span> على انتهاء المسابقة</div>
 
-  <!-- زر المسابقة -->
+  <!-- زر دخول المسابقة -->
   <section class="contest-entry" id="contest-entry">
     <a href="contest.html">
-      <img src="https://iili.io/f7eZjPp.th.jpg" alt="مسابقة">
+      <img src="https://iili.io/f7eZjPp.th.jpg" alt="زر دخول" class="contest-button">
+      <img src="https://iili.io/sbpGRfK8SgMZu8o49Bhau.png" alt="كأس الفوز" class="contest-icon">
     </a>
   </section>
 
   <!-- الخدمات -->
   <section class="services show" id="services">
-    <!-- باقي الخدمات زي ما هي -->
     <a href="telegram.html" class="service"><img src="https://iili.io/f5iX49t.th.jpg" alt="تلجرام"><span>تلجرام</span></a>
     <a href="facebook.html" class="service"><img src="https://iili.io/f5ijI7S.th.jpg" alt="فيسبوك"><span>فيسبوك</span></a>
     <a href="whatsapp.html" class="service"><img src="https://iili.io/f5iwfyP.th.jpg" alt="واتساب"><span>واتساب</span></a>
