@@ -6,7 +6,6 @@ body {
   color: white;
   text-align: center;
   overflow-x: hidden;
-  overflow-y: hidden;
 }
 
 /* شاشة الترحيب */
@@ -82,7 +81,7 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
   text-decoration: none;
   color: white;
   width: 140px;
-  transition: transform 0.3s, background 0.3s;
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
 }
 .service img {
   width: 70px;
@@ -99,15 +98,40 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
   background: rgba(255,255,255,0.2);
 }
 
+/* تأثير Glow للأيقونات حسب نوعها */
+.service.instagram:hover {
+  box-shadow: 0 0 15px #E1306C;
+}
+.service.tiktok:hover {
+  box-shadow: 0 0 15px #69C9D0;
+}
+.service.youtube:hover {
+  box-shadow: 0 0 15px #FF0000;
+}
+.service.whatsapp:hover {
+  box-shadow: 0 0 15px #25D366;
+}
+.service.facebook:hover {
+  box-shadow: 0 0 15px #1877F2;
+}
+.service.telegram:hover {
+  box-shadow: 0 0 15px #0088cc;
+}
+
 /* زر النبذة */
 .about button {
   padding: 12px 25px;
   border: none;
   border-radius: 8px;
-  background: #ff9800;
+  background: linear-gradient(135deg, #8e2de2, #ff6ec4);
   color: white;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+  transition: background 0.3s, transform 0.3s;
+}
+.about button:hover {
+  transform: scale(1.05);
 }
 
 /* محتوى النبذة */
