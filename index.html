@@ -26,10 +26,16 @@
       border-radius: 8px;
       cursor: pointer;
       transition: 0.3s;
+      animation: pulse 2s infinite;
     }
     .contest-entry a button:hover {
       background: #2a5298;
       transform: scale(1.05);
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0px rgba(255,255,255,0.5); }
+      50% { box-shadow: 0 0 15px rgba(255,255,255,0.8); }
+      100% { box-shadow: 0 0 0px rgba(255,255,255,0.5); }
     }
   </style>
 </head>
@@ -39,16 +45,16 @@
     🕒 <span id="time"></span> | 📅 <span id="date"></span>
   </div>
 
+  <!-- شاشة الترحيب -->
+  <header>
+    <h1>✨ أهلاً بيك ✨</h1>
+    <p>بإذن الله أقدر أخدمك في المجالات اللي تحت دي</p>
+  </header>
+
   <!-- عداد الزوار -->
   <div id="visitor-count">
     👥 عدد الزوار: <span id="visit-counter"></span>
   </div>
-
-  <!-- شاشة الترحيب -->
-  <header>
-    <h1> </h1>
-    <p>بإذن الله أقدر أخدمك في المجالات اللي تحت دي</p>
-  </header>
 
   <!-- مسافة بسيطة -->
   <div style="height: 30px;"></div>
@@ -65,12 +71,12 @@
 
   <!-- الخدمات -->
   <section class="services show" id="services">
-    <a href="telegram.html" class="service"><img src="https://iili.io/f5iX49t.th.jpg" alt="تلجرام"><span>تلجرام</span></a>
-    <a href="facebook.html" class="service"><img src="https://iili.io/f5ijI7S.th.jpg" alt="فيسبوك"><span>فيسبوك</span></a>
-    <a href="whatsapp.html" class="service"><img src="https://iili.io/f5iwfyP.th.jpg" alt="واتساب"><span>واتساب</span></a>
-    <a href="youtube.html" class="service"><img src="https://iili.io/f5iN2xn.th.jpg" alt="يوتيوب"><span>يوتيوب</span></a>
-    <a href="instagram.html" class="service"><img src="https://iili.io/f5aoS71.md.jpg" alt="إنستجرام"><span>إنستجرام</span></a>
-    <a href="tiktok.html" class="service"><img src="https://iili.io/f5aIAe1.md.jpg" alt="تيك توك"><span>تيك توك</span></a>
+    <a href="telegram.html" class="service telegram"><img src="https://iili.io/f5iX49t.th.jpg" alt="تلجرام"><span>تلجرام</span></a>
+    <a href="facebook.html" class="service facebook"><img src="https://iili.io/f5ijI7S.th.jpg" alt="فيسبوك"><span>فيسبوك</span></a>
+    <a href="whatsapp.html" class="service whatsapp"><img src="https://iili.io/f5iwfyP.th.jpg" alt="واتساب"><span>واتساب</span></a>
+    <a href="youtube.html" class="service youtube"><img src="https://iili.io/f5iN2xn.th.jpg" alt="يوتيوب"><span>يوتيوب</span></a>
+    <a href="instagram.html" class="service instagram"><img src="https://iili.io/f5aoS71.md.jpg" alt="إنستجرام"><span>إنستجرام</span></a>
+    <a href="tiktok.html" class="service tiktok"><img src="https://iili.io/f5aIAe1.md.jpg" alt="تيك توك"><span>تيك توك</span></a>
     <a href="other.html" class="service"><img src="https://iili.io/f5au6fj.md.jpg" alt="خدمات أخرى"><span>خدمات أخرى</span></a>
   </section>
 
@@ -129,4 +135,3 @@
   </script>
 </body>
 </html>
-
