@@ -17,26 +17,19 @@
       text-align: center;
       margin: 10px 0;
     }
-    .contest-entry a {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
+    .contest-entry a button {
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      background: #ff9800;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
     }
-    .contest-entry img {
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(255,255,255,0.6);
-      transition: 0.3s ease;
-    }
-    .contest-entry img:hover {
+    .contest-entry a button:hover {
+      background: #e67e22;
       transform: scale(1.05);
-    }
-    .contest-icon {
-      width: 60px;
-      height: 60px;
-    }
-    .contest-button {
-      width: 160px;
     }
   </style>
 </head>
@@ -63,8 +56,7 @@
   <!-- زر دخول المسابقة -->
   <section class="contest-entry" id="contest-entry">
     <a href="contest.html">
-      <img src="https://iili.io/f7eZjPp.th.jpg" alt="زر دخول" class="contest-button">
-      <img src="https://iili.io/sbpGRfK8SgMZu8o49Bhau.png" alt="كأس الفوز" class="contest-icon">
+      <button>🎉 دخول المسابقة</button>
     </a>
   </section>
 
