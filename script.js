@@ -43,11 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateClock, 1000);
   updateClock();
 
-  // النجوم المتحركة
+  // النجوم المتحركة (بيضاء فقط)
   for (let i = 0; i < 80; i++) {
     const star = document.createElement("div");
     star.className = "star";
-    star.classList.add(Math.random() < 0.5 ? "red" : "blue");
     star.style.top = Math.random() * window.innerHeight + "px";
     star.style.left = Math.random() * window.innerWidth + "px";
     document.body.appendChild(star);
