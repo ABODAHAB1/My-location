@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>مسابقة محمود أبو الدهب</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Tahoma", sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298); /* خلفية رايقة */
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    }
+    #quiz-box {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      max-width: 90%;
+    }
+    .answer {
+      display: block;
+      margin: 10px auto;
+      padding: 12px 20px;
+      background: #fff;
+      color: #2a5298;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .answer:hover {
+      background: #2a5298;
+      color: #fff;
+    }
+    #next-btn {
+      margin-top: 15px;
+      padding: 12px 25px;
+      background: #ff9800;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      display: none;
+    }
+    #next-btn:hover {
+      background: #e67e22;
+    }
+    #progress {
+      margin-bottom: 15px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    #result {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 مرحبًا بك في المسابقة</h1>
+  <div id="quiz-box">
+    <p id="progress">السؤال 1 من 7</p>
+    <p id="question">ما هي عاصمة مصر؟</p>
+    <button class="answer">القاهرة</button>
+    <button class="answer">الإسكندرية</button>
+    <button class="answer">سوهاج</button>
+    <p id="result"></p>
+    <button id="next-btn">➡️ السؤال التالي</button>
+  </div>
+
+  <script>
+    // هنا هنضيف منطق الأسئلة لاحقًا
+  </script>
+</body>
+</html>
