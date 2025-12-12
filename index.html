@@ -5,6 +5,28 @@
   <title>MAHMOUD ABODAHAB</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    #contest-timer {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #fff;
+      margin-top: 20px;
+    }
+    .contest-entry {
+      text-align: center;
+      margin: 10px 0;
+    }
+    .contest-entry img {
+      width: 180px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.6);
+      transition: 0.3s ease;
+    }
+    .contest-entry img:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
   <!-- الساعة والتاريخ -->
@@ -23,41 +45,23 @@
     <p>بإذن الله أقدر أخدمك في المجالات اللي تحت دي</p>
   </header>
 
+  <!-- عداد تنازلي للمسابقة -->
+  <div id="contest-timer">⏳ تبقى <span id="countdown">48:00:00</span> على انتهاء المسابقة</div>
+
   <!-- زر المسابقة -->
-  <section class="contest-entry">
+  <section class="contest-entry" id="contest-entry">
     <a href="contest.html">
-      <img src="https://iili.io/f7eZjPp.th.jpg" alt="مسابقة" 
-           style="width:180px;border-radius:12px;box-shadow:0 0 15px rgba(255,255,255,0.6);margin:20px auto;display:block;">
+      <img src="https://iili.io/f7eZjPp.th.jpg" alt="مسابقة">
     </a>
   </section>
 
   <!-- الخدمات -->
   <section class="services show" id="services">
-    <!-- تلجرام -->
-    <a href="telegram.html" class="service">
-      <img src="https://iili.io/f5iX49t.th.jpg" alt="تلجرام">
-      <span>تلجرام</span>
-    </a>
-
-    <!-- فيسبوك -->
-    <a href="facebook.html" class="service">
-      <img src="https://iili.io/f5ijI7S.th.jpg" alt="فيسبوك">
-      <span>فيسبوك</span>
-    </a>
-
-    <!-- واتساب -->
-    <a href="whatsapp.html" class="service">
-      <img src="https://iili.io/f5iwfyP.th.jpg" alt="واتساب">
-      <span>واتساب</span>
-    </a>
-
-    <!-- يوتيوب -->
-    <a href="youtube.html" class="service">
-      <img src="https://iili.io/f5iN2xn.th.jpg" alt="يوتيوب">
-      <span>يوتيوب</span>
-    </a>
-
     <!-- باقي الخدمات زي ما هي -->
+    <a href="telegram.html" class="service"><img src="https://iili.io/f5iX49t.th.jpg" alt="تلجرام"><span>تلجرام</span></a>
+    <a href="facebook.html" class="service"><img src="https://iili.io/f5ijI7S.th.jpg" alt="فيسبوك"><span>فيسبوك</span></a>
+    <a href="whatsapp.html" class="service"><img src="https://iili.io/f5iwfyP.th.jpg" alt="واتساب"><span>واتساب</span></a>
+    <a href="youtube.html" class="service"><img src="https://iili.io/f5iN2xn.th.jpg" alt="يوتيوب"><span>يوتيوب</span></a>
     <a href="instagram.html" class="service"><img src="https://iili.io/f5aoS71.md.jpg" alt="إنستجرام"><span>إنستجرام</span></a>
     <a href="tiktok.html" class="service"><img src="https://iili.io/f5aIAe1.md.jpg" alt="تيك توك"><span>تيك توك</span></a>
     <a href="other.html" class="service"><img src="https://iili.io/f5au6fj.md.jpg" alt="خدمات أخرى"><span>خدمات أخرى</span></a>
@@ -92,5 +96,26 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
   <script src="script.js"></script>
+
+  <!-- عداد تنازلي للمسابقة -->
+  <script>
+    const countdownEl = document.getElementById("countdown");
+    const contestEntry = document.getElementById("contest-entry");
+    let totalSeconds = 48 * 60 * 60;
+
+    const timer = setInterval(() => {
+      totalSeconds--;
+      const hrs = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+      const mins = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+      const secs = String(totalSeconds % 60).padStart(2, '0');
+      countdownEl.textContent = `${hrs}:${mins}:${secs}`;
+
+      if (totalSeconds <= 0) {
+        clearInterval(timer);
+        contestEntry.style.display = "none";
+        document.getElementById("contest-timer").textContent = "انتهت المسابقة 🎉";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
