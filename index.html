@@ -11,27 +11,12 @@
   <link rel="apple-touch-icon" href="https://iili.io/fXKDmiX.th.png">
 
   <style>
+    /* مكان أداة الترجمة */
     #google_translate_element {
       position: absolute;
       top: 10px;
       right: 10px;
       z-index: 9999;
-    }
-    /* شكل زر السعر */
-    #tonPriceBtn {
-      background-color: #2ecc71;
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 18px;
-      border-radius: 8px;
-      cursor: default;
-      margin-top: 20px;
-    }
-    #tonPrice {
-      margin-top: 10px;
-      font-size: 20px;
-      font-weight: bold;
     }
   </style>
 </head>
@@ -55,24 +40,36 @@
     👥 عدد الزوار: <span id="visit-counter"></span>
   </div>
 
-  <!-- زر عرض السعر -->
-  <div>
-    <button id="tonPriceBtn">💰 سعر TON المباشر</button>
-    <p id="tonPrice">جاري التحميل...</p>
-  </div>
+  <!-- مسافة بسيطة -->
+  <div style="height: 30px;"></div>
 
-  <!-- باقي الأقسام زي ما هي -->
+  <!-- الخدمات -->
   <section class="services show" id="services">
-    <!-- روابط الخدمات -->
+    <a href="telegram.html" class="service telegram"><img src="https://iili.io/f5iX49t.th.jpg" alt="تلجرام"><span>تلجرام</span></a>
+    <a href="facebook.html" class="service facebook"><img src="https://iili.io/f5ijI7S.th.jpg" alt="فيسبوك"><span>فيسبوك</span></a>
+    <a href="whatsapp.html" class="service whatsapp"><img src="https://iili.io/f5iwfyP.th.jpg" alt="واتساب"><span>واتساب</span></a>
+    <a href="youtube.html" class="service youtube"><img src="https://iili.io/f5iN2xn.th.jpg" alt="يوتيوب"><span>يوتيوب</span></a>
+    <a href="instagram.html" class="service instagram"><img src="https://iili.io/f5aoS71.md.jpg" alt="إنستجرام"><span>إنستجرام</span></a>
+    <a href="tiktok.html" class="service tiktok"><img src="https://iili.io/f5aIAe1.md.jpg" alt="تيك توك"><span>تيك توك</span></a>
+    <a href="other.html" class="service"><img src="https://iili.io/f5au6fj.md.jpg" alt="خدمات أخرى"><span>خدمات أخرى</span></a>
   </section>
 
+  <!-- نبذة عن صانع الموقع -->
   <section class="about show" id="about-section">
     <button id="creator-btn">💻 نبذة عن صانع الموقع</button>
     <div id="creator-info">
-      <p>محتوى النبذة...</p>
+      <p>
+        مطوّر بخبرة في تقديم حلول رقمية متكاملة، بخلي حضورك الرقمي أقوى وأسهل.  
+        بخدماتي هتلاقي كل اللي محتاجه: توثيق الحسابات، زيادة الأعضاء والتفاعل،  
+        مشاهدات ولايكات، وتصميم وتطوير مواقع ويب بشكل احترافي.  
+        🌟 هدفي إنك تكون مميز في المجالات اللي تستحقها،  
+        وكل ده هتلاقيه فوق في قسم الخدمات، وكمان بيكون في سحب أسبوعي على جوائز.  
+        🚀 متفوتش الفرصة، كل يوم في جديد بيستناك هنا!
+      </p>
     </div>
   </section>
 
+  <!-- تواصل واتساب -->
   <section class="contact show" id="contact-section">
     <a href="https://wa.me/201155820103" target="_blank" class="whatsapp-contact">📱 تواصل واتساب</a>
   </section>
@@ -81,15 +78,16 @@
     <p>جميع الحقوق محفوظة © MAHMOUD ABODAHAB</p>
   </footer>
 
+  <!-- صوت عند الضغط -->
   <audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
 
-  <!-- Firebase -->
+  <!-- مكتبات Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
   <script src="script.js"></script>
 
-  <!-- الترجمة -->
+  <!-- كود الترجمة -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement(
