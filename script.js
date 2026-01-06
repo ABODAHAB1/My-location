@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (creatorBtn) {
     creatorBtn.addEventListener('click', () => {
       info.classList.toggle('show');
+      // تغيير نص الزر حسب الحالة
       creatorBtn.textContent = info.classList.contains('show')
         ? "إخفاء النبذة"
         : "💻 نبذة عن صانع الموقع";
@@ -42,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateClock, 1000);
   updateClock();
 
-  // النجوم المتحركة
+  // النجوم المتحركة (بيضاء فقط)
   for (let i = 0; i < 80; i++) {
     const star = document.createElement("div");
     star.className = "star";
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(star);
   }
 
-  // عداد الزوار باستخدام Firebase
+  // عداد الزوار باستخدام Firebase Firestore
   const firebaseConfig = {
     apiKey: "AIzaSyDg3HhwgnQQn_JOjXCGyCQP8YHF5FN8bE0",
     authDomain: "abodahab-4d14e.firebaseapp.com",
@@ -83,20 +84,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   updateCounterAndShow();
-
-  // 🔹 جلب سعر TON من Binance
-  async function updateTonPrice() {
-    try {
-      const response = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=TONUSDT");
-      const data = await response.json();
-      document.getElementById("tonPrice").textContent = `سعر TON الحالي: $${parseFloat(data.price).toFixed(3)}`;
-    } catch (error) {
-      document.getElementById("tonPrice").textContent = "تعذر جلب السعر الآن.";
-      console.error("TON price error:", error);
-    }
-  }
-
-  // تحديث السعر كل 30 ثانية تلقائيًا
-  setInterval(updateTonPrice, 30000);
-  updateTonPrice();
 });
