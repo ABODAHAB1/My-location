@@ -18,6 +18,22 @@
       right: 10px;
       z-index: 9999;
     }
+    /* شكل زر السعر */
+    #tonPriceBtn {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: default;
+      margin-top: 20px;
+    }
+    #tonPrice {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -40,8 +56,11 @@
     👥 عدد الزوار: <span id="visit-counter"></span>
   </div>
 
-  <!-- مسافة بسيطة -->
-  <div style="height: 30px;"></div>
+  <!-- زر عرض السعر -->
+  <div>
+    <button id="tonPriceBtn">💰 سعر TON المباشر</button>
+    <p id="tonPrice">جاري التحميل...</p>
+  </div>
 
   <!-- الخدمات -->
   <section class="services show" id="services">
@@ -103,4 +122,3 @@
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
-
