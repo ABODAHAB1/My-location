@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (creatorBtn) {
     creatorBtn.addEventListener('click', () => {
       info.classList.toggle('show');
-      // تغيير نص الزر حسب الحالة
       creatorBtn.textContent = info.classList.contains('show')
         ? "إخفاء النبذة"
         : "💻 نبذة عن صانع الموقع";
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateClock, 1000);
   updateClock();
 
-  // النجوم المتحركة (بيضاء فقط)
+  // النجوم المتحركة
   for (let i = 0; i < 80; i++) {
     const star = document.createElement("div");
     star.className = "star";
@@ -76,12 +75,4 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       const snap = await counterRef.get();
       const data = snap.data() || { count: 1 };
-      document.getElementById("visit-counter").textContent = data.count;
-    } catch (e) {
-      document.getElementById("visit-counter").textContent = "خطأ في العداد";
-      console.error("Counter error:", e);
-    }
-  }
-
-  updateCounterAndShow();
-});
+      document.getElementById("visit-counter").textContent = data
