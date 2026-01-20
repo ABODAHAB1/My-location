@@ -1,95 +1,183 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <title>KMD</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+/* الأساسيات */
+body {
+  font-family: 'Tahoma', sans-serif;
+  margin: 0;
+  background: linear-gradient(to bottom, #000000, #0f2027, #203a43, #2c5364);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
 
-  <!-- أيقونة اللوجو KMD -->
-  <link rel="icon" type="image/png" href="https://iili.io/fXKDmiX.th.png">
-  <link rel="apple-touch-icon" href="https://iili.io/fXKDmiX.th.png">
-</head>
-<body>
-  <!-- أزرار الترجمة اليدوية -->
-  <div id="lang-switcher">
-    <button class="lang-btn" onclick="switchLanguage('ar')">عربي</button>
-    <button class="lang-btn" onclick="switchLanguage('en')">English</button>
-    <button class="lang-btn" onclick="switchLanguage('fr')">Français</button>
-  </div>
+/* شاشة الترحيب */
+header {
+  padding: 60px 20px;
+}
+header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+header p { font-size: 1.2rem; margin-bottom: 20px; }
 
-  <!-- زر دخول المشرف -->
-  <div id="admin-area">
-    <button class="admin-btn" onclick="showAdminLogin()">🔐 دخول المشرف</button>
-  </div>
+/* الساعة */
+#clock {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+  color: #fff;
+  z-index: 999;
+}
 
-  <!-- الساعة والتاريخ -->
-  <div id="clock">
-    🕒 <span id="time"></span> | 📅 <span id="date"></span>
-  </div>
+/* عداد الزوار */
+#visitor-count {
+  background: rgba(255,255,255,0.1);
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 15px auto;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  width: fit-content;
+}
 
-  <!-- شاشة الترحيب -->
-  <header>
-    <h1></h1>
-    <p id="welcome-text">بإذن الله أقدر أخدمك في المجالات اللي تحت دي</p>
-  </header>
+/* النجوم */
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  animation: twinkle 2s infinite ease-in-out;
+  border-radius: 50%;
+  box-shadow: 0 0 6px white;
+  pointer-events: none;
+}
+@keyframes twinkle {
+  0%,100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
 
-  <!-- عداد الزوار -->
-  <div id="visitor-count">
-    👥 عدد الزوار: <span id="visit-counter"></span>
-  </div>
+/* الأقسام */
+.services, .about, .contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 50px 0;
+  opacity: 1;
+}
 
-  <!-- الخدمات -->
-  <section class="services show" id="services">
-    <a href="telegram.html" class="service telegram" id="telegram-service">
-      <img src="https://iili.io/f5iX49t.th.jpg" alt="تلجرام"><span>تلجرام</span>
-    </a>
-    <a href="facebook.html" class="service facebook"><img src="https://iili.io/f5ijI7S.th.jpg" alt="فيسبوك"><span>فيسبوك</span></a>
-    <a href="whatsapp.html" class="service whatsapp"><img src="https://iili.io/f5iwfyP.th.jpg" alt="واتساب"><span>واتساب</span></a>
-    <a href="youtube.html" class="service youtube"><img src="https://iili.io/f5iN2xn.th.jpg" alt="يوتيوب"><span>يوتيوب</span></a>
-    <a href="instagram.html" class="service instagram"><img src="https://iili.io/f5aoS71.md.jpg" alt="إنستجرام"><span>إنستجرام</span></a>
-    <a href="tiktok.html" class="service tiktok"><img src="https://iili.io/f5aIAe1.md.jpg" alt="تيك توك"><span>تيك توك</span></a>
-    <a href="other.html" class="service"><img src="https://iili.io/f5au6fj.md.jpg" alt="خدمات أخرى"><span>انشاء موقع ويب</span></a>
-  </section>
+/* الخدمات */
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  width: 140px;
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+}
+.service img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.service span {
+  font-size: 14px;
+  font-weight: bold;
+}
+.service:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.2);
+}
 
-  <!-- أدوات تعديل تلجرام (تظهر للمشرف فقط) -->
-  <section id="telegram-admin" style="display:none; margin:20px;">
-    <h3>إدارة خدمة تلجرام</h3>
-    <button onclick="removeTelegram()">❌ حذف تلجرام</button>
-    <button onclick="addTelegram()">➕ إضافة تلجرام</button>
-  </section>
+/* تأثير Glow للأيقونات حسب نوعها */
+.service.instagram:hover {
+  box-shadow: 0 0 15px #E1306C;
+}
+.service.tiktok:hover {
+  box-shadow: 0 0 15px #69C9D0;
+}
+.service.youtube:hover {
+  box-shadow: 0 0 15px #FF0000;
+}
+.service.whatsapp:hover {
+  box-shadow: 0 0 15px #25D366;
+}
+.service.facebook:hover {
+  box-shadow: 0 0 15px #1877F2;
+}
+.service.telegram:hover {
+  box-shadow: 0 0 15px #0088cc;
+}
 
-  <!-- نبذة عن صانع الموقع -->
-  <section class="about show" id="about-section">
-    <button id="creator-btn">💻 نبذة عن صانع الموقع</button>
-    <div id="creator-info">
-      <p>
-        مطوّر بخبرة في تقديم حلول رقمية متكاملة، بخلي حضورك الرقمي أقوى وأسهل.  
-        بخدماتي هتلاقي كل اللي محتاجه: توثيق الحسابات، زيادة الأعضاء والتفاعل،  
-        مشاهدات ولايكات، وتصميم وتطوير مواقع ويب بشكل احترافي.  
-        🌟 هدفي إنك تكون مميز في المجالات اللي تستحقها،  
-        وكل ده هتلاقيه فوق في قسم الخدمات، وكمان بيكون في سحب أسبوعي على جوائز.  
-        🚀 متفوتش الفرصة، كل يوم في جديد بيستناك هنا!
-      </p>
-    </div>
-  </section>
+/* زر النبذة */
+.about button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #8e2de2, #ff6ec4);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+  transition: background 0.3s, transform 0.3s;
+}
+.about button:hover {
+  transform: scale(1.05);
+}
 
-  <!-- تواصل واتساب -->
-  <section class="contact show" id="contact-section">
-    <a href="https://wa.me/201155820103" target="_blank" class="whatsapp-contact">📱 واتساب</a>
-  </section>
+/* محتوى النبذة */
+#creator-info {
+  display: none;
+  background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+  max-width: 600px;
+  line-height: 1.8;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  color: #333;
+  text-align: center;
+}
+#creator-info.show {
+  display: block;
+}
+#creator-info p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  text-align: center;
+}
 
-  <footer>
-    <p>جميع الحقوق محفوظة © MAHMOUD ABODAHAB</p>
-  </footer>
+/* زر واتساب */
+.whatsapp-contact {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #25D366;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.whatsapp-contact:hover {
+  background: #128C7E;
+}
 
-  <!-- صوت عند الضغط -->
-  <audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
-
-  <!-- مكتبات Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-
-  <script src="script.js"></script>
-</body>
-</html>
+/* تجاوب مع الموبايل */
+@media(max-width:600px){
+  header h1 { font-size: 1.8rem; }
+  header p { font-size: 1rem; }
+  .service { width: 100px; }
+  .service img { width: 60px; height: 60px; }
+  .service span { font-size: 12px; }
+  #creator-info { font-size: 0.9rem; }
+}
