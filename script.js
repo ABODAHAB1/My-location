@@ -100,23 +100,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // تأكيد كلمة السر
     adminSubmit.addEventListener("click", async () => {
-      const inputPass = document.getElementById("admin-password").value;
+      const inputPass = document.getElementById("admin-password").value.trim();
       try {
         const doc = await db.collection("admin").doc("login").get();
 
-        // ✅ هنا التعديل: طباعة القيم في الـ Console
-        console.log("كلمة السر المدخلة:", inputPass);
-        console.log("كلمة السر المحفوظة في Firestore:", doc.data());
+        if (doc.exists) {
+          const savedPass = (doc.data().password || "").trim();
 
-        if (doc.exists && inputPass === doc.data().password) {
-          alert("✅ تم تسجيل الدخول بنجاح");
-          // إظهار خدمات تلجرام فقط
-          document.querySelectorAll(".service").forEach(el => {
-            if (!el.classList.contains("telegram")) {
-              el.style.display = "none";
-            }
-          });
-          adminModal.style.display = "none";
+          // ✅ هنا التعديل: طباعة القيم في الـ Console
+          console.log("كلمة السر المدخلة:", inputPass);
+          console.log("كلمة السر المحفوظة في Firestore:", savedPass);
+
+          if (inputPass.toLowerCase() === savedPass.toLowerCase()) {
+            alert("✅ تم تسجيل الدخول بنجاح");
+            // إظهار خدمات تلجرام فقط
+            document.querySelectorAll(".service").forEach(el => {
+              if (!el.classList.contains("telegram")) {
+                el.style.display = "none";
+              }
+            });
+            adminModal.style.display = "none";
+          } else {
+            adminError.style.display = "block";
+          }
         } else {
           adminError.style.display = "block";
         }
