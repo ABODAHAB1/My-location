@@ -1,4 +1,4 @@
-() => {
+document.addEventListener("DOMContentLoaded", () => {
   // زر نبذة عن صانع الموقع
   const creatorBtn = document.getElementById('creator-btn');
   const info = document.getElementById('creator-info');
