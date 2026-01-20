@@ -1,87 +1,95 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // زر نبذة عن صانع الموقع
-  const creatorBtn = document.getElementById('creator-btn');
-  const info = document.getElementById('creator-info');
-  if (creatorBtn) {
-    creatorBtn.addEventListener('click', () => {
-      info.classList.toggle('show');
-      // تغيير نص الزر حسب الحالة
-      creatorBtn.textContent = info.classList.contains('show')
-        ? "إخفاء النبذة"
-        : "💻 نبذة عن صانع الموقع";
-    });
-  }
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>KMD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 
-  // الصوت عند الضغط
-  const sound = document.getElementById('clickSound');
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('click', () => {
-      if (sound) {
-        sound.currentTime = 0;
-        sound.play().catch(() => {});
-      }
-    });
-  });
+  <!-- أيقونة اللوجو KMD -->
+  <link rel="icon" type="image/png" href="https://iili.io/fXKDmiX.th.png">
+  <link rel="apple-touch-icon" href="https://iili.io/fXKDmiX.th.png">
+</head>
+<body>
+  <!-- أزرار الترجمة اليدوية -->
+  <div id="lang-switcher">
+    <button class="lang-btn" onclick="switchLanguage('ar')">عربي</button>
+    <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+    <button class="lang-btn" onclick="switchLanguage('fr')">Français</button>
+  </div>
 
-  // الساعة والتاريخ
-  function updateClock() {
-    const now = new Date();
-    const time = now.toLocaleTimeString('ar-EG', {
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
-    });
-    const date = now.toLocaleDateString('ar-EG', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'numeric',
-      day: 'numeric'
-    });
-    document.getElementById("time").textContent = time;
-    document.getElementById("date").textContent = date;
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
+  <!-- زر دخول المشرف -->
+  <div id="admin-area">
+    <button class="admin-btn" onclick="showAdminLogin()">🔐 دخول المشرف</button>
+  </div>
 
-  // النجوم المتحركة (بيضاء فقط)
-  for (let i = 0; i < 80; i++) {
-    const star = document.createElement("div");
-    star.className = "star";
-    star.style.top = Math.random() * window.innerHeight + "px";
-    star.style.left = Math.random() * window.innerWidth + "px";
-    document.body.appendChild(star);
-  }
+  <!-- الساعة والتاريخ -->
+  <div id="clock">
+    🕒 <span id="time"></span> | 📅 <span id="date"></span>
+  </div>
 
-  // عداد الزوار باستخدام Firebase Firestore
-  const firebaseConfig = {
-    apiKey: "AIzaSyDg3HhwgnQQn_JOjXCGyCQP8YHF5FN8bE0",
-    authDomain: "abodahab-4d14e.firebaseapp.com",
-    projectId: "abodahab-4d14e",
-    storageBucket: "abodahab-4d14e.appspot.com",
-    messagingSenderId: "442622031382",
-    appId: "1:442622031382:web:38c1f156f43a683eb56737"
-  };
+  <!-- شاشة الترحيب -->
+  <header>
+    <h1></h1>
+    <p id="welcome-text">بإذن الله أقدر أخدمك في المجالات اللي تحت دي</p>
+  </header>
 
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
-  const db = firebase.firestore();
-  const counterRef = db.collection("visits").doc("counter");
+  <!-- عداد الزوار -->
+  <div id="visitor-count">
+    👥 عدد الزوار: <span id="visit-counter"></span>
+  </div>
 
-  async function updateCounterAndShow() {
-    try {
-      await counterRef.set(
-        { count: firebase.firestore.FieldValue.increment(1) },
-        { merge: true }
-      );
-      const snap = await counterRef.get();
-      const data = snap.data() || { count: 1 };
-      document.getElementById("visit-counter").textContent = data.count;
-    } catch (e) {
-      document.getElementById("visit-counter").textContent = "خطأ في العداد";
-      console.error("Counter error:", e);
-    }
-  }
+  <!-- الخدمات -->
+  <section class="services show" id="services">
+    <a href="telegram.html" class="service telegram" id="telegram-service">
+      <img src="https://iili.io/f5iX49t.th.jpg" alt="تلجرام"><span>تلجرام</span>
+    </a>
+    <a href="facebook.html" class="service facebook"><img src="https://iili.io/f5ijI7S.th.jpg" alt="فيسبوك"><span>فيسبوك</span></a>
+    <a href="whatsapp.html" class="service whatsapp"><img src="https://iili.io/f5iwfyP.th.jpg" alt="واتساب"><span>واتساب</span></a>
+    <a href="youtube.html" class="service youtube"><img src="https://iili.io/f5iN2xn.th.jpg" alt="يوتيوب"><span>يوتيوب</span></a>
+    <a href="instagram.html" class="service instagram"><img src="https://iili.io/f5aoS71.md.jpg" alt="إنستجرام"><span>إنستجرام</span></a>
+    <a href="tiktok.html" class="service tiktok"><img src="https://iili.io/f5aIAe1.md.jpg" alt="تيك توك"><span>تيك توك</span></a>
+    <a href="other.html" class="service"><img src="https://iili.io/f5au6fj.md.jpg" alt="خدمات أخرى"><span>انشاء موقع ويب</span></a>
+  </section>
 
-  updateCounterAndShow();
-});
+  <!-- أدوات تعديل تلجرام (تظهر للمشرف فقط) -->
+  <section id="telegram-admin" style="display:none; margin:20px;">
+    <h3>إدارة خدمة تلجرام</h3>
+    <button onclick="removeTelegram()">❌ حذف تلجرام</button>
+    <button onclick="addTelegram()">➕ إضافة تلجرام</button>
+  </section>
+
+  <!-- نبذة عن صانع الموقع -->
+  <section class="about show" id="about-section">
+    <button id="creator-btn">💻 نبذة عن صانع الموقع</button>
+    <div id="creator-info">
+      <p>
+        مطوّر بخبرة في تقديم حلول رقمية متكاملة، بخلي حضورك الرقمي أقوى وأسهل.  
+        بخدماتي هتلاقي كل اللي محتاجه: توثيق الحسابات، زيادة الأعضاء والتفاعل،  
+        مشاهدات ولايكات، وتصميم وتطوير مواقع ويب بشكل احترافي.  
+        🌟 هدفي إنك تكون مميز في المجالات اللي تستحقها،  
+        وكل ده هتلاقيه فوق في قسم الخدمات، وكمان بيكون في سحب أسبوعي على جوائز.  
+        🚀 متفوتش الفرصة، كل يوم في جديد بيستناك هنا!
+      </p>
+    </div>
+  </section>
+
+  <!-- تواصل واتساب -->
+  <section class="contact show" id="contact-section">
+    <a href="https://wa.me/201155820103" target="_blank" class="whatsapp-contact">📱 واتساب</a>
+  </section>
+
+  <footer>
+    <p>جميع الحقوق محفوظة © MAHMOUD ABODAHAB</p>
+  </footer>
+
+  <!-- صوت عند الضغط -->
+  <audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
+
+  <!-- مكتبات Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
