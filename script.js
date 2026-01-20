@@ -1,69 +1,87 @@
-// تشغيل الساعة والتاريخ
-function updateClock() {
-  const now = new Date();
-  const time = now.toLocaleTimeString('ar-EG');
-  const date = now.toLocaleDateString('ar-EG');
-  document.getElementById('time').textContent = time;
-  document.getElementById('date').textContent = date;
-}
-setInterval(updateClock, 1000);
-updateClock();
-
-// صوت عند الضغط على أي زر خدمة
-document.querySelectorAll('.service').forEach(service => {
-  service.addEventListener('click', () => {
-    document.getElementById('clickSound').play();
-  });
-});
-
-// زر النبذة
-document.getElementById('creator-btn').addEventListener('click', () => {
-  document.getElementById('creator-info').classList.toggle('show');
-});
-
-// عداد الزوار باستخدام Firebase
-const firebaseConfig = {
-  // بيانات مشروعك من Firebase Console
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
-const visitsRef = db.collection("visits").doc("counter");
-visitsRef.get().then(doc => {
-  if (doc.exists) {
-    let count = doc.data().count || 0;
-    count++;
-    visitsRef.set({ count: count });
-    document.getElementById("visit-counter").textContent = count;
-  } else {
-    visitsRef.set({ count: 1 });
-    document.getElementById("visit-counter").textContent = 1;
+() => {
+  // زر نبذة عن صانع الموقع
+  const creatorBtn = document.getElementById('creator-btn');
+  const info = document.getElementById('creator-info');
+  if (creatorBtn) {
+    creatorBtn.addEventListener('click', () => {
+      info.classList.toggle('show');
+      // تغيير نص الزر حسب الحالة
+      creatorBtn.textContent = info.classList.contains('show')
+        ? "إخفاء النبذة"
+        : "💻 نبذة عن صانع الموقع";
+    });
   }
-});
 
-// =======================
-// كود دخول المشرف الجديد
-// =======================
-
-// زر دخول المشرف
-document.querySelector(".admin-login-btn").addEventListener("click", () => {
-  document.getElementById("admin-modal").style.display = "flex";
-});
-
-// تأكيد كلمة السر
-document.getElementById("admin-submit").addEventListener("click", async () => {
-  const inputPass = document.getElementById("admin-password").value;
-  const doc = await db.collection("admin").doc("login").get();
-  if (doc.exists && inputPass === doc.data().password) {
-    alert("✅ تم تسجيل الدخول بنجاح");
-    // إظهار خدمات تلجرام فقط
-    document.querySelectorAll(".service").forEach(el => {
-      if (!el.classList.contains("telegram")) {
-        el.style.display = "none";
+  // الصوت عند الضغط
+  const sound = document.getElementById('clickSound');
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('click', () => {
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play().catch(() => {});
       }
     });
-    document.getElementById("admin-modal").style.display = "none";
-  } else {
-    document.getElementById("admin-error").style.display = "block";
+  });
+
+  // الساعة والتاريخ
+  function updateClock() {
+    const now = new Date();
+    const time = now.toLocaleTimeString('ar-EG', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+    const date = now.toLocaleDateString('ar-EG', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric'
+    });
+    document.getElementById("time").textContent = time;
+    document.getElementById("date").textContent = date;
   }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // النجوم المتحركة (بيضاء فقط)
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.top = Math.random() * window.innerHeight + "px";
+    star.style.left = Math.random() * window.innerWidth + "px";
+    document.body.appendChild(star);
+  }
+
+  // عداد الزوار باستخدام Firebase Firestore
+  const firebaseConfig = {
+    apiKey: "AIzaSyDg3HhwgnQQn_JOjXCGyCQP8YHF5FN8bE0",
+    authDomain: "abodahab-4d14e.firebaseapp.com",
+    projectId: "abodahab-4d14e",
+    storageBucket: "abodahab-4d14e.appspot.com",
+    messagingSenderId: "442622031382",
+    appId: "1:442622031382:web:38c1f156f43a683eb56737"
+  };
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+  const db = firebase.firestore();
+  const counterRef = db.collection("visits").doc("counter");
+
+  async function updateCounterAndShow() {
+    try {
+      await counterRef.set(
+        { count: firebase.firestore.FieldValue.increment(1) },
+        { merge: true }
+      );
+      const snap = await counterRef.get();
+      const data = snap.data() || { count: 1 };
+      document.getElementById("visit-counter").textContent = data.count;
+    } catch (e) {
+      document.getElementById("visit-counter").textContent = "خطأ في العداد";
+      console.error("Counter error:", e);
+    }
+  }
+
+  updateCounterAndShow();
 });
