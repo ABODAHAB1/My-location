@@ -103,6 +103,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const inputPass = document.getElementById("admin-password").value;
       try {
         const doc = await db.collection("admin").doc("login").get();
+
+        // ✅ هنا التعديل: طباعة القيم في الـ Console
+        console.log("كلمة السر المدخلة:", inputPass);
+        console.log("كلمة السر المحفوظة في Firestore:", doc.data());
+
         if (doc.exists && inputPass === doc.data().password) {
           alert("✅ تم تسجيل الدخول بنجاح");
           // إظهار خدمات تلجرام فقط
