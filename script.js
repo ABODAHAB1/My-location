@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (creatorBtn) {
     creatorBtn.addEventListener('click', () => {
       info.classList.toggle('show');
-      // تغيير نص الزر حسب الحالة
       creatorBtn.textContent = info.classList.contains('show')
         ? "إخفاء النبذة"
         : "💻 نبذة عن صانع الموقع";
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateClock, 1000);
   updateClock();
 
-  // النجوم المتحركة (بيضاء فقط)
+  // النجوم المتحركة
   for (let i = 0; i < 80; i++) {
     const star = document.createElement("div");
     star.className = "star";
@@ -52,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(star);
   }
 
-  // عداد الزوار باستخدام Firebase Firestore
+  // إعداد Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyDg3HhwgnQQn_JOjXCGyCQP8YHF5FN8bE0",
     authDomain: "abodahab-4d14e.firebaseapp.com",
@@ -66,8 +65,9 @@ document.addEventListener("DOMContentLoaded", () => {
     firebase.initializeApp(firebaseConfig);
   }
   const db = firebase.firestore();
-  const counterRef = db.collection("visits").doc("counter");
 
+  // عداد الزوار
+  const counterRef = db.collection("visits").doc("counter");
   async function updateCounterAndShow() {
     try {
       await counterRef.set(
@@ -82,6 +82,44 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Counter error:", e);
     }
   }
-
   updateCounterAndShow();
+
+  // =======================
+  // كود دخول المشرف الجديد
+  // =======================
+  const adminBtn = document.querySelector(".admin-login-btn");
+  const adminModal = document.getElementById("admin-modal");
+  const adminSubmit = document.getElementById("admin-submit");
+  const adminError = document.getElementById("admin-error");
+
+  if (adminBtn && adminModal && adminSubmit) {
+    // فتح المودال
+    adminBtn.addEventListener("click", () => {
+      adminModal.style.display = "flex";
+    });
+
+    // تأكيد كلمة السر
+    adminSubmit.addEventListener("click", async () => {
+      const inputPass = document.getElementById("admin-password").value;
+      try {
+        const doc = await db.collection("admin").doc("login").get();
+        if (doc.exists && inputPass === doc.data().password) {
+          alert("✅ تم تسجيل الدخول بنجاح");
+          // إظهار خدمات تلجرام فقط
+          document.querySelectorAll(".service").forEach(el => {
+            if (!el.classList.contains("telegram")) {
+              el.style.display = "none";
+            }
+          });
+          adminModal.style.display = "none";
+        } else {
+          adminError.style.display = "block";
+        }
+      } catch (err) {
+        console.error("Admin login error:", err);
+        adminError.style.display = "block";
+      }
+    });
+  }
 });
+
