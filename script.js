@@ -107,11 +107,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (doc.exists) {
           const savedPass = (doc.data().password || "").trim();
 
-          // ✅ هنا التعديل: طباعة القيم في الـ Console
+          // ✅ طباعة القيم في الـ Console
           console.log("كلمة السر المدخلة:", inputPass);
           console.log("كلمة السر المحفوظة في Firestore:", savedPass);
 
-          if (inputPass.toLowerCase() === savedPass.toLowerCase()) {
+          // مقارنة دقيقة بعد إزالة المسافات الزائدة
+          if (inputPass === savedPass) {
             alert("✅ تم تسجيل الدخول بنجاح");
             // إظهار خدمات تلجرام فقط
             document.querySelectorAll(".service").forEach(el => {
@@ -120,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
               }
             });
             adminModal.style.display = "none";
+            adminError.style.display = "none";
           } else {
             adminError.style.display = "block";
           }
@@ -133,4 +135,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
