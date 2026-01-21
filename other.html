@@ -2,91 +2,178 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>KMD</title>
+  <title>خدمات البرمجة</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: url('https://iili.io/fgpdxTv.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Tahoma', sans-serif;
+      color: #222;
+      padding: 20px;
+    }
 
-  <!-- أيقونة اللوجو KMD -->
-  <link rel="icon" type="image/png" href="https://iili.io/fXKDmiX.th.png">
-  <link rel="apple-touch-icon" href="https://iili.io/fXKDmiX.th.png">
+    .section-box {
+      background-color: rgba(255,255,255,0.95);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .section-box h2 {
+      margin-bottom: 10px;
+      color: #0077cc;
+    }
+
+    .section-box p {
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .plan {
+      background-color: #f9f9f9;
+      border: 2px solid #0077cc;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 15px 0;
+      text-align: right;
+    }
+
+    .plan h3 {
+      color: #0077cc;
+      margin-bottom: 10px;
+    }
+
+    .plan ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+    }
+
+    .plan ul li {
+      margin-bottom: 6px;
+    }
+
+    .plan .price {
+      font-weight: bold;
+      color: #d60000;
+      margin-bottom: 10px;
+    }
+
+    .plan a {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #0077cc;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .plan a:hover {
+      background-color: #005fa3;
+    }
+
+    .whatsapp-contact, .back-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      margin: 5px;
+    }
+
+    .whatsapp-contact {
+      background-color: #25D366;
+      color: white;
+    }
+
+    .whatsapp-contact:hover {
+      background-color: #1ebe5d;
+    }
+
+    .back-btn {
+      background-color: #0077cc;
+      color: white;
+    }
+
+    .back-btn:hover {
+      background-color: #005fa3;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-  <!-- الساعة والتاريخ -->
-  <div id="clock">
-    🕒 <span id="time"></span> | 📅 <span id="date"></span>
+
+  <div class="section-box">
+    <h2>🛠️ خدمات إنشاء مواقع إلكترونية</h2>
+    <p>اختر الخطة اللي تناسبك، وابعث تفاصيل طلبك، هنراجع التفاصيل ونرد عليك قبل التنفيذ.</p>
+
+    <div class="plan">
+      <h3>عادي – موقع تعريفي بسيط</h3>
+      <div class="price">1990 جنيه – دومين مجاني</div>
+      <ul>
+        <li>✓ حتى 2 صفحات</li>
+        <li>✓ تصميم جمالي متجاوب</li>
+        <li>✓ رد واتساب مباشر</li>
+        <li>✓ تهيئة سيو أساسي</li>
+      </ul>
+      <a href="https://wa.me/201155820103?text=أرغب في طلب خطة موقع تعريفي بسيط">اطلب الخطة</a>
+    </div>
+
+    <div class="plan">
+      <h3>مميز – موقع تعريفي متكامل</h3>
+      <div class="price">3490 جنيه – دومين مجاني</div>
+      <ul>
+        <li>✓ حتى 6 صفحات</li>
+        <li>✓ هوية ألوان وخطوط</li>
+        <li>✓ نموذج تواصل + خريطة</li>
+        <li>✓ تحسين سرعة وتحميل</li>
+      </ul>
+      <a href="https://wa.me/201155820103?text=أرغب في طلب خطة موقع تعريفي متكامل">اطلب الخطة</a>
+    </div>
+
+    <div class="plan">
+      <h3>متخصص – موقع شركة أو خدمات</h3>
+      <div class="price">5490 جنيه – دومين مجاني</div>
+      <ul>
+        <li>✓ حتى 10 صفحات</li>
+        <li>✓ قسم خدمات + أعمال</li>
+        <li>✓ نموذج تواصل متقدم</li>
+        <li>✓ تأسيس سيو وتحسين سرعة</li>
+      </ul>
+      <a href="https://wa.me/201155820103?text=أرغب في طلب خطة موقع شركة أو خدمات">اطلب الخطة</a>
+    </div>
   </div>
 
-  <!-- شاشة الترحيب -->
-  <header>
-    <h1>KMD</h1>
-    <p>بإذن الله أقدر أخدمك في المجالات اللي تحت دي</p>
-  </header>
-
-  <!-- عداد الزوار -->
-  <div id="visitor-count">
-    👥 عدد الزوار: <span id="visit-counter"></span>
+  <div class="section-box">
+    <h2>🌐 إنشاء موقع ويب</h2>
+    <p>إنشاء موقع ويب ليك له استخدامات كتير:
+      <br>• موقع لشغلك أو مشروعك
+      <br>• موقع لدروسك أو محاضراتك
+      <br>• موقع لتخزين ملفاتك أو عرض خدماتك
+      <br>• موقع للإعلانات أو التواصل مع العملاء
+    </p>
   </div>
 
-  <!-- الخدمات -->
-  <section class="services show" id="services">
-    <a href="telegram.html" class="service telegram"><img src="https://iili.io/f5iX49t.th.jpg" alt="تلجرام"><span>تلجرام</span></a>
-    <a href="facebook.html" class="service facebook"><img src="https://iili.io/f5ijI7S.th.jpg" alt="فيسبوك"><span>فيسبوك</span></a>
-    <a href="whatsapp.html" class="service whatsapp"><img src="https://iili.io/f5iwfyP.th.jpg" alt="واتساب"><span>واتساب</span></a>
-    <a href="youtube.html" class="service youtube"><img src="https://iili.io/f5iN2xn.th.jpg" alt="يوتيوب"><span>يوتيوب</span></a>
-    <a href="instagram.html" class="service instagram"><img src="https://iili.io/f5aoS71.md.jpg" alt="إنستجرام"><span>إنستجرام</span></a>
-    <a href="tiktok.html" class="service tiktok"><img src="https://iili.io/f5aIAe1.md.jpg" alt="تيك توك"><span>تيك توك</span></a>
-    <a href="other.html" class="service"><img src="https://iili.io/f5au6fj.md.jpg" alt="خدمات أخرى"><span>انشاء موقع ويب</span></a>
-  </section>
-
-  <!-- نبذة عن صانع الموقع -->
-  <section class="about show" id="about-section">
-    <button id="creator-btn">💻 نبذة عن صانع الموقع</button>
-    <div id="creator-info">
-      <p>
-        مطوّر بخبرة في تقديم حلول رقمية متكاملة، بخلي حضورك الرقمي أقوى وأسهل.  
-        بخدماتي هتلاقي كل اللي محتاجه: توثيق الحسابات، زيادة الأعضاء والتفاعل،  
-        مشاهدات ولايكات، وتصميم وتطوير مواقع ويب بشكل احترافي.  
-        🌟 هدفي إنك تكون مميز في المجالات اللي تستحقها،  
-        🚀 متفوتش الفرصة، كل يوم في جديد بيستناك هنا!
-      </p>
-    </div>
-  </section>
-
-  <!-- تواصل واتساب -->
-  <section class="contact show" id="contact-section">
-    <a href="https://wa.me/201155820103" target="_blank" class="whatsapp-contact">📱 واتساب</a>
-  </section>
-
-  <!-- دخول المشرف -->
-  <section id="admin-section">
-    <button onclick="showAdminLogin()">🔑 دخول المشرف</button>
-    <div id="adminLogin" style="display:none;">
-      <input type="password" id="adminPassword" placeholder="كلمة المرور">
-      <button onclick="loginAdmin()">دخول</button>
-    </div>
-    <div id="adminPanel" style="display:none;">
-      <h3>لوحة التحكم</h3>
-      <button onclick="addService()">➕ إضافة خدمة</button>
-      <button onclick="removeService()">➖ حذف خدمة</button>
-    </div>
-  </section>
-
-  <!-- زر الترجمة اليدوي -->
-  <section id="translate-section">
-    <button onclick="setLanguage('ar')">🇪🇬 عربي</button>
-    <button onclick="setLanguage('en')">🇬🇧 English</button>
-  </section>
+  <div class="section-box">
+    <a href="https://wa.me/201155820103" target="_blank" class="whatsapp-contact">📱 تواصل واتساب</a>
+    <a href="index.html" class="back-btn">⬅️ الرجوع للخلف</a>
+  </div>
 
   <footer>
-    <p>جميع الحقوق محفوظة © MAHMOUD ABODAHAB</p>
+    💻 أنا مختص في البرمجة بجميع لغاتها، من تطوير المواقع إلى بناء الأنظمة المتقدمة — خبرتي تحت خدمتك.
   </footer>
 
-  <!-- صوت عند الضغط -->
-  <audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
-
-  <!-- مكتبات Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
