@@ -99,20 +99,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // تأكيد كلمة السر
-    adminSubmit.addEventListener("click", async () => {
-      const inputPass = document.getElementById("admin-password").value.trim();
+    adminSubmit.addEventListener("click", async (event) => {
+      // منع إعادة تحميل الصفحة لو الزر داخل form
+      if (event && typeof event.preventDefault === "function") {
+        event.preventDefault();
+      }
+
+      // قراءة القيمة كما هي (raw) للاختبارات
+      const inputPassRaw = document.getElementById("admin-password").value || "";
+
       try {
-        const doc = await db.collection("admin").doc("login").get();
+        const docRef = db.collection("admin").doc("login");
+        const doc = await docRef.get();
+
+        // طباعة حالة الوثيقة والبيانات للتشخيص
+        console.log("DEBUG doc.exists:", doc.exists);
+        console.log("DEBUG doc.data():", doc.data());
 
         if (doc.exists) {
-          const savedPass = (doc.data().password || "").trim();
+          const savedPassRaw = doc.data().password || "";
 
-          // ✅ طباعة القيم في الـ Console
-          console.log("كلمة السر المدخلة:", inputPass);
-          console.log("كلمة السر المحفوظة في Firestore:", savedPass);
+          // تطبيع وقص المسافات وتحويل للحروف الصغيرة للتأكد من المقارنة
+          const savedPass = String(savedPassRaw).trim().normalize();
+          const inputPass = String(inputPassRaw).trim().normalize();
 
-          // مقارنة دقيقة بعد إزالة المسافات الزائدة
-          if (inputPass === savedPass) {
+          // طباعة تفصيلية للتشخيص (repr, length, char codes)
+          console.log(">>> savedPass raw (repr):", JSON.stringify(savedPassRaw));
+          console.log(">>> savedPass normalized (repr):", JSON.stringify(savedPass));
+          console.log(">>> savedPass length:", savedPass.length);
+          console.log(">>> savedPass char codes:", Array.from(savedPass).map(c => c.charCodeAt(0)));
+
+          console.log(">>> inputPass raw (repr):", JSON.stringify(inputPassRaw));
+          console.log(">>> inputPass normalized (repr):", JSON.stringify(inputPass));
+          console.log(">>> inputPass length:", inputPass.length);
+          console.log(">>> inputPass char codes:", Array.from(inputPass).map(c => c.charCodeAt(0)));
+
+          // مقارنة أكثر تسامحاً مع تجاهل حالة الحروف
+          if (inputPass.toLowerCase() === savedPass.toLowerCase()) {
             alert("✅ تم تسجيل الدخول بنجاح");
             // إظهار خدمات تلجرام فقط
             document.querySelectorAll(".service").forEach(el => {
@@ -123,9 +146,11 @@ document.addEventListener("DOMContentLoaded", () => {
             adminModal.style.display = "none";
             adminError.style.display = "none";
           } else {
+            // إظهار رسالة الخطأ الموجودة في HTML
             adminError.style.display = "block";
           }
         } else {
+          // الوثيقة غير موجودة أو لا يمكن الوصول إليها
           adminError.style.display = "block";
         }
       } catch (err) {
