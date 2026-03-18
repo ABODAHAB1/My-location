@@ -61,7 +61,7 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
 }
 
 /* الأقسام */
-.services, .about, .contact {
+.services, .contact {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -99,64 +99,12 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
 }
 
 /* تأثير Glow للأيقونات حسب نوعها */
-.service.instagram:hover {
-  box-shadow: 0 0 15px #E1306C;
-}
-.service.tiktok:hover {
-  box-shadow: 0 0 15px #69C9D0;
-}
-.service.youtube:hover {
-  box-shadow: 0 0 15px #FF0000;
-}
-.service.whatsapp:hover {
-  box-shadow: 0 0 15px #25D366;
-}
-.service.facebook:hover {
-  box-shadow: 0 0 15px #1877F2;
-}
-.service.telegram:hover {
-  box-shadow: 0 0 15px #0088cc;
-}
-
-/* زر النبذة */
-.about button {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #8e2de2, #ff6ec4);
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(255,255,255,0.2);
-  transition: background 0.3s, transform 0.3s;
-}
-.about button:hover {
-  transform: scale(1.05);
-}
-
-/* محتوى النبذة */
-#creator-info {
-  display: none;
-  background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 15px;
-  max-width: 600px;
-  line-height: 1.8;
-  font-size: 1rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  color: #333;
-  text-align: center;
-}
-#creator-info.show {
-  display: block;
-}
-#creator-info p {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #333;
-  text-align: center;
-}
+.service.instagram:hover { box-shadow: 0 0 15px #E1306C; }
+.service.tiktok:hover { box-shadow: 0 0 15px #69C9D0; }
+.service.youtube:hover { box-shadow: 0 0 15px #FF0000; }
+.service.whatsapp:hover { box-shadow: 0 0 15px #25D366; }
+.service.facebook:hover { box-shadow: 0 0 15px #1877F2; }
+.service.telegram:hover { box-shadow: 0 0 15px #0088cc; }
 
 /* زر واتساب */
 .whatsapp-contact {
@@ -172,6 +120,19 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
   background: #128C7E;
 }
 
+/* الفوتر */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: #111;
+  color: #fff;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
 /* تجاوب مع الموبايل */
 @media(max-width:600px){
   header h1 { font-size: 1.8rem; }
@@ -179,5 +140,4 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
   .service { width: 100px; }
   .service img { width: 60px; height: 60px; }
   .service span { font-size: 12px; }
-  #creator-info { font-size: 0.9rem; }
 }
