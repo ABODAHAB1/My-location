@@ -8,47 +8,63 @@
     html, body {
       margin: 0;
       padding: 0;
-      font-family: "Tahoma", sans-serif;
+      font-family: "Cairo", sans-serif;
       direction: rtl;
       background: linear-gradient(to right, #0088cc, #005f99);
-      color: white;
+      color: #333;
       text-align: center;
     }
     #clock {
       margin: 15px;
       font-size: 1rem;
       font-weight: bold;
+      color: #fff;
     }
     h1 {
       margin-top: 20px;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
+      color: #fff;
       text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
     }
     p {
       font-size: 1rem;
       margin-bottom: 20px;
+      color: #eee;
     }
     .service-box {
-      background: rgba(255,255,255,0.15);
+      background: #fff;
       border-radius: 12px;
-      padding: 20px;
+      padding: 25px;
       margin: 20px auto;
       max-width: 90%;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+    .service-box:hover {
+      transform: translateY(-5px);
+    }
+    .service-box h3 {
+      font-size: 20px;
+      color: #1a73e8;
+      margin-bottom: 10px;
+    }
+    .service-box p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 15px;
     }
     .service-btn {
       display: inline-block;
-      padding: 10px 20px;
-      background: #fff;
-      color: #0088cc;
-      font-weight: bold;
+      background: #ff9800;
+      color: #fff;
+      padding: 10px 18px;
       border-radius: 8px;
       text-decoration: none;
+      font-weight: bold;
       transition: 0.3s;
     }
     .service-btn:hover {
-      background: #005f99;
-      color: #fff;
+      background: #e68900;
     }
     .back-btn {
       display: inline-block;
@@ -72,61 +88,15 @@
   <h1>📲 مرحبًا بك في خدمات تيليجرام من محمود أبو الدهب</h1>
   <p>كل ما تحتاجه لتطوير حسابك على تيليجرام بخدمات احترافية وسريعة.</p>
 
+  <!-- مثال بطاقة خدمة -->
   <div class="service-box">
     <h3>📌 توثيق حسابات تيليجرام</h3>
     <p>نوثق حسابك الرسمي بسرعة وسهولة.</p>
-    <a class="service-btn" href="https://t.me/uuruuc?text=مرحبا، أريد توثيق حساب تلجرام">اذهب للخدمة</a>
+    <a class="service-btn" href="#">اذهب للخدمة</a>
   </div>
 
-  <div class="service-box">
-    <h3>🌟 نجوم تيليجرام</h3>
-    <p>احصل على نجوم مميزة لحسابك.</p>
-    <a class="service-btn" href="https://t.me/uuruuc?text=مرحبا، أريد نجوم تلجرام">اذهب للخدمة</a>
-  </div>
-
-  <div class="service-box">
-    <h3>✅ الحسابات الموثقة</h3>
-    <p>تعرف على أسعار الحسابات الموثقة.</p>
-    <a class="service-btn" href="https://t.me/uuruuc?text=مرحبا، أريد حساب موثق على تلجرام">اذهب للخدمة</a>
-  </div>
-
-  <div class="service-box">
-    <h3>📈 تزويد متابعين ومشاهدات</h3>
-    <p>زوّد التفاعل على قناتك أو مجموعتك.</p>
-    <a class="service-btn" href="https://t.me/uuruuc?text=مرحبا، أريد تزويد متابعين ومشاهدات على تلجرام">اذهب للخدمة</a>
-  </div>
-
-  <div class="service-box">
-    <h3>💰 عملات رقمية</h3>
-    <p>بيع واستقبال العملات الرقمية بسهولة.</p>
-    <a class="service-btn" href="https://t.me/uuruuc?text=مرحبا، أريد خدمات العملات الرقمية">اذهب للخدمة</a>
-  </div>
-
-  <div class="service-box">
-    <h3>💳 طرق الدفع</h3>
-    <p>تعرف على طرق الدفع المتاحة.</p>
-    <a class="service-btn" href="https://t.me/uuruuc?text=مرحبا، أريد معرفة طرق الدفع">اذهب للخدمة</a>
-  </div>
-
-  <!-- ✅ الخدمات الجديدة -->
-  <div class="service-box">
-    <h3>🎁 شراء هدايا</h3>
-    <p>اطلب الهدايا مباشرة عبر تيليجرام.</p>
-    <a class="service-btn" href="https://t.me/z_o_w?start=محتاج_اشتري_هدايا">اذهب للخدمة</a>
-  </div>
-
-  <div class="service-box">
-    <h3>⭐ سحب النجوم من القنوات</h3>
-    <p>خدمة مخصصة لسحب النجوم من القنوات.</p>
-    <a class="service-btn" href="https://t.me/z_o_w">اذهب للخدمة</a>
-  </div>
-
-  <div class="service-box">
-    <h3>📰 أخبار الهدايا اليوم</h3>
-    <p>تابع أحدث أخبار الهدايا أولاً بأول.</p>
-    <a class="service-btn" href="https://t.me/neew_Gift">اذهب للخدمة</a>
-  </div>
-
+  <!-- باقي البطاقات بنفس الشكل -->
+  
   <a class="back-btn" href="index.html">⬅️ الرجوع للخلف</a>
 
   <script>
