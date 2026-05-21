@@ -1,124 +1,152 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>KMD</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-
-  <!-- أيقونة اللوجو KMD -->
-  <link rel="icon" type="image/png" href="https://iili.io/fXKDmiX.th.png">
-  <link rel="apple-touch-icon" href="https://iili.io/fXKDmiX.th.png">
-
-  <style>
-    /* مكان أداة الترجمة */
-    #google_translate_element {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 9999;
-    }
-
-    /* تثبيت الفوتر */
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      background: #111;
-      color: #fff;
-      padding: 10px 0;
-      font-size: 14px;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Media & Programming Services</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- أداة الترجمة -->
-  <div id="google_translate_element"></div>
-
-  <!-- الساعة والتاريخ -->
-  <div id="clock">
-    🕒 <span id="time"></span> | 📅 <span id="date"></span>
-  </div>
-
-  <!-- شاشة الترحيب -->
-  <header>
-    <h1></h1>
-    <p>بإذن الله أقدر أخدمك في المجالات اللي تحت دي</p>
-  </header>
-
-  <!-- عداد الزوار -->
-  <div id="visitor-count">
-    👥 عدد الزوار: <span id="visit-counter"></span>
-  </div>
-
-  <!-- الخدمات -->
-  <section class="services show" id="services">
-    <a href="telegram.html" class="service telegram"><img src="https://iili.io/f5iX49t.th.jpg" alt="تلجرام"><span>تلجرام</span></a>
-    <a href="facebook.html" class="service facebook"><img src="https://iili.io/f5ijI7S.th.jpg" alt="فيسبوك"><span>فيسبوك</span></a>
-    <a href="whatsapp.html" class="service whatsapp"><img src="https://iili.io/f5iwfyP.th.jpg" alt="واتساب"><span>واتساب</span></a>
-    <a href="youtube.html" class="service youtube"><img src="https://iili.io/f5iN2xn.th.jpg" alt="يوتيوب"><span>يوتيوب</span></a>
-    <a href="instagram.html" class="service instagram"><img src="https://iili.io/f5aoS71.md.jpg" alt="إنستجرام"><span>إنستجرام</span></a>
-    <a href="tiktok.html" class="service tiktok"><img src="https://iili.io/f5aIAe1.md.jpg" alt="تيك توك"><span>تيك توك</span></a>
-    <a href="other.html" class="service"><img src="https://iili.io/f5au6fj.md.jpg" alt="خدمات أخرى"><span>انشاء موقع ويب</span></a>
-  </section>
-
-  <!-- تواصل واتساب -->
-  <section class="contact show" id="contact-section">
-    <a href="https://wa.me/201155820103" target="_blank" class="whatsapp-contact">📱 تواصل واتساب</a>
-  </section>
-
-  <footer>
-    <p>© جميع الحقوق محفوظة MAHMOUD ABODAHAB</p>
-  </footer>
-
-  <!-- مودال دخول المشرف -->
-  <div id="admin-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-       background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:10000;">
-    <div style="background:#fff; padding:20px; border-radius:10px; width:300px; text-align:center;">
-      <h2>🔑 دخول المشرف</h2>
-      <input type="password" id="admin-password" placeholder="أدخل كلمة السر"
-             style="width:90%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:5px;">
-      <button id="admin-submit" style="padding:10px 20px; background:#0088cc; color:#fff; border:none; border-radius:5px; cursor:pointer;">
-        دخول
-      </button>
-      <p id="admin-error" style="color:red; display:none; margin-top:10px;">❌ كلمة السر غير صحيحة</p>
-      <button onclick="document.getElementById('admin-modal').style.display='none'"
-              style="margin-top:15px; background:#ccc; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;">
-        إغلاق
-      </button>
+    <!-- ===== INTRO SCREEN ===== -->
+    <div id="intro">
+        <div class="intro-content">
+            <p id="intro-text"></p>
+            <span class="cursor">|</span>
+        </div>
+        <div class="particles" id="intro-particles"></div>
     </div>
-  </div>
 
-  <!-- زر دخول المشرف -->
-  <button class="admin-login-btn" style="position:fixed; bottom:60px; left:20px; padding:10px 15px;
-          background:#333; color:#fff; border:none; border-radius:5px; cursor:pointer; z-index:9999;">
-    👨‍💻 دخول المشرف
-  </button>
+    <!-- ===== LOADING SCREEN ===== -->
+    <div id="loading">
+        <div class="loading-content">
+            <div class="loading-circle"></div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="percent" id="percent">0%</div>
+        </div>
+    </div>
 
-  <!-- صوت عند الضغط -->
-  <audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
+    <!-- ===== MAIN WEBSITE CONTENT (Hidden Initially) ===== -->
+    <div id="main-content">
+        <!-- Header / Clock -->
+        <div id="clock"></div>
 
-  <!-- مكتبات Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+        <!-- Hero Slider -->
+        <section class="hero-slider">
+            <div class="slider-container" id="slider">
+                <!-- Slide 1 -->
+                <div class="slide active">
+                    <div class="slide-content">
+                        <h1>Welcome to Our Services</h1>
+                        <p>Premium Social Media & Programming Solutions</p>
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-bg" style="background: linear-gradient(135deg, #8A2BE2, #00BFFF);"></div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1>Grow Your Business</h1>
+                        <p>Boost your social presence with our tools</p>
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-bg" style="background: linear-gradient(135deg, #FF416C, #FF4B2B);"></div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1>Professional Programming</h1>
+                        <p>Custom websites and applications</p>
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-bg" style="background: linear-gradient(135deg, #00b09b, #96c93d);"></div>
+                </div>
+            </div>
+            <!-- Slider Controls -->
+            <button class="slider-prev"><i class="fas fa-chevron-right"></i></button>
+            <button class="slider-next"><i class="fas fa-chevron-left"></i></button>
+            <div class="slider-dots"></div>
+        </section>
 
-  <script src="script.js"></script>
+        <!-- Visitor Counter (Firebase) -->
+        <div id="visitor-count">
+            <span>👁️</span> <span id="count">0</span>
+        </div>
 
-  <!-- كود الترجمة -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement(
-        {
-          pageLanguage: 'ar',
-          includedLanguages: 'en,fr,de',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        },
-        'google_translate_element'
-      );
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <!-- Services Section -->
+        <section class="services">
+            <a href="telegram.html" class="service telegram">
+                <i class="fab fa-telegram-plane"></i>
+                <h3>Telegram</h3>
+            </a>
+            <a href="facebook.html" class="service facebook">
+                <i class="fab fa-facebook-f"></i>
+                <h3>Facebook</h3>
+            </a>
+            <a href="whatsapp.html" class="service whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <h3>WhatsApp</h3>
+            </a>
+            <a href="youtube.html" class="service youtube">
+                <i class="fab fa-youtube"></i>
+                <h3>YouTube</h3>
+            </a>
+            <a href="instagram.html" class="service instagram">
+                <i class="fab fa-instagram"></i>
+                <h3>Instagram</h3>
+            </a>
+            <a href="tiktok.html" class="service tiktok">
+                <i class="fab fa-tiktok"></i>
+                <h3>TikTok</h3>
+            </a>
+            <a href="other.html" class="service website">
+                <i class="fas fa-globe"></i>
+                <h3>Website Creation</h3>
+            </a>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <h2>تواصل معنا</h2>
+            <p>لأي استفسار أو طلب خدمة، يمكنك التواصل عبر الواتساب</p>
+            <a href="https://wa.me/1234567890" class="whatsapp-contact" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>جميع الحقوق محفوظة &copy; 2025</p>
+        </footer>
+
+        <!-- Stars background container (created by JS) -->
+        <!-- Audio element for click sound -->
+        <audio id="clickSound" src="click.mp3" preload="auto"></audio>
+
+        <!-- AI Chatbot -->
+        <button id="chatbot-btn" title="AI Assistant"><i class="fas fa-robot"></i></button>
+        <div id="chatbot-window">
+            <div class="chat-header">
+                <span>AI Assistant</span>
+                <button id="close-chat"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="اسألني عن الخدمات..." />
+                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK (v8 compat) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <!-- Main Scripts -->
+    <script src="script.js"></script>
 </body>
 </html>
+H
